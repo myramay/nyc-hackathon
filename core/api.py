@@ -28,21 +28,39 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], all
 app.mount("/camera-scan", StaticFiles(directory=Path(__file__).resolve().parent.parent / "camera-scan", html=True), name="camera-scan")
 
 
-from shelters.match import MatchResult, Profile, directory, match as match_shelters  # noqa: E402
+from shelters.match import MatchResult, Profile, match as match_shelters, public_shelters  # noqa: E402
 
 app.mount("/shelter-finder", StaticFiles(directory=Path(__file__).resolve().parent.parent / "shelter-finder", html=True), name="shelter-finder")
 
 
 @app.post("/shelters/match", response_model=MatchResult)
 def shelters_match(profile: Profile):
-    """Narrow down shelter options from a person's situation. Nothing is stored."""
+    """Narrow NYC shelters (public addresses only) to the ones this person is eligible for. Nothing is stored."""
     return match_shelters(profile)
 
 
-@app.get("/shelters/directory")
-def shelters_directory():
-    """Official NYC shelter directory (NYC Open Data): shelters, drop-in centers, Homebase offices."""
-    return directory()
+@app.get("/shelters")
+def shelters_list():
+    """All NYC homeless shelters with publicly published addresses, each with its source."""
+    return public_shelters()
+
+
+from vacancies.feed import Feed, build_feed, refresh_lotteries  # noqa: E402
+
+app.mount("/vacancies-feed", StaticFiles(directory=Path(__file__).resolve().parent.parent / "vacancies-feed", html=True), name="vacancies-feed")
+
+
+@app.get("/vacancies", response_model=Feed)
+def vacancies(borough: Optional[str] = None, bedrooms: Optional[int] = None, max_rent: Optional[float] = None,
+              kind: Optional[str] = None, within_voucher_limit: bool = False, household_size: Optional[int] = None,
+              income: Optional[float] = None, has_voucher: bool = True):
+    """Open Housing Connect lotteries + voucher-friendly listings in one feed."""
+    return build_feed(borough, bedrooms, max_rent, kind, within_voucher_limit, household_size, income, has_voucher)
+
+
+@app.post("/vacancies/refresh")
+def vacancies_refresh():
+    return {"open_lotteries": refresh_lotteries()}
 
 
 @app.get("/camera", include_in_schema=False)

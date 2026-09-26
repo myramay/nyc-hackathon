@@ -2,12 +2,10 @@
 
     python -m shelters.build_directory
 
-Sources (all NYC Open Data, published by the city):
+Source (NYC Open Data, published by the city):
   dvaj-b7yx  Shelter Repair Scorecard (DOB/DHS): every DHS shelter building with
              name, provider, facility type, borough, capacity. No street
              addresses: the city doesn't publish shelter addresses for residents' safety.
-  bmxf-3rd4  Directory of Homeless Drop-In Centers (DHS): addresses, 24h info.
-  ntcm-2w4k  Directory of Homebase Locations (DHS): homelessness-prevention offices.
 """
 from __future__ import annotations
 
@@ -92,29 +90,16 @@ def main():
                 "access": "Assigned through DHS intake. You can't walk in.",
             })
 
-    drop_ins = [{
-        "id": f"dropin-{i}", "name": d["center_name"].strip(), "borough": d["borough"], "address": d["address"].replace(";", ","),
-        "notes": d.get("comments"), "lat": float(d["latitude"]) if d.get("latitude") else None,
-        "lon": float(d["longitude"]) if d.get("longitude") else None,
-    } for i, d in enumerate(get("bmxf-3rd4", **{"$limit": 100}))]
-
-    homebase = [{
-        "id": f"homebase-{i}", "name": h["homebase_office"], "borough": h["borough"].title(), "address": h["address"],
-        "phone": h.get("phone_number"), "zip_codes_served": [z.strip() for z in h.get("service_area_zip_code", "").split(",") if z.strip()],
-    } for i, h in enumerate(get("ntcm-2w4k", **{"$limit": 200}))]
-
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({
         "built_on": date.today().isoformat(),
         "sources": {
             "shelters": {"dataset": "https://data.cityofnewyork.us/d/dvaj-b7yx", "as_of": latest[:10],
                          "note": "Shelter Repair Scorecard, latest month published. Shelters may have opened or closed since."},
-            "drop_ins": {"dataset": "https://data.cityofnewyork.us/d/bmxf-3rd4"},
-            "homebase": {"dataset": "https://data.cityofnewyork.us/d/ntcm-2w4k"},
         },
-        "shelters": shelters, "drop_ins": drop_ins, "homebase": homebase,
+        "shelters": shelters,
     }, indent=1, ensure_ascii=False))
-    print(f"{len(shelters)} shelters (as of {latest[:10]}), {len(drop_ins)} drop-in centers, {len(homebase)} Homebase offices -> {OUT}")
+    print(f"{len(shelters)} shelters (as of {latest[:10]}) -> {OUT}")
 
 
 if __name__ == "__main__":

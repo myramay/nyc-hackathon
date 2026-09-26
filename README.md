@@ -29,8 +29,10 @@ python -m eval.review --by "Your Name"       # label review page: http://localho
 | `eval/` | precision/recall script, label review page | Python |
 | `data/labeled/` | 144 labeled listings, rubric, blind agent labels | JSONL |
 | `tests/` | unit tests | Python |
-| `shelters/` | shelter eligibility matcher, access points (intake, drop-ins, youth, hotlines), Open Data directory builder | Python |
-| `shelter-finder/` | "Where can I go tonight?" page; calls `/shelters/match` | HTML/JS |
+| `shelters/` | shelter eligibility matcher, public-address shelter list builder, DHS directory builder | Python |
+| `shelter-finder/` | "Which shelters fit?" page; calls `/shelters/match` | HTML/JS |
+| `vacancies/` | affordable vacancy feed: live Housing Connect lotteries + voucher-friendly scraped listings | Python |
+| `vacancies-feed/` | feed page; calls `/vacancies` | HTML/JS |
 | `camera-scan/` | webcam / photo scanner page (browser JS for the camera; checking + drafting via the API) | HTML/JS |
 | `/agent` | Photon Spectrum iMessage bot: **must be TypeScript** (Spectrum is TS-only); calls the API | teammate |
 | `/web` | Next.js dashboard; calls the API | teammate |
@@ -77,20 +79,27 @@ Full schemas at http://localhost:8000/docs.
 
 ## Shelter finder
 
-Open http://localhost:8000/shelter-finder/ (API running). A caseworker or person answers: household type, age, gender, borough/ZIP, what they need tonight, and yes/no questions (fleeing violence, still housed, in shelter in the last year, pregnant, veteran, LGBTQ+, working, pet, immigration help, mental health / substance use / mobility). Nothing is stored.
+Open http://localhost:8000/shelter-finder/ (API running). Answer: household type, age, gender, borough, and yes/no questions (fleeing violence, in a NYC shelter in the last year, veteran, LGBTQ+, working, mental health, substance use, HIV/AIDS, medical). Nothing is stored.
 
-It returns:
-- **First step**: e.g. "go back to the shelter you were in" (DHS 12-month rule), "call the DV hotline first", "start with Homebase" (still housed), or "adult intake is 18+, go to a youth program".
-- **Where to go**: the right DHS intake door (men: 8 E. 3rd St; women: Franklin or HELP; families: PATH; adult families: 30th St), walk-in and youth options, drop-in centers, Safe Havens via outreach, with address, phone, hours, subway.
-- **Not for you, and why**: every option that was ruled out, with the reason ("Women only", "Up to age 21", "Adults 18+ only").
-- **Shelters you may be placed in**: the matching shelters from the city's directory (416 DHS shelters, NYC Open Data), ranked by the person's needs (veterans, seniors, women's, mental health…) and borough. DHS assigns shelters; people can't walk in, and the city doesn't publish shelter addresses.
-- **Rights and tips**: gender identity (NYC Human Rights Law), ID rules, family eligibility and Fair Hearings, adult-family proof, pets, disability accommodations, Legal Aid.
+It returns only **homeless shelters with a publicly published street address** (285 across the five boroughs), narrowed to the ones this person is eligible for:
+- **How to get in**: the right DHS intake door (men: 8 E. 3rd St; women: Franklin or HELP; families: PATH; adult families: 30th St), the 12-month return rule, youth shelters taking young people directly, and the domestic violence hotline (DV shelters are confidential and never listed).
+- **Each shelter is a dropdown**: how to get in, eligibility, what to bring, contact, forms and links (source, DHS application page, directions), the exact source quote, and a "call to confirm" warning when the source is older than 2025.
+- **Filters on the results**: borough, shelter type, special populations, walk-in only; sort by best fit, borough, beds, or name.
+- **Not eligible, and why**: every ruled-out shelter with its reason ("Women only", "Up to age 24", "For veterans").
 
-API: `POST /shelters/match` (a `Profile`), `GET /shelters/directory`.
+Data: `data/shelters/public_shelters.json`, built by `python -m shelters.build_public` from a hand-checked seed plus research files in `data/shelters/research/`. Addresses come from DHS contract notices in the City Record (NYC Open Data `dg92-zbpx`), nyc.gov pages, and operator websites; 12 of 12 randomly sampled addresses matched their cited source. Each shelter is cross-checked against the city's DHS shelter directory (NYC Open Data `dvaj-b7yx`, as of Dec 2022) for type and bed count. Where sources disagreed, DHS wins (men's intake moved from 30th St to 8 E. 3rd St).
 
-Sources: DHS pages on nyc.gov (intake rules and addresses), Neighborhood Coalition for Shelter Street Sheets April 2024 (ncsinc.org), NYC Open Data (Shelter Repair Scorecard `dvaj-b7yx`, Drop-In Centers `bmxf-3rd4`, Homebase `ntcm-2w4k`, Pets in Shelter `5nux-zfmw`), BronxWorks, CAMBA. Every access point in `shelters/access_points.py` names its source. Where sources disagreed, DHS wins (men's intake moved from 30th St to 8 E. 3rd St).
+API: `POST /shelters/match` (a `Profile`), `GET /shelters` (the full list).
 
-Caveats: the shelter directory's newest month is **December 2022** (refresh with `python -m shelters.build_directory`); tags like "women" or "veterans" are read from shelter names; domestic violence shelters are confidential and aren't listed.
+## Affordable vacancies
+
+Open http://localhost:8000/vacancies-feed/. One feed with:
+- **Open Housing Connect lotteries**, live from Housing Connect's public API (the same data housingconnect.nyc.gov shows): deadline and days left, address, every unit type's rent, household-size range, and income range by household size, whether a CityFHEPS voucher covers the rent, paper-application address, and the apply link. Falls back to NYC Open Data (HPD `vy5i-a666`), which lags by weeks.
+- **Voucher-friendly listings** from the scraper (`scanner/python/listings.json`, or `scanner/data/cached_listings.json`), run through the detector: discriminatory and questionable listings are hidden (and counted); listings that welcome vouchers rank first, then ones within the CityFHEPS rent limit.
+
+Filters: household size, yearly income, "has a voucher" (Housing Connect: minimum income "may not apply to applicants with Section 8 or other qualifying rental subsidies"), bedrooms, borough, lotteries/listings, rent within voucher limit. Example: a family of 3 earning $30,000 fits 2 of 11 open lotteries on paper, and may qualify for all 11 with a voucher.
+
+API: `GET /vacancies?household_size=&income=&has_voucher=&bedrooms=&borough=&kind=&within_voucher_limit=`, `POST /vacancies/refresh`. Lotteries are cached 6 hours in `data/vacancies/lotteries.json`.
 
 ## How a verdict is made
 
