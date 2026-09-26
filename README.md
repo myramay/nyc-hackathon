@@ -62,13 +62,16 @@ Gemini extracts facts only (rent, bedrooms, income requirement, exclusion phrase
 
 ## Eval: read before quoting numbers
 
-Current offline results (regex extractor, no Gemini):
+Offline results (regex extractor, no Gemini):
 
-| set | n | violation precision | violation recall | false alarms |
-|---|---|---|---|---|
-| dev | 59 | 100% | 100% | 0% |
-| holdout | 25 | 100% | 91% | 0% |
+| set | n | violation precision | violation recall | reaches a human | false alarms |
+|---|---|---|---|---|---|
+| dev (rules built from it) | 59 | 100% | 100% | 100% | 0% |
+| holdout v1 (contaminated) | 25 | 100% | 91% | 91% | 0% |
+| **holdout_v2 (blind; quote this)** | **60** | **92.9%** | **59.1%** | **63.6%** | **3.8%** |
 
-- **The holdout is contaminated.** Some phrase patterns were added after its misses were seen in the Python prototype (which scored 90% precision / 69% recall on it, the last clean number). Before the pitch, have someone who hasn't read `config/phrases.ts` write `data/labeled/holdout_v2.jsonl`, and quote that.
-- All labels have `verified_by: null`. The spec requires a person to check every label.
-- The spec asks for ~150 listings. Add real cached listings to `data/labeled/real.jsonl` and run `bun run eval -- --file data/labeled/real.jsonl`.
+- `holdout_v2` was written by an agent that only saw `RUBRIC.md`, never the rules. Scored once, never tuned on. **Don't change rules because of its misses**; if you do, the number stops being honest and you need a v3.
+- Misses are mostly paraphrases and non-English refusals the phrase list doesn't know (Chinese, Russian, Bengali, Haitian Creole). That's the Gemini layer's job; rerun with `--gemini` once the key is set.
+- Labels were pre-labeled by two blind agents (A and B, in `data/labeled/agent/`); they agreed with every existing label. **A person still has to verify each one**: `bun run review -- --by "Your Name"` → http://localhost:4321. Keys: 1/2/3 pick, Enter accepts, Backspace goes back.
+- Rubric for humans and agents: `data/labeled/RUBRIC.md`. It was written knowing the existing labels, so agent agreement partly reflects the rubric; review is where you decide if its conventions are right.
+- Total labeled: 144. For the spec's ~150, add real cached listings to `data/labeled/real.jsonl`.
