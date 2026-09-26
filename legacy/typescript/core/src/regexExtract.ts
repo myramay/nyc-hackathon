@@ -51,6 +51,9 @@ export function regexExtract(text: string): Extraction {
   else if (/\bone[\s-]bed(?:room)?\b/i.test(text)) ex.bedrooms = 1;
   else if (/\btwo[\s-]bed(?:room)?\b/i.test(text)) ex.bedrooms = 2;
 
+  const addr = text.match(/\b\d{1,5}\s+(?:(?:[NSEW]\.?|North|South|East|West)\s+)?(?:\d{1,3}(?:st|nd|rd|th)|[A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s+(?:St|Street|Ave|Avenue|Blvd|Boulevard|Rd|Road|Pl|Place|Pkwy|Parkway|Dr|Drive|Ct|Court|Ln|Lane|Ter|Terrace)\b\.?/);
+  if (addr) ex.address = addr[0].replace(/\.$/, "");
+
   const boro = text.match(/\b(Bronx|Brooklyn|Manhattan|Queens|Staten Island)\b/i);
   if (boro) ex.borough = boro[1];
   const zip = text.match(/\b(1[01]\d{3})\b/);
@@ -72,6 +75,11 @@ export function regexExtract(text: string): Extraction {
     const v = money(annual[1]);
     if (v >= 10000) ex.income_requirement = { type: "annual", value: v, raw_text: annual[0] };
   }
+
+  const phone = text.match(/(?:\+?1[\s.-]?)?\(?\b(\d{3})\)?[\s.-]?(\d{3})[\s.-]?(\d{4})\b/);
+  if (phone) ex.contact_phone = `(${phone[1]}) ${phone[2]}-${phone[3]}`;
+  const name = text.match(/\b(?:[Cc]all|[Tt]ext|[Cc]ontact|[Aa]sk\s+for)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)(?=[\s,.!:]|$)/);
+  if (name) ex.broker_or_landlord_name = name[1];
 
   const credit = text.match(/\b(?:min(?:imum)?\.?\s+)?credit\s*(?:score)?\s*(?:of\s+)?(\d{3})\s*\+?|\b(\d{3})\+?\s*credit\b/i);
   if (credit) {

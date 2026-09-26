@@ -28,3 +28,16 @@ const p = await buildPacket(r, { tenantLanguage: "es" });
 await Bun.write("data/cache/demo-packet.html", p.html);
 console.log(`\n${C.b}iMessage reply:${C.x}\n${p.summaryText}`);
 console.log(`\npacket -> data/cache/demo-packet.html ${p.translated ? "(EN + ES)" : "(English only; set GEMINI_API_KEY for translation)"}`);
+
+// ---- complaint draft (for a person to review; nothing is sent) ----
+import { draftComplaint } from "./src/complaint.ts";
+const listing = "Sunny 1BR at 512 Halsey St, Brooklyn 11233. $2,200/mo. Must earn 40x the rent. No programs. Call Dave (718) 555-0142.";
+const draft = await draftComplaint({
+  result: await analyze({ text: listing }),
+  listing: { source: "Craigslist", url: "https://newyork.craigslist.org/example", screenshotSaved: true },
+  reporter: { role: "caseworker" },
+  tenantLanguage: "es",
+});
+await Bun.write("data/cache/demo-complaint.html", draft.html);
+await Bun.write("data/cache/demo-complaint.txt", draft.text);
+console.log(`\ncomplaint draft -> data/cache/demo-complaint.html (+ .txt)`);

@@ -1,0 +1,60 @@
+"""Turn a listing URL into text (+ screenshot) for the engine.
+
+Primary: jev-ultrafast browser agent (handles JavaScript pages, "See more",
+pop-ups), run through scanner/jev/fetch_listing.py. jev needs Python 3.12+, so
+it runs as a subprocess via `uv` in its own environment.
+Fallback: plain HTTP fetch + tag stripping, so a missing key or a jev failure
+never breaks the agent or the demo."""
+from __future__ import annotations
+
+import html as _html
+import json
+import os
+import re
+import subprocess
+import time
+from pathlib import Path
+
+import httpx
+
+SIDECAR = Path(__file__).resolve().parent / "jev" / "fetch_listing.py"
+
+
+def fetch_listing(url: str) -> dict:
+    jev_dir = os.environ.get("JEV_DIR")
+    jev_error = None
+    if jev_dir:
+        try:
+            return _via_jev(url, jev_dir)
+        except Exception as e:
+            jev_error = str(e)
+    else:
+        jev_error = "JEV_DIR not set"
+    return {**_via_http(url), "jev_error": jev_error}
+
+
+def _via_jev(url: str, jev_dir: str) -> dict:
+    timeout = float(os.environ.get("JEV_TIMEOUT_MS", 45000)) / 1000
+    proc = subprocess.run(
+        ["uv", "run", "--project", jev_dir, "--env-file", str(Path(jev_dir) / ".env"), "python", str(SIDECAR), url],
+        capture_output=True, text=True, timeout=timeout)
+    last = (proc.stdout.strip().splitlines() or ["{}"])[-1]
+    r = json.loads(last)
+    if not r.get("ok"):
+        raise RuntimeError(r.get("error") or f"jev exited {proc.returncode}")
+    return {"url": r["url"], "title": r.get("title"), "text": r["text"], "screenshot_b64": r.get("screenshot_b64"),
+            "screenshot_media_type": r.get("screenshot_media_type"), "via": "jev", "steps": r.get("steps"),
+            "stopped": r.get("stopped"), "elapsed_ms": r.get("elapsed_ms")}
+
+
+def _via_http(url: str) -> dict:
+    t0 = time.perf_counter()
+    res = httpx.get(url, headers={"user-agent": "Mozilla/5.0 (voucher-detector research; read-only)"}, timeout=15, follow_redirects=True)
+    page = res.text
+    title = re.search(r"<title[^>]*>([^<]*)</title>", page, re.I)
+    text = re.sub(r"<(script|style|noscript)[\s\S]*?</\1>", " ", page, flags=re.I)
+    text = re.sub(r"<br\s*/?>|</(p|div|li|h\d)>", "\n", text, flags=re.I)
+    text = _html.unescape(re.sub(r"<[^>]+>", " ", text))
+    text = re.sub(r"\n\s*\n+", "\n", re.sub(r"[ \t]+", " ", text)).strip()
+    return {"url": str(res.url), "title": title.group(1).strip() if title else None, "text": text, "via": "http",
+            "elapsed_ms": round((time.perf_counter() - t0) * 1000)}

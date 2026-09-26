@@ -20,6 +20,7 @@ export const Extraction = z.object({
   explicit_exclusions: z.array(z.object({ phrase: z.string(), raw_text: z.string() })),
   source_language: z.string(),
   broker_or_landlord_name: z.string().optional(),
+  contact_phone: z.string().optional(),
   confidence: z.number().min(0).max(1),
   // Not in the original spec: the listing text as read from an image, and an
   // English rendering. The rules engine runs its phrase lists over both.
