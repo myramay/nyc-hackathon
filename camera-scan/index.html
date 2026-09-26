@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Listing Scanner — Voucher Discrimination Detector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.0.4/tesseract.min.js"></script>
+<style>
+  :root {
+    --ink:#0F1B2D; --ink-2:#16233A; --paper:#F7F3E9; --paper-line:#E4DCC8;
+    --text:#EDEAE1; --text-dim:#9BA6B8; --flag:#C1440E; --flag-bg:#2A1810;
+    --safe:#4C7A5A; --safe-bg:#122419; --border:#2B3A54;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *,*::before,*::after{box-sizing:inherit}
+  html{scroll-padding-top: env(safe-area-inset-top, 0px); height:100%}
+  body{
+    margin:0; min-height:100%; background:var(--ink); color:var(--text);
+    display:flex; justify-content:center;
+  }
+  .app{ width:100%; max-width:760px; padding:28px 20px 60px; }
+  header{ margin-bottom:24px; }
+  .eyebrow{ color:var(--text-dim); font-size:13px; letter-spacing:.02em; margin-bottom:6px; }
+  h1{
+    font-family:"Source Serif 4", Georgia, serif; font-weight:700;
+    font-size:clamp(26px,5vw,34px); line-height:1.15; margin:0 0 10px;
+  }
+  .lede{ color:var(--text-dim); font-size:15px; line-height:1.55; max-width:56ch; }
+
+  .card{
+    background:var(--ink-2); border:1px solid var(--border); border-radius:10px;
+    padding:20px; margin-bottom:18px;
+  }
+  .viewfinder{
+    position:relative; width:100%; aspect-ratio:4/3; background:#000;
+    border-radius:8px; overflow:hidden; border:1px solid var(--border);
+  }
+  video, canvas.overlay{ width:100%; height:100%; object-fit:cover; display:block; }
+  canvas.overlay{ position:absolute; inset:0; display:none; }
+  .viewfinder.empty::before{
+    content:"Camera not started"; position:absolute; inset:0; display:flex;
+    align-items:center; justify-content:center; color:var(--text-dim); font-size:14px;
+  }
+
+  .controls{ display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; }
+  button{
+    font:inherit; font-size:14px; font-weight:600; border-radius:7px; padding:11px 18px;
+    border:1px solid var(--border); background:transparent; color:var(--text); cursor:pointer;
+  }
+  button.primary{ background:var(--flag); border-color:var(--flag); color:#fff; }
+  button.primary:disabled{ opacity:.4; cursor:not-allowed; }
+  button:hover:not(:disabled){ filter:brightness(1.12); }
+  .upload-fallback{ font-size:13px; color:var(--text-dim); margin-top:10px; }
+  .upload-fallback label{ text-decoration:underline; cursor:pointer; color:var(--text); }
+  input[type=file]{ display:none; }
+
+  .status{ font-size:13px; color:var(--text-dim); margin-top:10px; min-height:18px; }
+
+  .verdict{ display:none; border-radius:9px; padding:16px 18px; margin-bottom:16px; }
+  .verdict.flagged{ display:block; background:var(--flag-bg); border:1px solid var(--flag); }
+  .verdict.clear{ display:block; background:var(--safe-bg); border:1px solid var(--safe); }
+  .verdict h2{ font-size:16px; margin:0 0 6px; font-weight:700; }
+  .verdict.flagged h2{ color:#ff8a5c; }
+  .verdict.clear h2{ color:#7fc99a; }
+  .verdict ul{ margin:8px 0 0; padding-left:18px; font-size:14px; line-height:1.6; }
+
+  .extracted{
+    background:var(--paper); color:#2A2418; border-radius:8px; padding:16px 18px;
+    font-size:14px; line-height:1.65; white-space:pre-wrap; word-break:break-word;
+    border:1px solid var(--paper-line); max-height:220px; overflow-y:auto;
+  }
+  .extracted mark{ background:#F3C5A5; color:#2A2418; padding:0 2px; border-radius:2px; }
+  .section-label{ font-size:12px; color:var(--text-dim); margin-bottom:8px; text-transform:none; }
+
+  textarea{
+    width:100%; min-height:190px; font:13px/1.6 ui-monospace, "SF Mono", Menlo, monospace;
+    background:var(--paper); color:#2A2418; border:1px solid var(--paper-line); border-radius:8px;
+    padding:14px; resize:vertical;
+  }
+  .copy-row{ display:flex; justify-content:flex-end; margin-top:8px; }
+  .hint{ font-size:12.5px; color:var(--text-dim); margin-top:10px; line-height:1.5; }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --ink:#F4F1EA; --ink-2:#FFFFFF; --text:#20242E; --text-dim:#5B6270; --border:#DEDACF;
+    }
+  }
+  :root[data-theme="dark"] { }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="eyebrow">Field capture tool</div>
+    <h1>Scan a listing on the spot</h1>
+    <p class="lede">Point the camera at a flyer, a lobby sign, or a printed listing. This reads the text and checks it against known patterns of illegal source-of-income discrimination — no vouchers, no programs, or income multiples that mathematically exclude CityFHEPS holders.</p>
+  </header>
+
+  <div class="card">
+    <div class="section-label">Camera</div>
+    <div class="viewfinder empty" id="viewfinderWrap">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas class="overlay" id="frozenFrame"></canvas>
+    </div>
+    <div class="controls">
+      <button class="primary" id="startBtn">Start camera</button>
+      <button id="captureBtn" disabled>Capture &amp; scan</button>
+      <button id="retryBtn" style="display:none">Try again</button>
+    </div>
+    <div class="upload-fallback">
+      No camera access? <label for="fileInput">Upload a photo instead</label>
+      <input type="file" id="fileInput" accept="image/*" capture="environment">
+    </div>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="verdict" id="verdict">
+    <h2 id="verdictTitle"></h2>
+    <ul id="verdictList"></ul>
+  </div>
+
+  <div class="card" id="textCard" style="display:none">
+    <div class="section-label">What the scan read</div>
+    <div class="extracted" id="extractedText"></div>
+  </div>
+
+  <div class="card" id="draftCard" style="display:none">
+    <div class="section-label">Draft complaint — NYC Commission on Human Rights</div>
+    <textarea id="draftText" readonly></textarea>
+    <div class="copy-row">
+      <button id="copyBtn">Copy draft</button>
+    </div>
+    <div class="hint">This is a starting draft, not a filed complaint. A caseworker should review the details, add the listing location and date, and submit it through CHR's intake process.</div>
+  </div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const video = $('video'), frozen = $('frozenFrame'), viewfinderWrap = $('viewfinderWrap');
+const startBtn = $('startBtn'), captureBtn = $('captureBtn'), retryBtn = $('retryBtn');
+const statusEl = $('status'), fileInput = $('fileInput');
+let stream = null;
+
+const FLAG_PHRASES = [
+  /no\s+vouchers?/i, /no\s+programs?/i, /no\s+section\s*8/i, /no\s+cityfheps/i,
+  /no\s+housing\s+assistance/i, /must\s+not\s+(have|use)\s+(a\s+)?voucher/i,
+  /sorry,?\s+no\s+vouchers?/i, /vouchers?\s+not\s+accepted/i, /no\s+chp\b/i
+];
+
+function findIncomeMultiplier(text){
+  const re = /(\d{2,3})\s*(x|times)\b[^.\n]{0,25}?(rent|income|salary)|(?:income|salary)[^.\n]{0,15}?(\d{2,3})\s*(x|times)/gi;
+  let m, hits = [];
+  while ((m = re.exec(text)) !== null) {
+    const n = parseInt(m[1] || m[4], 10);
+    if (n) hits.push({ raw: m[0], n });
+  }
+  return hits;
+}
+
+function analyze(text){
+  const flaggedPhrases = [];
+  FLAG_PHRASES.forEach(re => {
+    const m = text.match(re);
+    if (m) flaggedPhrases.push(m[0]);
+  });
+  const multiplierHits = findIncomeMultiplier(text).filter(h => h.n >= 30);
+
+  return { flaggedPhrases, multiplierHits, isFlagged: flaggedPhrases.length > 0 || multiplierHits.length > 0 };
+}
+
+function highlight(text, terms){
+  let out = text;
+  terms.forEach(t => {
+    const esc = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    out = out.replace(new RegExp(esc, 'i'), match => `<mark>${match}</mark>`);
+  });
+  return out;
+}
+
+function buildDraft(text, result){
+  const reasons = [
+    ...result.flaggedPhrases.map(p => `The listing states language equivalent to: "${p.trim()}"`),
+    ...result.multiplierHits.map(h => `The listing requires an income multiplier of roughly ${h.n}x rent, which functions as a de facto exclusion of rental-assistance recipients.`)
+  ];
+  return `NYC Commission on Human Rights — Source of Income Discrimination Complaint (Draft)
+
+Date scanned: ${new Date().toLocaleDateString()}
+Listing location: [ADD ADDRESS / PLATFORM / SOURCE]
+Complainant: [ADD NAME — CASEWORKER TO FILL IN]
+
+Summary:
+This listing appears to violate NYC Local Law source-of-income protections under the NYC Human Rights Law. The following was identified in the captured text:
+
+${reasons.map(r => '- ' + r).join('\n')}
+
+Text as captured (for reference):
+"""
+${text.trim()}
+"""
+
+Requested action:
+We ask CHR to investigate this listing for source-of-income discrimination and take appropriate enforcement action.
+
+[Caseworker: review before submitting. Attach photo of the original listing as evidence.]`;
+}
+
+function showVerdict(result){
+  const verdict = $('verdict'), title = $('verdictTitle'), list = $('verdictList');
+  list.innerHTML = '';
+  if (result.isFlagged){
+    verdict.className = 'verdict flagged';
+    title.textContent = '🚫 Likely source-of-income discrimination';
+    [...result.flaggedPhrases, ...result.multiplierHits.map(h => h.raw)].forEach(t => {
+      const li = document.createElement('li'); li.textContent = t; list.appendChild(li);
+    });
+  } else {
+    verdict.className = 'verdict clear';
+    title.textContent = '✅ No discriminatory patterns detected';
+    const li = document.createElement('li');
+    li.textContent = 'No known exclusionary phrases or excessive income multipliers found in the scanned text.';
+    list.appendChild(li);
+  }
+}
+
+async function startCamera(){
+  statusEl.textContent = 'Requesting camera access…';
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+    video.srcObject = stream;
+    viewfinderWrap.classList.remove('empty');
+    captureBtn.disabled = false;
+    startBtn.style.display = 'none';
+    statusEl.textContent = 'Camera ready. Frame the listing and capture.';
+  } catch (err) {
+    statusEl.textContent = 'Camera access denied or unavailable — use the upload option below instead.';
+  }
+}
+
+async function runOCR(imageSource){
+  statusEl.textContent = 'Reading text from the image…';
+  $('textCard').style.display = 'none';
+  $('draftCard').style.display = 'none';
+  $('verdict').className = 'verdict';
+  try {
+    const { data: { text } } = await Tesseract.recognize(imageSource, 'eng');
+    statusEl.textContent = 'Scan complete.';
+    const result = analyze(text);
+    const allTerms = [...result.flaggedPhrases, ...result.multiplierHits.map(h => h.raw)];
+    $('extractedText').innerHTML = text.trim() ? highlight(text, allTerms) : '(No readable text found — try a clearer, closer shot.)';
+    $('textCard').style.display = 'block';
+    showVerdict(result);
+    if (result.isFlagged){
+      $('draftText').value = buildDraft(text, result);
+      $('draftCard').style.display = 'block';
+    }
+  } catch (err) {
+    statusEl.textContent = 'Could not read the image. Try again with better lighting.';
+  }
+}
+
+function capture(){
+  const w = video.videoWidth, h = video.videoHeight;
+  if (!w || !h) { statusEl.textContent = 'Camera not ready yet — wait a moment and try again.'; return; }
+  frozen.width = w; frozen.height = h;
+  const ctx = frozen.getContext('2d');
+  ctx.drawImage(video, 0, 0, w, h);
+  frozen.style.display = 'block';
+  video.style.display = 'none';
+  retryBtn.style.display = 'inline-block';
+  captureBtn.style.display = 'none';
+  runOCR(frozen);
+}
+
+startBtn.addEventListener('click', startCamera);
+captureBtn.addEventListener('click', capture);
+retryBtn.addEventListener('click', () => {
+  frozen.style.display = 'none'; video.style.display = 'block';
+  retryBtn.style.display = 'none'; captureBtn.style.display = 'inline-block';
+  $('textCard').style.display = 'none'; $('draftCard').style.display = 'none';
+  $('verdict').className = 'verdict'; statusEl.textContent = 'Camera ready. Frame the listing and capture.';
+});
+fileInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const img = new Image();
+  img.onload = () => runOCR(img);
+  img.src = URL.createObjectURL(file);
+});
+$('copyBtn').addEventListener('click', () => {
+  navigator.clipboard.writeText($('draftText').value);
+  $('copyBtn').textContent = 'Copied ✓';
+  setTimeout(() => $('copyBtn').textContent = 'Copy draft', 1500);
+});
+</script>
+</body>
+</html>
