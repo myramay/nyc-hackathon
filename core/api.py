@@ -2,14 +2,18 @@
 can use the Python engine.
 
     uvicorn core.api:app --reload --port 8000      docs at http://localhost:8000/docs
+                                                   camera scanner at http://localhost:8000/camera-scan/
 """
 from __future__ import annotations
+
+from pathlib import Path
 
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from core import analyze, approve_draft, build_packet, draft_complaint, gemini_available, GEMINI_MODEL
@@ -18,6 +22,15 @@ from core.schema import AnalysisResult, ListingInput
 
 app = FastAPI(title="Voucher Discrimination Detector")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
+
+
+# The camera scanner page (browser JS for the webcam; checking + drafting go through this API).
+app.mount("/camera-scan", StaticFiles(directory=Path(__file__).resolve().parent.parent / "camera-scan", html=True), name="camera-scan")
+
+
+@app.get("/camera", include_in_schema=False)
+def camera():
+    return RedirectResponse("/camera-scan/")
 
 
 @app.get("/health")

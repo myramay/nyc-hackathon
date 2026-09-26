@@ -70,6 +70,10 @@ def regex_extract(text: str) -> Extraction:
     phone = re.search(r"(?:\+?1[\s.-]?)?\(?\b(\d{3})\)?[\s.-]?(\d{3})[\s.-]?(\d{4})\b", text)
     if phone:
         ex.contact_phone = f"({phone.group(1)}) {phone.group(2)}-{phone.group(3)}"
+    else:  # flyers often give a 7-digit number: "Call 555-0134"
+        local = re.search(r"\b(?:call|text|phone|tel)\.?:?\s+(\d{3})[\s.-](\d{4})\b", text, I)
+        if local:
+            ex.contact_phone = f"{local.group(1)}-{local.group(2)}"
     name = re.search(r"\b(?:[Cc]all|[Tt]ext|[Cc]ontact|[Aa]sk\s+for)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)(?=[\s,.!:]|$)", text)
     if name:
         ex.broker_or_landlord_name = name.group(1)

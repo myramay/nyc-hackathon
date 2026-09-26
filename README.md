@@ -15,6 +15,8 @@ uvicorn core.api:app --reload --port 8000    # HTTP API for the iMessage agent +
 python -m eval.review --by "Your Name"       # label review page: http://localhost:4321
 ```
 
+**Camera scanner:** start the API, then open http://localhost:8000/camera-scan/ (or `/camera`). Point the webcam at a flyer or upload a photo. The page runs on-device OCR (Tesseract, English + Spanish), then sends the photo and text to the Python engine: Gemini reads the photo (any language), rules R1–R4 decide, and it shows the math plus a CCHR complaint draft with a "Open review page" button. If the API is unreachable, it falls back to a basic in-browser check and says so. Opening the HTML file directly works too: add `?api=http://localhost:8000`.
+
 `.env` is read automatically and is in `.gitignore`.
 
 ## Layout
@@ -27,6 +29,7 @@ python -m eval.review --by "Your Name"       # label review page: http://localho
 | `eval/` | precision/recall script, label review page | Python |
 | `data/labeled/` | 144 labeled listings, rubric, blind agent labels | JSONL |
 | `tests/` | unit tests | Python |
+| `camera-scan/` | webcam / photo scanner page (browser JS for the camera; checking + drafting via the API) | HTML/JS |
 | `/agent` | Photon Spectrum iMessage bot: **must be TypeScript** (Spectrum is TS-only); calls the API | teammate |
 | `/web` | Next.js dashboard; calls the API | teammate |
 | `legacy/` | earlier versions (TypeScript port, first Python prototype), reference only | |
