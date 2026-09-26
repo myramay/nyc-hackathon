@@ -15,7 +15,7 @@ OUTPUT_FILE = Path(__file__).parent / "housing_opportunities.json"
 def fetch_opportunities():
 
     params = {
-        "$limit": 10,
+        "$limit": 100,
         "$order": "lottery_id DESC"
     }
 
@@ -60,6 +60,26 @@ def save_opportunities(opportunities):
     print(f"Saved {len(opportunities)} housing records!")
 
 
+# Frequency counter function. Basically counting how many records belong to each status category
+
+def inspect_statuses(records):
+
+    statuses = {}
+
+    for record in records:
+
+        status = record.get("lottery_status", "Unknown")
+
+        if status not in statuses:
+            statuses[status] = 0
+
+        statuses[status] += 1
+
+    print("\nLottery statuses:")
+
+    for status, count in statuses.items():
+        print(f"{status}: {count}")
+
 # Main program
 def main():
 
@@ -72,7 +92,7 @@ def main():
             print("No records returned.")
             return
 
-        print("Available dataset fields:", list(records[0].keys()))
+        inspect_statuses(records)
 
         opportunities = normalize_opportunities(records)
 
