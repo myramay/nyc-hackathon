@@ -2,7 +2,7 @@
 can use the Python engine.
 
     uvicorn core.api:app --reload --port 8000      docs at http://localhost:8000/docs
-                                                   camera scanner at http://localhost:8000/camera-scan/
+                                                   web app at http://localhost:8000/
 """
 from __future__ import annotations
 
@@ -24,13 +24,10 @@ app = FastAPI(title="Voucher Discrimination Detector")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
-# The camera scanner page (browser JS for the webcam; checking + drafting go through this API).
-app.mount("/camera-scan", StaticFiles(directory=Path(__file__).resolve().parent.parent / "camera-scan", html=True), name="camera-scan")
 
 
 from shelters.match import MatchResult, Profile, match as match_shelters, public_shelters  # noqa: E402
 
-app.mount("/shelter-finder", StaticFiles(directory=Path(__file__).resolve().parent.parent / "shelter-finder", html=True), name="shelter-finder")
 
 
 @app.post("/shelters/match", response_model=MatchResult)
@@ -47,7 +44,6 @@ def shelters_list():
 
 from vacancies.feed import Feed, build_feed, refresh_lotteries  # noqa: E402
 
-app.mount("/vacancies-feed", StaticFiles(directory=Path(__file__).resolve().parent.parent / "vacancies-feed", html=True), name="vacancies-feed")
 
 
 @app.get("/vacancies", response_model=Feed)
@@ -63,9 +59,42 @@ def vacancies_refresh():
     return {"open_lotteries": refresh_lotteries()}
 
 
-@app.get("/camera", include_in_schema=False)
-def camera():
-    return RedirectResponse("/camera-scan/")
+# ---------------- Voucher Guard: scraped listings checked for discrimination ----------------
+import os  # noqa: E402
+
+from scanner.store import get as get_scanned, scan_all  # noqa: E402
+
+
+@app.get("/guard/listings")
+def guard_listings(verdict: str = "flagged", borough: Optional[str] = None, rule: Optional[str] = None):
+    """Scraped listings with their verdicts. verdict: flagged (violation + needs_review), violation, needs_review, all."""
+    wanted = {"flagged": {"violation", "needs_review"}, "all": {"violation", "needs_review", "no_issue_found"}}.get(verdict, {verdict})
+    rows = [x for x in scan_all() if x.verdict in wanted and (not borough or x.borough == borough)
+            and (not rule or any(f["rule"] == rule for f in x.flags))]
+    rows.sort(key=lambda x: (x.verdict != "violation", x.discovered_at or ""))
+    all_rows = scan_all()
+    return {
+        "counts": {v: sum(x.verdict == v for x in all_rows) for v in ("violation", "needs_review", "no_issue_found")},
+        "total_scanned": len(all_rows),
+        "items": [x.model_dump(exclude={"result"}) for x in rows],
+    }
+
+
+@app.get("/guard/listings/{listing_id}")
+def guard_listing(listing_id: str):
+    """One scraped listing with its full analysis (feed it to /packet or /complaint)."""
+    x = get_scanned(listing_id)
+    if not x:
+        raise HTTPException(404, "Listing not found")
+    return x
+
+
+@app.get("/config")
+def config():
+    """Browser config. The Maps JavaScript key is a public browser key; restrict it by referrer in Google Cloud."""
+    return {"google_maps_api_key": os.environ.get("GOOGLE_MAPS_API_KEY", "")}
+
+
 
 
 @app.get("/health")
@@ -142,3 +171,12 @@ def complaint_approve(req: ApproveRequest):
 @app.post("/complaint/html", response_class=HTMLResponse)
 def complaint_html(draft: ComplaintDraft):
     return draft.html
+
+
+# Old page addresses -> new ones.
+for _old, _new in {"/camera": "/voucher-guard/scan/", "/camera-scan/": "/voucher-guard/scan/",
+                   "/shelter-finder/": "/shelter-match/", "/vacancies-feed/": "/open-doors/"}.items():
+    app.add_api_route(_old, (lambda n: lambda: RedirectResponse(n))(_new), include_in_schema=False)
+
+# The web app (web/): Voucher Guard, Open Doors, Shelter Match. Mounted last so API routes win.
+app.mount("/", StaticFiles(directory=Path(__file__).resolve().parent.parent / "web", html=True), name="web")

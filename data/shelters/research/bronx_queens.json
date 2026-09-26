@@ -1653,6 +1653,48 @@
     "notes": null
   },
   {
+    "name": "Concourse Family Residence",
+    "provider": "Home/Life Services",
+    "address": "2240 Grand Concourse, Bronx, NY 10457",
+    "borough": "Bronx",
+    "phone": null,
+    "facility_type": "Family Shelter",
+    "household": [
+      "family_with_children"
+    ],
+    "gender": [],
+    "min_age": null,
+    "max_age": null,
+    "populations": [],
+    "access": "DHS intake assignment",
+    "dhs_directory_name": "CONCOURSE FAMILY RESIDENCE",
+    "source_url": "https://a856-cityrecord.nyc.gov/RequestDetail/20220713114",
+    "source_type": "government",
+    "quote": "2240 Grand Concourse, Bronx, NY 10457.",
+    "notes": "Tier II family shelter per 2022 notice title; provider taken from DHS directory (Home/Life Services), not the notice."
+  },
+  {
+    "name": "Icahn House",
+    "provider": "Children's Rescue Fund",
+    "address": "661 and 665 Cauldwell Avenue, Bronx, NY 10455",
+    "borough": "Bronx",
+    "phone": null,
+    "facility_type": "Family Shelter",
+    "household": [
+      "family_with_children"
+    ],
+    "gender": [],
+    "min_age": null,
+    "max_age": null,
+    "populations": [],
+    "access": "DHS intake assignment",
+    "dhs_directory_name": "ICAHN HOUSE",
+    "source_url": "https://a856-cityrecord.nyc.gov/RequestDetail/20220527002",
+    "source_type": "government",
+    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Children’s Rescue Fund – Icahn House, located at 1520 Brook Avenue, Bronx, NY 10457, for the provision of Shelter Facilities for Homeless Families with Children at 661 and 665 Cauldwell Avenue, Bronx, NY 10455.",
+    "notes": null
+  },
+  {
     "name": "Millennium Adult Family Shelter",
     "provider": "Acacia Network",
     "address": "980 Prospect Avenue, Bronx, NY 10459",

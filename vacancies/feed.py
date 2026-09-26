@@ -9,7 +9,6 @@ discrimination checker in core/: only listings with no issue found are kept.
 """
 from __future__ import annotations
 
-import hashlib
 import json
 import re
 from datetime import date, datetime, timezone
@@ -27,9 +26,6 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / "data" / "vacancies" / "lotteries.json"
 LOTTERIES_API = "https://data.cityofnewyork.us/resource/vy5i-a666.json"
 BUILDINGS_API = "https://data.cityofnewyork.us/resource/nibs-na6y.json"
-# The scraper (scanner/python/discover.py) writes listings here; the first ones found are used.
-LISTING_FILES = [ROOT / "scanner" / "python" / "listings.json", ROOT / "scanner" / "data" / "listings.json",
-                 ROOT / "scanner" / "data" / "cached_listings.json"]
 BORO = {"MN": "Manhattan", "BK": "Brooklyn", "BX": "Bronx", "QN": "Queens", "SI": "Staten Island"}
 SIZES = [("unit_distribution_studio", 0), ("unit_distribution_1bed", 1), ("unit_distribution_2bed", 2),
          ("unit_distribution_3bed", 3), ("unit_distribution_4bed", 4)]
@@ -63,6 +59,7 @@ class FeedItem(BaseModel):
     source: str
     lat: Optional[float] = None
     lon: Optional[float] = None
+    buildings: List[dict] = []          # lotteries with several buildings: one map pin each
 
 
 class Feed(BaseModel):
@@ -167,7 +164,11 @@ def _hc_item(summary: dict, ad: dict) -> Optional[FeedItem]:
         voucher_status=(f"{len(covered)} of {len(distinct)} unit types have rent within the CityFHEPS limit. " if distinct else "")
                        + VOUCHER_INCOME_NOTE,
         within_voucher_limit=bool(covered) if distinct else None,
-        url=f"https://housingconnect.nyc.gov/PublicWeb/details/{summary['lotteryId']}", source="NYC Housing Connect (live)")
+        url=f"https://housingconnect.nyc.gov/PublicWeb/details/{summary['lotteryId']}", source="NYC Housing Connect (live)",
+        lat=float(blds[0]["latitude"]) if blds and blds[0].get("latitude") else None,
+        lon=float(blds[0]["longitude"]) if blds and blds[0].get("longitude") else None,
+        buildings=[{"address": b.get("address"), "zip": b.get("zip"), "lat": float(b["latitude"]), "lng": float(b["longitude"])}
+                   for b in blds if b.get("latitude") and b.get("longitude")])
 
 
 def _open_data_item(l: dict, addrs: dict) -> Optional[FeedItem]:
@@ -200,46 +201,27 @@ def lottery_items() -> List[FeedItem]:
 
 
 # ---------------- listings ----------------
-_cache: dict = {}
-
-
-def _listings_raw() -> list:
-    for f in LISTING_FILES:
-        if f.exists():
-            return json.loads(f.read_text())
-    return []
-
-
 def listing_items(use_gemini: bool = False):
-    """Returns (voucher-friendly items, hidden counts)."""
+    """Voucher-friendly listings from the shared scan (scanner/store.py). Returns (items, hidden counts)."""
+    from scanner.store import scan_all
     items, hidden = [], {"discriminatory": 0, "needs_review": 0}
-    for raw in _listings_raw():
-        text = raw.get("text") or ""
-        key = hashlib.sha1((raw.get("url", "") + text).encode()).hexdigest()
-        if key not in _cache:
-            _cache[key] = analyze({"id": key[:12], "text": text, "url": raw.get("url"),
-                                   "hints": {"monthly_rent": raw.get("rent"), "bedrooms": raw.get("bedrooms")}}, use_gemini=use_gemini)
-        r = _cache[key]
-        if r.verdict == "violation":
+    for s in scan_all(use_gemini):
+        if s.verdict == "violation":
             hidden["discriminatory"] += 1
             continue
-        if r.verdict == "needs_review":
+        if s.verdict == "needs_review":
             hidden["needs_review"] += 1
             continue
-        ex = r.extraction
-        welcomes = any(re.search(p, text, re.I) for p in WELCOME)
-        if welcomes:
+        if s.welcomes_vouchers:
             status = "Says it welcomes vouchers or programs."
-        elif r.within_voucher_range:
+        elif s.within_voucher_limit:
             status = "Rent is within the CityFHEPS limit for its size, and no discriminatory terms were found."
         else:
-            status = "No discriminatory terms found." + (" Rent may be above the CityFHEPS limit." if r.within_voucher_range is False else "")
+            status = "No discriminatory terms found." + (" Rent may be above the CityFHEPS limit." if s.within_voucher_limit is False else "")
         items.append(FeedItem(
-            id=f"listing-{key[:12]}", kind="listing", title=(text[:80] + "…") if len(text) > 80 else text,
-            borough=ex.borough, address=ex.address, zip=ex.zip,
-            bedrooms=[int(ex.bedrooms)] if ex.bedrooms is not None else [], rent=ex.monthly_rent,
-            voucher_status=status, within_voucher_limit=r.within_voucher_range, url=raw.get("url"),
-            source=raw.get("source") or "scraper"))
+            id=f"listing-{s.id}", kind="listing", title=(s.text[:80] + "…") if len(s.text) > 80 else s.text,
+            borough=s.borough, address=s.address, bedrooms=[s.bedrooms] if s.bedrooms is not None else [], rent=s.rent,
+            voucher_status=status, within_voucher_limit=s.within_voucher_limit, url=s.url, source=s.source, lat=s.lat, lon=s.lng))
     return items, hidden
 
 

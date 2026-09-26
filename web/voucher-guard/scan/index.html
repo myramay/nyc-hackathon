@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Listing Scanner — Voucher Discrimination Detector</title>
+<title>Voucher Guard Scanner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
@@ -102,11 +102,14 @@
   .blocking li::marker{ content:"☐  "; }
   .copy-row{ gap:8px; }
 </style>
+<link rel="stylesheet" href="/shared/app.css">
+<script src="/shared/app.js"></script>
 </head>
 <body>
 <div class="app">
+  <script>document.write(VDD.nav("Voucher Guard"))</script>
   <header>
-    <div class="eyebrow">Field capture tool</div>
+    <div class="eyebrow">Voucher Guard · field scanner</div>
     <h1>Scan a listing on the spot</h1>
     <p class="lede">Point the camera at a flyer, a lobby sign, or a printed listing. This reads the text (in any language) and checks it for illegal source-of-income discrimination: refusing vouchers or programs, or income requirements that mathematically exclude CityFHEPS holders. It shows the math and drafts a complaint for a person to review.</p>
   </header>
@@ -165,8 +168,7 @@ let lastDraft = null;   // complaint draft from the API
 
 // Python engine (core/api.py). Same origin when served by the API at /camera-scan/;
 // override with ?api=http://host:8000 when opening this file directly.
-const API = new URLSearchParams(location.search).get('api')
-  || (location.protocol.startsWith('http') && location.port !== '' && location.pathname.startsWith('/camera-scan') ? location.origin : 'http://localhost:8000');
+const API = new URLSearchParams(location.search).get('api') || (location.protocol.startsWith('http') ? location.origin : 'http://localhost:8000');
 
 const FLAG_PHRASES = [
   /no\s+vouchers?/i, /no\s+programs?/i, /no\s+section\s*8/i, /no\s+cityfheps/i,

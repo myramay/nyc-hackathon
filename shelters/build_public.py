@@ -55,6 +55,7 @@ def main():
                 "name": r["name"], "provider": r.get("provider"), "address": r["address"], "borough": r.get("borough"),
                 "phone": r.get("phone"), "facility_type": r.get("facility_type") or (d or {}).get("facility_type"),
                 "household": hh, "gender": [g for g in r.get("gender") or [] if g in ("man", "woman")] or ["man", "woman"],
+                "gender_stated": bool([g for g in r.get("gender") or [] if g in ("man", "woman")]),
                 "min_age": r.get("min_age"), "max_age": r.get("max_age"), "populations": sorted(set(r.get("populations") or [])),
                 "access": r.get("access") or "DHS intake assignment",
                 "beds": (d or {}).get("capacity"), "in_city_directory": bool(d),
@@ -69,8 +70,16 @@ def main():
             continue
         seen.add(k)
         out.append(r)
-    for i, r in enumerate(out):
+    # Coordinates for the map (NYC GeoSearch, cached). Unmatched addresses stay off the map, not mis-pinned.
+    from concurrent.futures import ThreadPoolExecutor
+    from core.geo import geocode
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        geos = list(pool.map(lambda r: geocode(r["address"], r.get("borough")), out))
+    for i, (r, g) in enumerate(zip(out, geos)):
         r["id"] = f"shelter-{i:03d}"
+        r["lat"], r["lng"] = (g["lat"], g["lng"]) if g else (None, None)
+        if not g:
+            problems.append(f"{r['name']}: address not geocoded, list only (not on map)")
     OUT.write_text(json.dumps({"built_on": date.today().isoformat(), "shelters": out}, indent=1, ensure_ascii=False))
     print(f"{len(out)} shelters with public addresses -> {OUT}")
     for p in problems:

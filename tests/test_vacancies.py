@@ -37,10 +37,11 @@ class Feed(unittest.TestCase):
         cache, lst = Path(self.tmp.name) / "lotteries.json", Path(self.tmp.name) / "listings.json"
         cache.write_text(json.dumps(FIXTURE))
         lst.write_text(json.dumps(LISTINGS))
-        self.p = [mock.patch.object(feed, "CACHE", cache), mock.patch.object(feed, "LISTING_FILES", [lst])]
+        from scanner import store
+        self.p = [mock.patch.object(feed, "CACHE", cache), mock.patch.object(store, "LISTING_FILES", [lst])]
         for p in self.p:
             p.start()
-        feed._cache.clear()
+        store._cache.clear()
 
     def tearDown(self):
         for p in self.p:

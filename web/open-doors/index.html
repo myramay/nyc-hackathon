@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Affordable Vacancies</title>
+<title>Open Doors</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
@@ -55,12 +55,15 @@
   .scroll{overflow-x:auto}
   .err{color:var(--warn)}
 </style>
+<link rel="stylesheet" href="/shared/app.css">
+<script src="/shared/app.js"></script>
 </head>
 <body>
 <div class="app">
+  <script>document.write(VDD.nav("Open Doors"))</script>
   <div class="eyebrow">For caseworkers and voucher holders in NYC</div>
-  <h1>Affordable vacancies</h1>
-  <p class="lede">Open Housing Connect lotteries and voucher-friendly listings in one feed. Listings with discriminatory terms are left out.</p>
+  <h1>Open Doors</h1>
+  <p class="lede">Affordable vacancies in one feed: open Housing Connect lotteries and voucher-friendly listings. Listings with discriminatory terms are left out.</p>
 
   <form class="card filters" id="filters">
     <label>Household size <input type="number" id="hh" min="1" max="12" inputmode="numeric" placeholder="any"></label>
@@ -78,12 +81,31 @@
     <label class="inline"><input type="checkbox" id="limit"> Rent within voucher limit only</label>
   </form>
 
-  <div id="out" aria-live="polite"><div class="card note">Loading…</div></div>
+  <div id="tabs"></div>
+  <div id="listPanel"><div id="out" aria-live="polite"><div class="card note">Loading…</div></div></div>
+  <div id="mapPanel" hidden class="card"><div class="legend"><span><i style="background:#2F4FA3"></i>Housing Connect lottery</span><span><i style="background:#2E6B45"></i>Voucher-friendly listing</span></div>
+    <div class="map" id="map"></div><p class="map-note"></p></div>
 </div>
 
 <script>
-const API = new URLSearchParams(location.search).get('api')
-  || (location.protocol.startsWith('http') && location.pathname.startsWith('/vacancies-feed') ? location.origin : 'http://localhost:8000');
+const API = VDD.API;
+let lastItems = [];
+const showTab = VDD.tabs(document.getElementById('tabs'), { list: document.getElementById('listPanel'), map: document.getElementById('mapPanel') }, drawMap);
+
+// One pin per building (multi-building lotteries get several), one per geocoded listing.
+function drawMap(){
+  const pts = [];
+  for (const i of lastItems){
+    const sub = i.kind === 'lottery'
+      ? `Lottery · ${i.deadline ? 'apply by ' + i.deadline : ''}${i.bedrooms.length ? ' · ' + i.bedrooms.map(bedLabel).join(', ') : ''}`
+      : `Listing · ${i.rent ? usd(i.rent) + '/mo' : ''} ${i.voucher_status}`;
+    const color = i.kind === 'lottery' ? '#2F4FA3' : '#2E6B45';
+    if (i.buildings && i.buildings.length > 1)
+      i.buildings.forEach((b, n) => pts.push({ id: i.id, lat: b.lat, lng: b.lng, title: `${i.title} (${b.address})`, subtitle: sub, color }));
+    else pts.push({ id: i.id, lat: i.lat, lng: i.lon, title: i.title, subtitle: sub, color });
+  }
+  VDD.renderMap(document.getElementById('map'), pts, { onDetails: id => VDD.reveal(showTab, id) });
+}
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
 const usd = n => n == null ? '—' : '$' + Math.round(n).toLocaleString('en-US');
 const bedLabel = b => b === 0 ? 'Studio' : b + 'BR';
@@ -95,7 +117,7 @@ function lotteryCard(i, hh){
     return `<tr><td>${u.count}× ${esc(u.layout)}</td><td>${usd(u.rent)}</td><td>${u.household_min ?? '?'}–${u.household_max ?? '?'}</td>
       <td>${incTxt}</td><td>${u.rent_within_voucher_limit == null ? '—' : u.rent_within_voucher_limit ? '<span class="ok">Yes</span>' : '<span class="no">No</span>'}</td></tr>`;
   }).join('');
-  return `<details class="item lottery"><summary>
+  return `<details class="item lottery" id="item-${esc(i.id)}"><summary>
       <span class="kind">Housing Connect lottery</span>
       <span class="title">${esc(i.title)}</span>
       <span class="sub">${esc(i.address || '')}${i.borough ? ' · ' + esc(i.borough) : ''}${i.neighborhood ? ' · ' + esc(i.neighborhood) : ''}</span>
@@ -112,7 +134,7 @@ function lotteryCard(i, hh){
 }
 
 function listingCard(i){
-  return `<details class="item listing"><summary>
+  return `<details class="item listing" id="item-${esc(i.id)}"><summary>
       <span class="kind">Voucher-friendly listing</span>
       <span class="title">${esc(i.title)}</span>
       <span class="sub">${[i.address, i.borough].filter(Boolean).map(esc).join(' · ') || 'Location not stated'}</span>
@@ -140,6 +162,8 @@ async function load(){
     const r = await fetch(API + '/vacancies?' + q);
     if (!r.ok) throw new Error(r.status);
     const f = await r.json();
+    lastItems = f.items;
+    if (!document.getElementById('mapPanel').hidden) drawMap();
     const hidden = f.hidden.discriminatory + f.hidden.needs_review;
     out.innerHTML = `<div class="stats"><span class="chip">${f.counts.lotteries} open lotteries</span><span class="chip">${f.counts.listings} voucher-friendly listings</span>
         ${hidden ? `<span class="chip">${hidden} listing${hidden === 1 ? '' : 's'} hidden (${f.hidden.discriminatory} discriminatory, ${f.hidden.needs_review} questionable)</span>` : ''}</div>

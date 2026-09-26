@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Homeward NYC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#0F1B2D; --ink-2:#16233A; --text:#EDEAE1; --text-dim:#9BA6B8; --border:#2B3A54; --accent:#C1440E;
+          --g:#C1440E; --b:#6f8fe0; --s:#4C9A6A;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  @media (prefers-color-scheme: light) {
+    :root { --ink:#F4F1EA; --ink-2:#FFFFFF; --text:#20242E; --text-dim:#5B6270; --border:#DEDACF; --b:#2F4FA3; --s:#2E6B45; }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--text);display:flex;justify-content:center}
+  .app{width:100%;max-width:880px;padding:28px 16px 64px}
+  h1{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(30px,6vw,44px);line-height:1.1;margin:8px 0 12px}
+  .lede{color:var(--text-dim);font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 28px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  a.feature{display:flex;flex-direction:column;gap:10px;background:var(--ink-2);border:1px solid var(--border);border-top:4px solid var(--c);
+            border-radius:12px;padding:20px;text-decoration:none;color:var(--text);min-height:220px}
+  a.feature:hover,a.feature:focus-visible{border-color:var(--c);outline:none}
+  .num{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+  a.feature h2{font-family:"Source Serif 4",Georgia,serif;font-size:24px;margin:0}
+  a.feature p{margin:0;font-size:14.5px;line-height:1.55;color:var(--text-dim)}
+  .go{margin-top:auto;font-weight:600;font-size:14px;color:var(--c)}
+  .foot{margin-top:28px;font-size:13px;color:var(--text-dim);line-height:1.6}
+</style>
+<link rel="stylesheet" href="/shared/app.css">
+<script src="/shared/app.js"></script>
+</head>
+<body>
+<div class="app">
+  <script>document.write(VDD.nav(""))</script>
+  <h1>Homeward NYC</h1>
+  <p class="lede">Tools for caseworkers helping New Yorkers who are homeless find a way home: catch landlords who illegally refuse housing vouchers, find affordable vacancies that will actually take one, and match people to the shelters they're eligible for tonight.</p>
+  <div class="grid">
+    <a class="feature" href="/voucher-guard/" style="--c:var(--g)">
+      <span class="num">01 · Fair housing</span><h2>Voucher Guard</h2>
+      <p>Flags rental listings that refuse CityFHEPS or Section 8, shows the clause and the math, and drafts a Commission on Human Rights complaint for a person to review.</p>
+      <span class="go">Check listings →</span></a>
+    <a class="feature" href="/open-doors/" style="--c:var(--b)">
+      <span class="num">02 · Housing</span><h2>Open Doors</h2>
+      <p>Open Housing Connect lotteries and voucher-friendly listings in one feed, filtered by household size, income, and bedrooms.</p>
+      <span class="go">See vacancies →</span></a>
+    <a class="feature" href="/shelter-match/" style="--c:var(--s)">
+      <span class="num">03 · Shelter</span><h2>Shelter Match</h2>
+      <p>Narrows 287 NYC homeless shelters with public addresses down to the ones a person is eligible for, with how to get in and what to bring.</p>
+      <span class="go">Find shelters →</span></a>
+  </div>
+  <p class="foot">Every feature has a list and a map. Nothing a person enters is stored. Complaints are drafts: a person reviews and submits them.</p>
+</div>
+</body>
+</html>

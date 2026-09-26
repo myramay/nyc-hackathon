@@ -2,6 +2,20 @@
 
 Finds illegal source-of-income discrimination against NYC CityFHEPS voucher holders in rental listings, shows the clause and the math, and produces an evidence packet and a human-reviewed complaint draft. Nothing is filed automatically, and no landlord is ever contacted.
 
+## The app: Homeward NYC
+
+Three features, each with a **List** and a **Map** view, at http://localhost:8000/ (run `uvicorn core.api:app --port 8000`):
+
+| Feature | What it does | Page | API |
+|---|---|---|---|
+| **Voucher Guard** | Finds rental listings that refuse CityFHEPS/Section 8 (explicit refusals, income rules on full rent, coded language), shows the clause and math, builds an evidence packet and a CHR complaint draft for a person to review. Tools: scraped-listing queue, paste-a-listing check, camera/photo scanner. | `/voucher-guard/`, `/voucher-guard/scan/` | `/guard/listings`, `/analyze`, `/packet`, `/complaint` |
+| **Open Doors** | Affordable vacancies: live open Housing Connect lotteries + voucher-friendly scraped listings, filtered by household size, income, voucher, bedrooms, borough. | `/open-doors/` | `/vacancies` |
+| **Shelter Match** | Narrows 287 NYC homeless shelters with public addresses to the ones a person is eligible for, by demographics, with how to get in and what to bring. | `/shelter-match/` | `/shelters/match`, `/shelters` |
+
+**Maps:** Google **Maps JavaScript API** only. Put a browser key in `.env` as `GOOGLE_MAPS_API_KEY` (restrict it to your domains and to the Maps JavaScript API); the pages fetch it from `GET /config`. Addresses are geocoded with NYC Planning's free GeoSearch (cached in `data/geo_cache.json`), with a borough check so nothing is pinned in the wrong place; places that can't be geocoded stay in the List view only.
+
+**Scraper contract** (Voucher Guard and Open Doors both read it, via `scanner/store.py`): write a JSON array to `scanner/python/listings.json`. Required: `url`, `text`. Optional: `source`, `discovered_at`, `address`, `borough`, `rent`, `bedrooms`, `image_url`, `lat`, `lng`. Every listing is checked once; discriminatory ones go to Voucher Guard, clean ones to Open Doors. Listings without an address appear in lists but not on maps. Until the real scrape exists, `scanner/data/cached_listings.json` (3 samples) is used.
+
 ## Quick start (Python 3.9+)
 
 ```bash
@@ -15,7 +29,7 @@ uvicorn core.api:app --reload --port 8000    # HTTP API for the iMessage agent +
 python -m eval.review --by "Your Name"       # label review page: http://localhost:4321
 ```
 
-**Camera scanner:** start the API, then open http://localhost:8000/camera-scan/ (or `/camera`). Point the webcam at a flyer or upload a photo. The page runs on-device OCR (Tesseract, English + Spanish), then sends the photo and text to the Python engine: Gemini reads the photo (any language), rules R1–R4 decide, and it shows the math plus a CCHR complaint draft with a "Open review page" button. If the API is unreachable, it falls back to a basic in-browser check and says so. Opening the HTML file directly works too: add `?api=http://localhost:8000`.
+**Camera scanner:** start the API, then open http://localhost:8000/voucher-guard/scan/. Point the webcam at a flyer or upload a photo. The page runs on-device OCR (Tesseract, English + Spanish), then sends the photo and text to the Python engine: Gemini reads the photo (any language), rules R1–R4 decide, and it shows the math plus a CCHR complaint draft with a "Open review page" button. If the API is unreachable, it falls back to a basic in-browser check and says so. Opening the HTML file directly works too: add `?api=http://localhost:8000`.
 
 `.env` is read automatically and is in `.gitignore`.
 
@@ -30,10 +44,8 @@ python -m eval.review --by "Your Name"       # label review page: http://localho
 | `data/labeled/` | 144 labeled listings, rubric, blind agent labels | JSONL |
 | `tests/` | unit tests | Python |
 | `shelters/` | shelter eligibility matcher, public-address shelter list builder, DHS directory builder | Python |
-| `shelter-finder/` | "Which shelters fit?" page; calls `/shelters/match` | HTML/JS |
+| `web/` | the app: home, `voucher-guard/` (+ `scan/`), `open-doors/`, `shelter-match/`, `shared/` (nav, List/Map tabs, Google Maps) | HTML/JS |
 | `vacancies/` | affordable vacancy feed: live Housing Connect lotteries + voucher-friendly scraped listings | Python |
-| `vacancies-feed/` | feed page; calls `/vacancies` | HTML/JS |
-| `camera-scan/` | webcam / photo scanner page (browser JS for the camera; checking + drafting via the API) | HTML/JS |
 | `/agent` | Photon Spectrum iMessage bot: **must be TypeScript** (Spectrum is TS-only); calls the API | teammate |
 | `/web` | Next.js dashboard; calls the API | teammate |
 | `legacy/` | earlier versions (TypeScript port, first Python prototype), reference only | |
@@ -79,7 +91,7 @@ Full schemas at http://localhost:8000/docs.
 
 ## Shelter finder
 
-Open http://localhost:8000/shelter-finder/ (API running). Answer: household type, age, gender, borough, and yes/no questions (fleeing violence, in a NYC shelter in the last year, veteran, LGBTQ+, working, mental health, substance use, HIV/AIDS, medical). Nothing is stored.
+Open http://localhost:8000/shelter-match/ (API running). Answer: household type, age, gender, borough, and yes/no questions (fleeing violence, in a NYC shelter in the last year, veteran, LGBTQ+, working, mental health, substance use, HIV/AIDS, medical). Nothing is stored.
 
 It returns only **homeless shelters with a publicly published street address** (285 across the five boroughs), narrowed to the ones this person is eligible for:
 - **How to get in**: the right DHS intake door (men: 8 E. 3rd St; women: Franklin or HELP; families: PATH; adult families: 30th St), the 12-month return rule, youth shelters taking young people directly, and the domestic violence hotline (DV shelters are confidential and never listed).
@@ -93,7 +105,7 @@ API: `POST /shelters/match` (a `Profile`), `GET /shelters` (the full list).
 
 ## Affordable vacancies
 
-Open http://localhost:8000/vacancies-feed/. One feed with:
+Open http://localhost:8000/open-doors/. One feed with:
 - **Open Housing Connect lotteries**, live from Housing Connect's public API (the same data housingconnect.nyc.gov shows): deadline and days left, address, every unit type's rent, household-size range, and income range by household size, whether a CityFHEPS voucher covers the rent, paper-application address, and the apply link. Falls back to NYC Open Data (HPD `vy5i-a666`), which lags by weeks.
 - **Voucher-friendly listings** from the scraper (`scanner/python/listings.json`, or `scanner/data/cached_listings.json`), run through the detector: discriminatory and questionable listings are hidden (and counted); listings that welcome vouchers rank first, then ones within the CityFHEPS rent limit.
 

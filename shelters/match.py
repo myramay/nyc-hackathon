@@ -54,6 +54,8 @@ class Shelter(BaseModel):
     access: str
     why: str                        # why it fits this person
     source_url: str
+    lat: Optional[float] = None
+    lng: Optional[float] = None
     walk_in: bool = False           # takes people directly (walk in / call), not only via DHS assignment
     details: dict = {}              # dropdown: how to get in, eligibility, what to bring, links
 
@@ -91,6 +93,8 @@ def _serves(s: dict) -> str:
         who = "men (" + who + ")"
     elif g == ["woman"]:
         who = "women (" + who + ")"
+    elif "single" in s["household"] and not s.get("gender_stated", True):
+        who += " (gender not stated in the source; confirm at intake)"
     ages = ""
     if s.get("min_age") and s.get("max_age"):
         ages = f", ages {s['min_age']}–{s['max_age']}"
@@ -191,14 +195,16 @@ def match(p: Profile) -> MatchResult:
             why.append(f"In {p.borough}.")
         if not why:
             why.append(f"Takes {_serves(s).lower()}.")
-        fits.append((len(hits), 1 if p.borough and s.get("borough") == p.borough else 0, s, " ".join(why)))
+        # Confirmed for this person's gender beats "gender not stated" for single adults.
+        confirmed = 1 if (hh != "single" or p.gender not in ("man", "woman") or s.get("gender_stated", True)) else 0
+        fits.append((len(hits), confirmed, 1 if p.borough and s.get("borough") == p.borough else 0, s, " ".join(why)))
 
-    fits.sort(key=lambda t: (t[0], t[1], t[2].get("beds") or 0), reverse=True)
+    fits.sort(key=lambda t: (t[0], t[1], t[2], t[3].get("beds") or 0), reverse=True)
     shelters = [Shelter(id=s["id"], name=s["name"], provider=s.get("provider"), address=s["address"], borough=s.get("borough"),
                         phone=s.get("phone"), facility_type=s.get("facility_type"), serves=_serves(s), populations=s["populations"],
                         beds=s.get("beds"), access=s["access"], why=why, source_url=s["source_url"],
-                        walk_in=_walk_in(s), details=_details(s, hh, how))
-                for _, _, s, why in fits]
+                        lat=s.get("lat"), lng=s.get("lng"), walk_in=_walk_in(s), details=_details(s, hh, how))
+                for _, _, _, s, why in fits]
     by_boro: dict = {}
     for s in shelters:
         by_boro[s.borough] = by_boro.get(s.borough, 0) + 1

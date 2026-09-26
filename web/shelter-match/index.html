@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Shelter Finder — NYC</title>
+<title>Shelter Match</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
@@ -70,11 +70,14 @@
   .err{color:var(--urgent);font-size:14px}
   @media (max-width:520px){ .hide-sm{display:none} }
 </style>
+<link rel="stylesheet" href="/shared/app.css">
+<script src="/shared/app.js"></script>
 </head>
 <body>
 <div class="app">
+  <script>document.write(VDD.nav("Shelter Match"))</script>
   <div class="eyebrow">For caseworkers and people looking for shelter in NYC</div>
-  <h1>Which shelters fit?</h1>
+  <h1>Shelter Match</h1>
   <p class="lede">Answer a few questions to narrow NYC homeless shelters down to the ones you're eligible for. Only shelters with a public address are listed, each with its source.</p>
 
   <form class="card" id="form">
@@ -118,8 +121,8 @@
 </div>
 
 <script>
-const API = new URLSearchParams(location.search).get('api')
-  || (location.protocol.startsWith('http') && location.pathname.startsWith('/shelter-finder') ? location.origin : 'http://localhost:8000');
+const API = VDD.API;
+let showTab = null, lastRows = [];
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
 const tel = p => { const d = String(p || '').match(/^[\d\s\-()+]+/); return d && d[0].replace(/\D/g,'').length >= 3 ? `<a href="tel:${d[0].replace(/\D/g,'')}">${esc(p)}</a>` : esc(p); };
 
@@ -132,7 +135,7 @@ function card(o){
   const d = o.details || {};
   const list = xs => (xs && xs.length) ? `<ul class="plain">${xs.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="note">Not listed by the source.</p>';
   const links = (d.links || []).map(l => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a></li>`).join('');
-  return `<details class="opt go shelter">
+  return `<details class="opt go shelter" id="item-${esc(o.id)}">
     <summary><span class="sname">${esc(o.name)}</span>${o.walk_in ? ' <span class="chip">Walk-in / call</span>' : ''}
       <span class="saddr">${esc(o.address)}${o.borough ? ' · ' + esc(o.borough) : ''}</span>
       <span class="why">${esc(o.why)}</span></summary>
@@ -172,9 +175,18 @@ function applyFilters(){
   const by = { boro: (a, b) => (a.borough || '').localeCompare(b.borough || ''), beds: (a, b) => (b.beds || 0) - (a.beds || 0),
                name: (a, b) => a.name.localeCompare(b.name) };
   if (by[sort]) rows = [...rows].sort(by[sort]);
+  lastRows = rows;
+  if (!document.getElementById('mapPanel').hidden) drawMap();
   document.getElementById('count').textContent = `Showing ${rows.length} of ${r.total} shelters you're eligible for`;
   document.getElementById('list').innerHTML = rows.map(card).join('') ||
     '<p class="note">No shelter matches these filters. Clear a filter, or use the intake step above.</p>';
+}
+
+function drawMap(){
+  VDD.renderMap(document.getElementById('map'), lastRows.map(s => ({
+    id: s.id, lat: s.lat, lng: s.lng, title: s.name, color: s.walk_in ? '#1A73E8' : '#2E6B45',
+    subtitle: `${s.address}. ${s.serves}.${s.walk_in ? ' Walk-in / call.' : ''}`,
+  })), { onDetails: id => VDD.reveal(showTab, id) });
 }
 
 function render(r){
@@ -182,11 +194,15 @@ function render(r){
   let h = `<div class="card"><p class="first">${esc(r.how_to_get_in)}</p></div>`;
   h += `<div class="card"><h2>${r.total} shelter${r.total === 1 ? '' : 's'} you're eligible for</h2>
     ${r.total ? filterBar(r) : ''}
-    <p class="note" id="count"></p><div id="list"></div>
+    <div id="tabs"></div>
+    <div id="listPanel"><p class="note" id="count"></p><div id="list"></div></div>
+    <div id="mapPanel" hidden><div class="legend"><span><i style="background:#2E6B45"></i>City (DHS) shelter</span><span><i style="background:#1A73E8"></i>Walk-in / call</span></div>
+      <div class="map" id="map"></div><p class="map-note"></p></div>
     <p class="note">${esc(r.note)}</p></div>`;
   if (r.not_eligible.length) h += `<div class="card"><details><summary>Not eligible (${r.not_eligible.length}) and why</summary><ul class="plain">${r.not_eligible.map(e => `<li><b>${esc(e.name)}</b> (${esc(e.address)}): ${esc(e.reason)}</li>`).join('')}</ul></details></div>`;
   const el = document.getElementById('results'); el.innerHTML = h; el.style.display = 'block';
   if (r.total){
+    showTab = VDD.tabs(document.getElementById('tabs'), { list: document.getElementById('listPanel'), map: document.getElementById('mapPanel') }, drawMap);
     el.querySelectorAll('.filters select, .filters input').forEach(x => x.addEventListener('change', applyFilters));
     applyFilters();
   } else {

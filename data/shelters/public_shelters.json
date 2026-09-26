@@ -14,6 +14,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": 18,
    "max_age": null,
    "populations": [],
@@ -25,7 +26,9 @@
    "quote": "Franklin Shelter, 1122 Franklin Avenue (near 166th Street) Bronx, NY",
    "source_date": null,
    "caveats": null,
-   "id": "shelter-000"
+   "id": "shelter-000",
+   "lat": 40.82817,
+   "lng": -73.905288
   },
   {
    "name": "HELP Women's Center",
@@ -40,6 +43,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": 18,
    "max_age": null,
    "populations": [],
@@ -51,7 +55,9 @@
    "quote": "Help Women's Center, 114 Snediker Avenue Brooklyn, NY",
    "source_date": null,
    "caveats": null,
-   "id": "shelter-001"
+   "id": "shelter-001",
+   "lat": 40.67259,
+   "lng": -73.90231
   },
   {
    "name": "Bowery Mission, Tribeca Campus",
@@ -67,6 +73,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": true,
    "min_age": 18,
    "max_age": null,
    "populations": [
@@ -81,7 +88,9 @@
    "quote": "Adult Men & Women: Bowery Mission Tribeca Campus 90 Lafayette St. (btwn Walker & White Sts.)",
    "source_date": null,
    "caveats": null,
-   "id": "shelter-002"
+   "id": "shelter-002",
+   "lat": 40.717554,
+   "lng": -74.001615
   },
   {
    "name": "Jerome Avenue Men's Shelter (JAMS)",
@@ -96,6 +105,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -109,7 +119,9 @@
    "quote": "To provide shelter services for Single Aduts at Jerome Avenue Shelter 3600 Jerome Avenue, Bronx, NY.",
    "source_date": "2023-03-16",
    "caveats": "Population from operator page (https://bronxworks.org/our-services/adult-and-family-homeless-services/adult-shelter-services/): 'provides beds to 200 men with mental illness who are experiencing homelessness.'",
-   "id": "shelter-003"
+   "id": "shelter-003",
+   "lat": 40.885376,
+   "lng": -73.878668
   },
   {
    "name": "Pyramid Safe Haven",
@@ -124,6 +136,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -135,7 +148,9 @@
    "quote": "Services at Pyramid Safe Haven - Safe Haven - 470 East 161 Street, Bronx, NY 10451 Open Ended Renewal #1",
    "source_date": "2022-07-29",
    "caveats": "Operator (https://bronxworks.org/our-services/adult-and-family-homeless-services/adult-shelter-services/): 'The Pyramid Safe Haven has 125 beds for single adult males.' Safe Havens 'only accept referrals from New York City Department of Homeless Services Street Homeless Outreach Teams.'",
-   "id": "shelter-004"
+   "id": "shelter-004",
+   "lat": 40.823108,
+   "lng": -73.911726
   },
   {
    "name": "Barretto Street / Lafayette Safe Haven",
@@ -151,6 +166,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -162,7 +178,9 @@
    "quote": "Safe Haven shelter services for homeless adults located at 800 Barretto Street (also known as 1241 Lafayette Avenue), Bronx, NY 10474.",
    "source_date": "2024-08-14",
    "caveats": "DHS calls this 'Lafayette Safe Haven'; BronxWorks calls it Barretto Street Safe Haven (50 beds for homeless adults, outreach-referral only, per https://bronxworks.org/our-services/adult-and-family-homeless-services/adult-shelter-services/). Same building houses BronxWorks' Living Room drop-in center. Directory match by provider + 50-bed capacity.",
-   "id": "shelter-005"
+   "id": "shelter-005",
+   "lat": 40.816862,
+   "lng": -73.8896
   },
   {
    "name": "Phelan Men's Shelter (Phelan's Place)",
@@ -177,6 +195,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -188,7 +207,9 @@
    "quote": "Shelter Facilities for Homeless Single Adults located at 1851 Phelan Place, Bronx, NY 10453.",
    "source_date": "2026-06-11",
    "caveats": null,
-   "id": "shelter-006"
+   "id": "shelter-006",
+   "lat": 40.853742,
+   "lng": -73.916334
   },
   {
    "name": "Willow Avenue Men's Shelter",
@@ -203,6 +224,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -214,7 +236,9 @@
    "quote": "for the Willow Ave Men\u001as Shelter, located at 781 East 135th Street, Bronx, NY 10454, and Holiday Inn Express, located at 113-10 Horace Harding Expwy, Queens NY 11368.",
    "source_date": "2026-02-25",
    "caveats": null,
-   "id": "shelter-007"
+   "id": "shelter-007",
+   "lat": 40.802561,
+   "lng": -73.912362
   },
   {
    "name": "Bruckner Rapid Re-Housing Center",
@@ -230,6 +254,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -241,7 +266,9 @@
    "quote": "Located at 500 East 134th Street, Bronx, NY 10454.",
    "source_date": "2025-07-18",
    "caveats": null,
-   "id": "shelter-008"
+   "id": "shelter-008",
+   "lat": 40.804946,
+   "lng": -73.921497
   },
   {
    "name": "Delta Manor Shelter",
@@ -257,6 +284,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -268,7 +296,9 @@
    "quote": "Shelter services to homeless single adults at Delta Manor Shelter, 1530 Beach Avenue, Bronx, NY 10460.",
    "source_date": "2026-08-17",
    "caveats": null,
-   "id": "shelter-009"
+   "id": "shelter-009",
+   "lat": 40.838685,
+   "lng": -73.867133
   },
   {
    "name": "El Cacique Court",
@@ -284,6 +314,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -295,7 +326,9 @@
    "quote": "Shelter Facilities for Homeless SA at El Cacique Court located at 2314 Jerome Avenue, Bronx, NY 10468 (197 beds) as well as annex Hotel Arex, 9 Malcolm X Boulevard, Brooklyn, NY 11221 (204 beds) (total 401 beds)",
    "source_date": "2026-07-28",
    "caveats": null,
-   "id": "shelter-010"
+   "id": "shelter-010",
+   "lat": 40.859106,
+   "lng": -73.903071
   },
   {
    "name": "Park Avenue (Bronx) Shelter",
@@ -311,6 +344,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -322,7 +356,9 @@
    "quote": "Shelter services for homeless single adults at Park Avenue (Bronx) Shelter, 3339 Park Avenue, Bronx NY 10456.",
    "source_date": "2026-08-11",
    "caveats": "Directory match 'NAICA I' based on provider + 241-bed capacity (notice: 241 beds).",
-   "id": "shelter-011"
+   "id": "shelter-011",
+   "lat": 40.827587,
+   "lng": -73.912963
   },
   {
    "name": "Dona Carmen's Place Shelter",
@@ -338,6 +374,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -349,7 +386,9 @@
    "quote": "Located at 413 East 152nd Street, Bronx, NY 10455.",
    "source_date": "2026-07-09",
    "caveats": null,
-   "id": "shelter-012"
+   "id": "shelter-012",
+   "lat": 40.818255,
+   "lng": -73.916081
   },
   {
    "name": "East Tremont Shelter",
@@ -365,6 +404,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -376,7 +416,9 @@
    "quote": "Renewal - 321 East Tremont Ave, Bronx, NY 10457",
    "source_date": "2021-12-31",
    "caveats": "Directory match 'NAICA II' by provider + 154 beds. NOTE: a 2025 City Record notice (20250724009) prints ZIP 10472; the 2022 notice used here prints 10457.",
-   "id": "shelter-013"
+   "id": "shelter-013",
+   "lat": 40.848875,
+   "lng": -73.902436
   },
   {
    "name": "Southern Boulevard Shelter",
@@ -392,6 +434,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -403,7 +446,9 @@
    "quote": "EPIN 07119P8257KXLR001.To provide Shelter Services for Single Adults at Southern Boulevard Shelter located at 1527 Southern Boulevard, Bronx, NY 10460.",
    "source_date": "2024-03-15",
    "caveats": null,
-   "id": "shelter-014"
+   "id": "shelter-014",
+   "lat": 40.834473,
+   "lng": -73.889883
   },
   {
    "name": "Amado Shelter",
@@ -418,6 +463,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -429,7 +475,9 @@
    "quote": "Located at Amado Shelter, 4511 Furman Avenue, Bronx, NY 10470.",
    "source_date": "2026-06-15",
    "caveats": "Gender from operator bvsj.org/housing-division: 'AMADO | 200-bed men's shelter in the Bronx.'",
-   "id": "shelter-015"
+   "id": "shelter-015",
+   "lat": 40.900161,
+   "lng": -73.852302
   },
   {
    "name": "Zawadi House",
@@ -444,6 +492,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -455,7 +504,9 @@
    "quote": "Located at 360 East 193rd Street, Bronx NY 10458.",
    "source_date": "2023-08-15",
    "caveats": "Gender from operator bvsj.org/housing-division: 'ZAWADI HOUSE | 110-bed women's shelter in the Bronx.'",
-   "id": "shelter-016"
+   "id": "shelter-016",
+   "lat": 40.863052,
+   "lng": -73.891128
   },
   {
    "name": "Lanet's Place",
@@ -471,6 +522,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -482,7 +534,9 @@
    "quote": "Shelter Facilities for Homeless Single Adults at Lanet's Place located at 463 East 173rd Street, Bronx, NY 10457 (166 beds) Annexes: The View Hotel Annex, 111-26 Van Wyck Expressway, Jamaica, NY 11420 (110 beds) Van Wyck Hotel Annex, 143-18 Liberty Avenue, Jamaica, NY 11435 (170 beds)",
    "source_date": "2026-06-23",
    "caveats": null,
-   "id": "shelter-017"
+   "id": "shelter-017",
+   "lat": 40.841939,
+   "lng": -73.901447
   },
   {
    "name": "Father Smith Residence",
@@ -498,6 +552,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -509,7 +564,9 @@
    "quote": "SEBCO Development, Inc. Father Smith 3 21PHEDA07301 $30,280,140 885 Bruckner Blvd. Residence Bronx, NY 10459 1214-1218 Hoe Ave. Bronx, NY 10459",
    "source_date": "2021-08-04",
    "caveats": "Two-column table in notice (2021; contract to 12/2026).",
-   "id": "shelter-018"
+   "id": "shelter-018",
+   "lat": 40.82948,
+   "lng": -73.89066
   },
   {
    "name": "HELP Creston Shelter",
@@ -524,6 +581,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -535,7 +593,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Help Social Service Corporation, located at 115 East 13th Street, New York, NY 10003, for the provision of Shelter Facilities for Homeless Single Adults at HELP Creston Shelter located at 2524 Creston Avenue, Bronx, NY 10468.",
    "source_date": "2022-02-07",
    "caveats": "Gender inferred from the DHS directory name 'Creston Men's Center' (Open Data, Dec 2022), not from the City Record notice. Notice dated 2022 (contract 7/2022-6/2027).",
-   "id": "shelter-019"
+   "id": "shelter-019",
+   "lat": 40.863276,
+   "lng": -73.897539
   },
   {
    "name": "HELP Davidson Shelter",
@@ -551,6 +611,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -562,7 +623,9 @@
    "quote": "Shelter Facilities for Homeless SA at HELP Davidson Shelter, 2323 Davidson Avenue, Bronx, NY 10468.",
    "source_date": "2026-04-29",
    "caveats": null,
-   "id": "shelter-020"
+   "id": "shelter-020",
+   "lat": 40.859584,
+   "lng": -73.904501
   },
   {
    "name": "Stadium Shelter",
@@ -578,6 +641,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -589,7 +653,9 @@
    "quote": "Provision of shelter facilities for homeless single adults at Stadium shelter located at 1260 Sedgwick Avenue, Bronx , NY (Group 50).",
    "source_date": "2022-04-28",
    "caveats": "DOUBT: DHS directory (Dec 2022) calls it 'THE STADIUM WOMEN'S SHELTER', but an older NYSED record calls 1260 Sedgwick 'Basics Stadium Men's Shelter'. Gender left blank; confirm before referring. Notice 2022 (contract through 6/2026).",
-   "id": "shelter-021"
+   "id": "shelter-021",
+   "lat": 40.839716,
+   "lng": -73.928178
   },
   {
    "name": "Westchester Avenue Single Adult Shelter",
@@ -604,6 +670,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -615,7 +682,9 @@
    "quote": "Stand-Alone Transitional Residence shelter services for homeless single adults at 2008 Westchester Avenue, Bronx, NY 10462 (with 2 Annex sites).",
    "source_date": "2024-07-06",
    "caveats": "Gender from DHS directory name 'Westchester Avenue Mens Shelter' (Dec 2022); notice says only 'single adults'. Provider per City Record 20240425107.",
-   "id": "shelter-022"
+   "id": "shelter-022",
+   "lat": 40.833292,
+   "lng": -73.857339
   },
   {
    "name": "Haven House Shelter",
@@ -631,6 +700,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -642,7 +712,9 @@
    "quote": "Shelter Facilities for Homeless Single Adults, at Haven House Shelter, 1591 East 233rd Street, Bronx, NY 10466 (200 beds); Hotel Super 8 Annex, 267 3rd Avenue, Brooklyn, NY 11215 (105 beds); Red Lion Hotel Annex, 279 Butler Street, Brooklyn, NY 11217 (198 beds).",
    "source_date": "2026-06-29",
    "caveats": null,
-   "id": "shelter-023"
+   "id": "shelter-023",
+   "lat": 40.889417,
+   "lng": -73.829728
   },
   {
    "name": "Hudson Bay Shelter",
@@ -658,6 +730,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -669,7 +742,9 @@
    "quote": "Located at 1682 Stillwell Avenue, Bronx, NY 10461 Round 37 (200 units)",
    "source_date": "2026-05-07",
    "caveats": null,
-   "id": "shelter-024"
+   "id": "shelter-024",
+   "lat": 40.855841,
+   "lng": -73.838735
   },
   {
    "name": "Needham Court",
@@ -685,6 +760,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -696,7 +772,9 @@
    "quote": "Needham Court, 2101 Needham Avenue, Bronx, NY 10469 Round 24.",
    "source_date": "2026-05-07",
    "caveats": null,
-   "id": "shelter-025"
+   "id": "shelter-025",
+   "lat": 40.878577,
+   "lng": -73.851631
   },
   {
    "name": "Poplar Street Shelter",
@@ -712,6 +790,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -723,7 +802,9 @@
    "quote": "Located at 2443 Poplar Street, Bronx, NY 10461 (Evaluation group 59).",
    "source_date": "2023-08-31",
    "caveats": null,
-   "id": "shelter-026"
+   "id": "shelter-026",
+   "lat": 40.843088,
+   "lng": -73.853241
   },
   {
    "name": "Ana's Place",
@@ -738,6 +819,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -752,7 +834,9 @@
    "quote": "ANA'S PLACE 4380 Bronx Boulevard, Bronx, NY 10466 Serves: Men with mental illness diagnoses and/or substance use histories Offers: Emergency Shelter, Mental Health Care, Occupational Therapy, Primary Care",
    "source_date": null,
    "caveats": "Operator program page says 'adults' with mental illness/MICA; the operator locations map says 'Men'.",
-   "id": "shelter-027"
+   "id": "shelter-027",
+   "lat": 40.899187,
+   "lng": -73.857861
   },
   {
    "name": "Marsha's House",
@@ -768,6 +852,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": true,
    "min_age": 18,
    "max_age": 35,
    "populations": [
@@ -781,7 +866,9 @@
    "quote": "Located at 480 East 185th Street, Bronx, NY 10458",
    "source_date": "2026-07-02",
    "caveats": "Operator FAQ (projectrenewal.org, Sept 2025): screened shelter for LGBTQIA+ young adults ages 18-35; dorms for Female, Male and TGNC; clients need an open DHS single adult case; referral by self, CBOs, or current shelter, then DHS transfer. Not ADA accessible (5-floor walk-up).",
-   "id": "shelter-028"
+   "id": "shelter-028",
+   "lat": 40.856215,
+   "lng": -73.892012
   },
   {
    "name": "Susan's Place",
@@ -796,6 +883,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -807,7 +895,9 @@
    "quote": "Our shelter at 1921 Jerome Avenue was the next development in CFH’s trajectory.",
    "source_date": null,
    "caveats": "Women-only per operator (careforthehomeless.org/our-shelters: 'opened Susan’s Place Women’s Shelter in 2008'). ZIP 10453 and range '1911-1921 jerome Ave' from NYSED record op.nysed.gov/care-homeless-inc-susans-place.",
-   "id": "shelter-029"
+   "id": "shelter-029",
+   "lat": 40.850606,
+   "lng": -73.910692
   },
   {
    "name": "Reaching New Heights Residence",
@@ -822,6 +912,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -835,7 +926,9 @@
    "quote": "Additional Setting | Certificate Number: 8810 Name: Reaching New Heights Residence Address: 237 Landing Rd | Bronx, NY 10468",
    "source_date": null,
    "caveats": "Population from operator brc.org/shelter: '200-bed shelter serving employed or employable men, providing employment services'.",
-   "id": "shelter-030"
+   "id": "shelter-030",
+   "lat": 40.86266,
+   "lng": -73.910926
   },
   {
    "name": "Morris Avenue Safe Haven",
@@ -851,6 +944,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -862,7 +956,9 @@
    "quote": "Full range of on site services including housing placement services, information and referral, housing preparation, facility security and maintenance, counseling and case management, and recreation, clothing and linkage to other community based programs for Homeless Single Adults at Morris Avenue Safe Haven located at 528 Morris Avenue, Bronx, NY 10451.",
    "source_date": "2025-06-03",
    "caveats": "Directory match 'Care Found Here XX Avenue' (name redacted in Open Data) by provider Care for the Homeless + Safe Haven + 80 beds.",
-   "id": "shelter-031"
+   "id": "shelter-031",
+   "lat": 40.816979,
+   "lng": -73.922677
   },
   {
    "name": "Webster Avenue Safe Haven",
@@ -878,6 +974,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -889,7 +986,9 @@
    "quote": "Location | 1732 Webster Avenue New York 10457",
    "source_date": null,
    "caveats": "Operator page also says it 'serves 60 single adults'. DOUBT: City Record 2024 renewal (20241115003) lists 'Webster Safe Haven ... 1734 Webster Avenue, Bronx, NY 10457' - likely the same building.",
-   "id": "shelter-032"
+   "id": "shelter-032",
+   "lat": 40.844203,
+   "lng": -73.902512
   },
   {
    "name": "Webster Ave. Safe Haven (The Bridge)",
@@ -905,6 +1004,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -916,7 +1016,9 @@
    "quote": "Safe Haven Bronx/ 6 07121P0125002 $130,704,988.00 290 Lenox Avenue, 2248 Webster Avenue 3rd Floor Bronx, NY 10457 New York, NY 10027 The proposed contractor has been selected by Competitive Sealed Proposal Method, pursuant to Section 3-03 of the Procurement Policy Board Rules.",
    "source_date": "2023-09-25",
    "caveats": "DOUBT: address parsed from a two-column table in the notice (contractor 290 Lenox Ave vs. site 2248 Webster Ave); contract started 7/2023, so may be newer than the 2022 directory.",
-   "id": "shelter-033"
+   "id": "shelter-033",
+   "lat": 40.855282,
+   "lng": -73.895883
   },
   {
    "name": "Marmion Safe Haven",
@@ -932,6 +1034,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -943,7 +1046,9 @@
    "quote": "for provision of vital services for the agency\u001as clients at the Marmion Safe Haven Shelter, located at 1790 Marmion Ave Bronx, NY 10460.",
    "source_date": "2026-04-06",
    "caveats": "An older NYSED record lists VIP 'Men's Residence' at 1790 Marmion Ave; the 2026 City Record notice names The Bridge's Marmion Safe Haven here.",
-   "id": "shelter-034"
+   "id": "shelter-034",
+   "lat": 40.840102,
+   "lng": -73.88961
   },
   {
    "name": "146th Street Safe Haven",
@@ -959,6 +1064,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -970,7 +1076,9 @@
    "quote": "for the 146th Street Safe Haven located at 345-347 East 146th Street, Bronx, NY 10451.",
    "source_date": "2026-04-22",
    "caveats": null,
-   "id": "shelter-035"
+   "id": "shelter-035",
+   "lat": 40.815256,
+   "lng": -73.920756
   },
   {
    "name": "Monroe Avenue Safe Haven",
@@ -986,6 +1094,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -997,7 +1106,9 @@
    "quote": "Open Ended RFP at 1660 Monroe Avenue, Bronx, NY 10457 - Round 12 (42 beds)",
    "source_date": "2024-08-14",
    "caveats": "Provider inferred from 2015 City Record notice (Comunilife, 1660 Monroe Avenue); directory match 'Comunilife Safe Haven II' by 42-bed capacity.",
-   "id": "shelter-036"
+   "id": "shelter-036",
+   "lat": 40.843438,
+   "lng": -73.906635
   },
   {
    "name": "Cromwell Avenue Safe Haven",
@@ -1013,6 +1124,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1024,7 +1136,9 @@
    "quote": "Renewal + 25% Miscellaneous Allowance for homeless single adults at the VOA Cromwell Avenue Safe Haven located at 1365 Cromwell Avenue, Bronx, New York, NY 10452, which is also known as 40 West 170th Street, Bronx, NY 10452.",
    "source_date": "2023-07-13",
    "caveats": null,
-   "id": "shelter-037"
+   "id": "shelter-037",
+   "lat": 40.840408,
+   "lng": -73.920312
   },
   {
    "name": "Stebbins Stabilization Beds",
@@ -1040,6 +1154,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1051,7 +1166,9 @@
    "quote": "Stebbins Stabilization Beds, 1397 Stebbins Avenue, Bronx, NY 10459.",
    "source_date": "2026-06-09",
    "caveats": null,
-   "id": "shelter-038"
+   "id": "shelter-038",
+   "lat": 40.833069,
+   "lng": -73.894423
   },
   {
    "name": "Prospect Stabilization",
@@ -1067,6 +1184,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1078,7 +1196,9 @@
    "quote": "Development and operation of Stabilization bed program at Prospect Stabilization, 963 Prospect Avenue, Bronx, NY 10459.",
    "source_date": "2026-06-10",
    "caveats": null,
-   "id": "shelter-039"
+   "id": "shelter-039",
+   "lat": 40.822764,
+   "lng": -73.900672
   },
   {
    "name": "Tov Stabilization Bed Program",
@@ -1094,6 +1214,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1105,7 +1226,9 @@
    "quote": "2287 University Avenue, Bronx, NY 10468 (77 beds)",
    "source_date": "2026-06-10",
    "caveats": "Provider (Acacia Network) from City Record notice 20260211035.",
-   "id": "shelter-040"
+   "id": "shelter-040",
+   "lat": 40.860838,
+   "lng": -73.907037
   },
   {
    "name": "Park Overlook Stabilization",
@@ -1121,6 +1244,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1132,7 +1256,9 @@
    "quote": "Shelter services to homeless single adults with Stabilization Beds at Park Overlook Stabilization, 1938 Webster Avenue, Bronx, NY 10475.",
    "source_date": "2026-06-04",
    "caveats": "DOUBT: both City Record notices print ZIP 10475, which does not match Webster Avenue (likely 10457). Verify before sending anyone.",
-   "id": "shelter-041"
+   "id": "shelter-041",
+   "lat": 40.848569,
+   "lng": -73.900146
   },
   {
    "name": "HELP Bronx Morris Avenue",
@@ -1148,6 +1274,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1159,7 +1286,9 @@
    "quote": "Shelter Services for Families with Children HELP - Bronx 115 East 13th Street New York, NY 10003 Site: Morris 285 East 171st Bronx, NY 10457",
    "source_date": null,
    "caveats": null,
-   "id": "shelter-042"
+   "id": "shelter-042",
+   "lat": 40.839118,
+   "lng": -73.910271
   },
   {
    "name": "Sammon B.U.I.L.D. Center",
@@ -1175,6 +1304,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1186,7 +1316,9 @@
    "quote": "Shelter Facilities for Homeless Families with Children located at 2294 Grand Avenue, Bronx , NY 10468.",
    "source_date": "2026-07-01",
    "caveats": null,
-   "id": "shelter-043"
+   "id": "shelter-043",
+   "lat": 40.859855,
+   "lng": -73.904971
   },
   {
    "name": "Siena House",
@@ -1202,6 +1334,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1213,7 +1346,9 @@
    "quote": "Located at 85 West 168th Street, Bronx NY 10452.",
    "source_date": "2026-06-16",
    "caveats": null,
-   "id": "shelter-044"
+   "id": "shelter-044",
+   "lat": 40.83863,
+   "lng": -73.923872
   },
   {
    "name": "Hall Place Family Residence",
@@ -1229,6 +1364,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1240,7 +1376,9 @@
    "quote": "To develop & operate a Stand Alone Transitional Residence for Homeless Families with Children - Hall Place Family Residence, 1075 Hall Place, Bronx, NY 10459.",
    "source_date": "2026-06-23",
    "caveats": null,
-   "id": "shelter-045"
+   "id": "shelter-045",
+   "lat": 40.825576,
+   "lng": -73.897732
   },
   {
    "name": "Morris Park Family Residence",
@@ -1256,6 +1394,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1267,7 +1406,9 @@
    "quote": "To develop and operate a stand-alone transitional residence for homeless families with children at Morris Park Family Residence, 437 Morris Park Avenue, Bronx, NY 10460.",
    "source_date": "2025-06-04",
    "caveats": null,
-   "id": "shelter-046"
+   "id": "shelter-046",
+   "lat": 40.840132,
+   "lng": -73.873763
   },
   {
    "name": "Boynton Family Residence",
@@ -1283,6 +1424,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1294,7 +1436,9 @@
    "quote": "FY26 renewal with allowance for development and operation of stand-alone transitional residence for families with children at Boynton Family Residence, 1056 Boynton Avenue, Bronx, NY 10472.",
    "source_date": "2025-06-04",
    "caveats": null,
-   "id": "shelter-047"
+   "id": "shelter-047",
+   "lat": 40.825901,
+   "lng": -73.877322
   },
   {
    "name": "Manor Family Residence",
@@ -1310,6 +1454,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1321,7 +1466,9 @@
    "quote": "Stand-alone transitional residence shelter services for homeless families with children (FWC) at Manor Family Residence located at 1101 Manor Avenue, Bronx, NY 10472.",
    "source_date": "2025-06-04",
    "caveats": null,
-   "id": "shelter-048"
+   "id": "shelter-048",
+   "lat": 40.82661,
+   "lng": -73.876117
   },
   {
    "name": "Jackie's Place",
@@ -1337,6 +1484,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1348,7 +1496,9 @@
    "quote": "for Jackie\u001as Place, a Families with Children shelter site located at 1138 Teller Avenue, Bronx, NY 10456.",
    "source_date": "2026-06-22",
    "caveats": null,
-   "id": "shelter-049"
+   "id": "shelter-049",
+   "lat": 40.830503,
+   "lng": -73.912406
   },
   {
    "name": "Christopher's Place",
@@ -1364,6 +1514,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1375,7 +1526,9 @@
    "quote": "Homeless Families With Children located at 1190 Washington Avenue, Bronx, NY 10456.",
    "source_date": "2024-06-26",
    "caveats": null,
-   "id": "shelter-050"
+   "id": "shelter-050",
+   "lat": 40.830621,
+   "lng": -73.907001
   },
   {
    "name": "New Life Family Residence",
@@ -1391,6 +1544,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1402,7 +1556,9 @@
    "quote": "To provide a Stand Alone Transitional Residence for Families with Children, 1387 Grand Concourse, Bronx, NY 10452.",
    "source_date": "2022-04-29",
    "caveats": null,
-   "id": "shelter-051"
+   "id": "shelter-051",
+   "lat": 40.838445,
+   "lng": -73.914469
   },
   {
    "name": "Briggs Housing Residence",
@@ -1418,6 +1574,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1429,7 +1586,9 @@
    "quote": "The Department of Homeless Services of the New York City Department of Social Services, plans to renew (1) contract with the contractor listed below, for the Provision of a Stand Alone Transitional Residence for Families with Children, 3001 Briggs Ave, Bronx, NY 10458.",
    "source_date": "2022-04-26",
    "caveats": null,
-   "id": "shelter-052"
+   "id": "shelter-052",
+   "lat": 40.872287,
+   "lng": -73.88442
   },
   {
    "name": "Dona Elsie Family Residence",
@@ -1445,6 +1604,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1456,7 +1616,9 @@
    "quote": "Located at 1625 Fulton Avenue, Bronx, NY 10457 (101 units)",
    "source_date": "2026-06-09",
    "caveats": null,
-   "id": "shelter-053"
+   "id": "shelter-053",
+   "lat": 40.839691,
+   "lng": -73.899413
   },
   {
    "name": "Prospect Family Residence (Prospect Interfaith)",
@@ -1472,6 +1634,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1483,7 +1646,9 @@
    "quote": "Located at 730 Kelly Street, Bronx NY 10455.",
    "source_date": "2026-06-09",
    "caveats": null,
-   "id": "shelter-054"
+   "id": "shelter-054",
+   "lat": 40.816487,
+   "lng": -73.899537
   },
   {
    "name": "Allie's Place Family Residence",
@@ -1499,6 +1664,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1510,7 +1676,9 @@
    "quote": "EPIN 07120P8192KXLR001.To provide Shelter Services for Families with Children at Allie's Place Family Residence at 1600 Randall Avenue, Bronx, NY 10473.",
    "source_date": "2024-04-05",
    "caveats": null,
-   "id": "shelter-055"
+   "id": "shelter-055",
+   "lat": 40.81575,
+   "lng": -73.86898
   },
   {
    "name": "Williamsbridge Family Residence",
@@ -1526,6 +1694,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1537,7 +1706,9 @@
    "quote": "946 East 211th Street Bronx, NY, 10469.",
    "source_date": "2025-07-21",
    "caveats": null,
-   "id": "shelter-056"
+   "id": "shelter-056",
+   "lat": 40.875292,
+   "lng": -73.858805
   },
   {
    "name": "Crystal's Place",
@@ -1553,6 +1724,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1564,7 +1736,9 @@
    "quote": "The site serves 91 Families with Children and is located at 555 Hutchinson River Parkway, Bronx, NY 10465.",
    "source_date": "2024-07-23",
    "caveats": null,
-   "id": "shelter-057"
+   "id": "shelter-057",
+   "lat": 40.817579,
+   "lng": -73.837222
   },
   {
    "name": "Carmen's Residence",
@@ -1580,6 +1754,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1591,7 +1766,9 @@
    "quote": "Carmen\u001as Residence at 1650 Undercliff Avenue, Bronx, NY 10453 Round 37- FWC-81 units",
    "source_date": "2025-06-02",
    "caveats": null,
-   "id": "shelter-058"
+   "id": "shelter-058",
+   "lat": 40.849755,
+   "lng": -73.921178
   },
   {
    "name": "St. Peter's Residence",
@@ -1607,6 +1784,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1618,7 +1796,9 @@
    "quote": "Peter's Residence, 1564 St. Peter's Avenue, Bronx, NY 10461",
    "source_date": "2024-07-06",
    "caveats": null,
-   "id": "shelter-059"
+   "id": "shelter-059",
+   "lat": 40.840723,
+   "lng": -73.847469
   },
   {
    "name": "Henwood Family Residence",
@@ -1634,6 +1814,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1645,7 +1826,9 @@
    "quote": "A Stand Alone Transitional Residence for families with children at Henwood Family Residence located at 115 Henwood Place, Bronx, NY 10453",
    "source_date": "2022-07-20",
    "caveats": null,
-   "id": "shelter-060"
+   "id": "shelter-060",
+   "lat": 40.847605,
+   "lng": -73.909437
   },
   {
    "name": "Ketty's Place I & II",
@@ -1661,6 +1844,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1672,7 +1856,9 @@
    "quote": "Round 33 - Kettys Place I & II, 711 and 691 East 140th Street, Bronx, NY 10454 (97 units).",
    "source_date": "2025-07-23",
    "caveats": null,
-   "id": "shelter-061"
+   "id": "shelter-061",
+   "lat": 40.806685,
+   "lng": -73.912553
   },
   {
    "name": "Wales Family Residence",
@@ -1688,6 +1874,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1699,7 +1886,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Acacia Network Housing, Inc., located at 300 East 175th Street, Bronx, NY 10457, for the provision of Shelter Facilities for Homeless Families with Children at 585 Wales Avenue, Bronx, NY 10455.",
    "source_date": "2023-12-12",
    "caveats": null,
-   "id": "shelter-062"
+   "id": "shelter-062",
+   "lat": 40.813588,
+   "lng": -73.907303
   },
   {
    "name": "Echo Place Family Residence",
@@ -1715,6 +1904,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1726,7 +1916,9 @@
    "quote": "Renewal for the provision of full range of on site services including housing placement services, information and referral, housing preparation, facility security and maintenance, counseling and case management, and recreation, clothing, and linkage to other community based program regarding Stand Alone Transitional Residences for Homeless Families with Children (FWC) at Echo Place located at 246 Echo Place, Bronx, NY 10457.",
    "source_date": "2025-06-11",
    "caveats": null,
-   "id": "shelter-063"
+   "id": "shelter-063",
+   "lat": 40.849379,
+   "lng": -73.903698
   },
   {
    "name": "Anchor Family Shelter",
@@ -1742,6 +1934,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1753,7 +1946,9 @@
    "quote": "Shelter for Homeless Families with Children located at 240 East 178th Street, Bronx, NY 10457.",
    "source_date": "2024-06-26",
    "caveats": null,
-   "id": "shelter-064"
+   "id": "shelter-064",
+   "lat": 40.850038,
+   "lng": -73.903563
   },
   {
    "name": "Town and Country Rapid Re-Housing",
@@ -1769,6 +1964,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1780,7 +1976,9 @@
    "quote": "Shelter Services for Homeless Families with Children, 2244 Tillotson Avenue, Bronx, NY 10475",
    "source_date": "2024-07-17",
    "caveats": null,
-   "id": "shelter-065"
+   "id": "shelter-065",
+   "lat": 40.881535,
+   "lng": -73.828225
   },
   {
    "name": "Edward L. Grant Rapid Re-Housing Center",
@@ -1796,6 +1994,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1807,7 +2006,9 @@
    "quote": "Renewal + 25% Miscellaneous Allowance FY27 for homeless families located at 1401 Edward L. Grant Highway, Bronx, NY 10452.",
    "source_date": "2023-06-15",
    "caveats": null,
-   "id": "shelter-066"
+   "id": "shelter-066",
+   "lat": 40.841,
+   "lng": -73.92233
   },
   {
    "name": "Intervale Rapid Re-Housing Center",
@@ -1823,6 +2024,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1834,7 +2036,9 @@
    "quote": "Intervale Rapid 07119I0003017 $52,939,252.00 8 Bashford Street Re-Housing Center Yonkers, NY 10701 1032 Intervale Avenue Bronx, NY 10459 The proposed contractor has been selected through HHS ACCELERATOR, pursuant to Section 3-16 of the Procurement Policy Board Rules.",
    "source_date": "2020-09-24",
    "caveats": "2020 notice; contract through 6/2029.",
-   "id": "shelter-067"
+   "id": "shelter-067",
+   "lat": 40.82418,
+   "lng": -73.89651
   },
   {
    "name": "Evergreen Family Residence",
@@ -1850,6 +2054,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1861,7 +2066,9 @@
    "quote": "The Department of Homeless Services of the New York City Department of Social Services, plans to renew (1) contract with the contractor listed below, to provide Shelter Services for Families with Children at Evergreen Family Residence located at 1144 Evergreen Avenue, Bronx, NY 10472.",
    "source_date": "2024-01-31",
    "caveats": null,
-   "id": "shelter-068"
+   "id": "shelter-068",
+   "lat": 40.827053,
+   "lng": -73.880434
   },
   {
    "name": "Thorpe House",
@@ -1877,6 +2084,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1888,7 +2096,9 @@
    "quote": "Renewal and Allowance for FY 27 for Thorpe House at 2252 Crotona Avenue, Bronx, NY 10457",
    "source_date": "2023-06-14",
    "caveats": null,
-   "id": "shelter-069"
+   "id": "shelter-069",
+   "lat": 40.850858,
+   "lng": -73.885445
   },
   {
    "name": "Crotona Inn",
@@ -1904,6 +2114,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1915,7 +2126,9 @@
    "quote": "SHELTER SERVICES FOR HOMELESS FAMILIES AT CROTONA INN 3674 THIRD AVE.",
    "source_date": "2022-08-05",
    "caveats": null,
-   "id": "shelter-070"
+   "id": "shelter-070",
+   "lat": 40.834563,
+   "lng": -73.903486
   },
   {
    "name": "Nelson Avenue Family Residence",
@@ -1931,6 +2144,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1942,7 +2156,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and BronxWorks, Inc., located at 60 East Tremont Avenue, Bronx, NY 10453, for the provision of Shelter Facilities for Homeless Families with Children at 1605 Nelson Avenue, Bronx, NY 10453.",
    "source_date": "2022-05-26",
    "caveats": null,
-   "id": "shelter-071"
+   "id": "shelter-071",
+   "lat": 40.846381,
+   "lng": -73.919845
   },
   {
    "name": "Concourse House",
@@ -1958,6 +2174,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1969,7 +2186,9 @@
    "quote": "Prov of Shelter  Facilities for Homeless Families with Children, Round #5, Concourse House, 2751 Grand Concourse, Bronx, NY 10468",
    "source_date": "2022-08-01",
    "caveats": null,
-   "id": "shelter-072"
+   "id": "shelter-072",
+   "lat": 40.868411,
+   "lng": -73.893271
   },
   {
    "name": "CRF Hope House",
@@ -1985,6 +2204,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -1996,7 +2216,9 @@
    "quote": "Provision of Shelter Facilities for Homeless Families with Children at CRF Hope House, 162 East 206th Street, Bronx, NY 10458",
    "source_date": "2022-02-22",
    "caveats": null,
-   "id": "shelter-073"
+   "id": "shelter-073",
+   "lat": 40.8757,
+   "lng": -73.88505
   },
   {
    "name": "Lafayette Family Residence",
@@ -2012,6 +2234,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2023,7 +2246,9 @@
    "quote": "TO OPERATE A STAND ALONE TRANSITIONAL RESIDENCE FOR HOMELESS FAMILIES (OERFP) WITH CHILDREN AT LAFAYETTE FAMILY RESIDENCE LOCATED AT 1792 LAFAYETTE AVENUE, BRONX, NY, 10473.",
    "source_date": "2022-06-22",
    "caveats": null,
-   "id": "shelter-074"
+   "id": "shelter-074",
+   "lat": 40.821003,
+   "lng": -73.864117
   },
   {
    "name": "Taylor Avenue Family Residence",
@@ -2039,6 +2264,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2050,7 +2276,9 @@
    "quote": "for Homeless Families with Children @ Taylor Avenue shelter, 1535 Taylor Avenue, Bronx, NY 10460",
    "source_date": "2021-04-09",
    "caveats": "DHS families-with-children shelter (not a DV site) per notice; 2021 notice, contract to 6/2029.",
-   "id": "shelter-075"
+   "id": "shelter-075",
+   "lat": 40.838918,
+   "lng": -73.866854
   },
   {
    "name": "Powers Family Residence",
@@ -2066,6 +2294,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2077,7 +2306,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Women in Need, Inc., located at One State Street Plaza, 18th Floor, New York, NY 10004, for the provision of Shelter Facilities for Families with Children at Powers Family Residence, 346 Powers Avenue, Bronx, NY 10454.",
    "source_date": "2022-08-02",
    "caveats": null,
-   "id": "shelter-076"
+   "id": "shelter-076",
+   "lat": 40.807829,
+   "lng": -73.911738
   },
   {
    "name": "Freeman Annex (Seneca)",
@@ -2093,6 +2324,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2104,7 +2336,9 @@
    "quote": "The Department of Homeless Services is requesting approval for a one-year Negotiated Acquisition Extension (NAE) and the 25% Allowance for the existing vendor, SEBCO Development, Inc., to provide services at Freeman Annex shelter for families with children, located at 999 Freeman Street, Bronx, NY 10459.",
    "source_date": "2025-07-03",
    "caveats": null,
-   "id": "shelter-077"
+   "id": "shelter-077",
+   "lat": 40.829576,
+   "lng": -73.887777
   },
   {
    "name": "Casa Del Sol Family Residence",
@@ -2120,6 +2354,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2131,7 +2366,69 @@
    "quote": "Casa Del Sol Family Residence, 739 East Gun Hill Road, Bronx, NY 10467.",
    "source_date": "2024-11-13",
    "caveats": null,
-   "id": "shelter-078"
+   "id": "shelter-078",
+   "lat": 40.8773,
+   "lng": -73.86485
+  },
+  {
+   "name": "Concourse Family Residence",
+   "provider": "Home/Life Services",
+   "address": "2240 Grand Concourse, Bronx, NY 10457",
+   "borough": "Bronx",
+   "phone": null,
+   "facility_type": "Family Shelter",
+   "household": [
+    "family_with_children"
+   ],
+   "gender": [
+    "man",
+    "woman"
+   ],
+   "gender_stated": false,
+   "min_age": null,
+   "max_age": null,
+   "populations": [],
+   "access": "DHS intake assignment",
+   "beds": 50,
+   "in_city_directory": true,
+   "source_url": "https://a856-cityrecord.nyc.gov/RequestDetail/20220713114",
+   "source_type": "government",
+   "quote": "2240 Grand Concourse, Bronx, NY 10457.",
+   "source_date": "2022-07-13",
+   "caveats": "Tier II family shelter per 2022 notice title; provider taken from DHS directory (Home/Life Services), not the notice.",
+   "id": "shelter-079",
+   "lat": 40.856294,
+   "lng": -73.900123
+  },
+  {
+   "name": "Icahn House",
+   "provider": "Children's Rescue Fund",
+   "address": "661 and 665 Cauldwell Avenue, Bronx, NY 10455",
+   "borough": "Bronx",
+   "phone": null,
+   "facility_type": "Family Shelter",
+   "household": [
+    "family_with_children"
+   ],
+   "gender": [
+    "man",
+    "woman"
+   ],
+   "gender_stated": false,
+   "min_age": null,
+   "max_age": null,
+   "populations": [],
+   "access": "DHS intake assignment",
+   "beds": 65,
+   "in_city_directory": true,
+   "source_url": "https://a856-cityrecord.nyc.gov/RequestDetail/20220527002",
+   "source_type": "government",
+   "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Children’s Rescue Fund – Icahn House, located at 1520 Brook Avenue, Bronx, NY 10457, for the provision of Shelter Facilities for Homeless Families with Children at 661 and 665 Cauldwell Avenue, Bronx, NY 10455.",
+   "source_date": "2022-05-27",
+   "caveats": null,
+   "id": "shelter-080",
+   "lat": 40.817071,
+   "lng": -73.909802
   },
   {
    "name": "Millennium Adult Family Shelter",
@@ -2147,6 +2444,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2158,7 +2456,9 @@
    "quote": "Adult Families at Millenium Adult Family Shelter at 980 Prospect Ave.",
    "source_date": "2025-06-02",
    "caveats": null,
-   "id": "shelter-079"
+   "id": "shelter-081",
+   "lat": 40.823583,
+   "lng": -73.899762
   },
   {
    "name": "Grand Concourse Adult Family Residence",
@@ -2174,6 +2474,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2185,7 +2486,9 @@
    "quote": "Located at 2331 Grand Concourse, Bronx NY 10468.",
    "source_date": "2024-12-12",
    "caveats": null,
-   "id": "shelter-080"
+   "id": "shelter-082",
+   "lat": 40.858449,
+   "lng": -73.899853
   },
   {
    "name": "Borden Avenue Veterans Residence (BAVR)",
@@ -2201,6 +2504,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -2214,7 +2518,9 @@
    "quote": "Additional Setting | Certificate Number: 730 Name: Borden Avenue Veterans Shelter Address: 21-10 Borden Ave | Long Island City, NY 11101",
    "source_date": null,
    "caveats": "Population/access from nyc.gov/site/dhs/shelter/singleadults/veterans-shelter.page: veterans go from DHS intake to the VSU, which refers to BAVR, 'a 243-bed short-term housing facility for male and female veterans'. City Record 20240701121 also lists 21-10 Borden Avenue (with a wrong ZIP).",
-   "id": "shelter-081"
+   "id": "shelter-083",
+   "lat": 40.739873,
+   "lng": -73.949508
   },
   {
    "name": "Skyway Queens Shelter",
@@ -2230,6 +2536,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2241,7 +2548,9 @@
    "quote": "Shelter services for homeless single adults at the Skyway Queens shelter located at 132-10 South Conduit Ave, Jamaica, NY 11430.",
    "source_date": "2026-07-06",
    "caveats": null,
-   "id": "shelter-082"
+   "id": "shelter-084",
+   "lat": 40.665864,
+   "lng": -73.8073
   },
   {
    "name": "Jamaica Women's Employment Shelter",
@@ -2256,6 +2565,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -2269,7 +2579,9 @@
    "quote": "Shelter Facilities for Homeless Single Adults, at Jamaica Employment Shelter, 95-10 218th Street, Queens, VIllage, NY 11429.",
    "source_date": "2026-06-18",
    "caveats": "Gender/employment focus from DHS directory name 'Jamaica Women Employment Shelter'; the City Record notice says 'Jamaica Employment Shelter'.",
-   "id": "shelter-083"
+   "id": "shelter-085",
+   "lat": 40.717354,
+   "lng": -73.73772
   },
   {
    "name": "Ditmars Residence",
@@ -2285,6 +2597,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2296,7 +2609,9 @@
    "quote": "Vocational Instruction Service at Ditmars Residence, 100-33 Ditmars Boulevard, East Elmhurst, NY 11369 (Round 40) 200 beds",
    "source_date": "2026-05-05",
    "caveats": null,
-   "id": "shelter-084"
+   "id": "shelter-086",
+   "lat": 40.770136,
+   "lng": -73.869312
   },
   {
    "name": "Crescent Residence",
@@ -2312,6 +2627,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2323,7 +2639,9 @@
    "quote": "Single Adults at Crescent Residence located 42-24 Crescent Street, Long Island City, NY 11101",
    "source_date": "2025-05-05",
    "caveats": null,
-   "id": "shelter-085"
+   "id": "shelter-087",
+   "lat": 40.750074,
+   "lng": -73.941449
   },
   {
    "name": "Cooper Rapid Rehousing",
@@ -2339,6 +2657,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2350,7 +2669,9 @@
    "quote": "Shelter Services at Stand Alone Transitional Residence for Single Adults at Cooper Rapid Rehousing, 78-16 Cooper Avenue, Ridgewood, Queens , NY 11385 (200 units)",
    "source_date": "2025-07-07",
    "caveats": null,
-   "id": "shelter-086"
+   "id": "shelter-088",
+   "lat": 40.707389,
+   "lng": -73.872865
   },
   {
    "name": "College Point Shelter (20th Ave Shelter)",
@@ -2366,6 +2687,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2377,7 +2699,9 @@
    "quote": "Yonkers, NY 10701 Site: 20th Ave Shelter, 127-03 20th Avenue College Point, NY 11356 Contract Term: 7/1/2024\u001a6/30/2028",
    "source_date": "2024-03-27",
    "caveats": null,
-   "id": "shelter-087"
+   "id": "shelter-089",
+   "lat": 40.78193,
+   "lng": -73.841215
   },
   {
    "name": "Pam's Place",
@@ -2393,6 +2717,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2404,7 +2729,9 @@
    "quote": "Located at Pams Place, 40-03 29th Street, Long Island City, NY 11101 (200 beds) Round 35 The Department of Homeless Services works to prevent homelessness before it occurs, address street homelessness, and assist New Yorkers in transitioning from shelter and street homelessness to permanent housing.",
    "source_date": "2025-05-02",
    "caveats": null,
-   "id": "shelter-088"
+   "id": "shelter-090",
+   "lat": 40.752034,
+   "lng": -73.935499
   },
   {
    "name": "Laurel Hall",
@@ -2420,6 +2747,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2431,7 +2759,9 @@
    "quote": "Renewal + 25% Miscellaneous Allowance (FY'27) for Laurel Hall located at 85-15 101st Ave, Queens NY 11416 to service 113 single adults",
    "source_date": "2023-07-11",
    "caveats": null,
-   "id": "shelter-089"
+   "id": "shelter-091",
+   "lat": 40.682258,
+   "lng": -73.854017
   },
   {
    "name": "Bob's Place",
@@ -2447,6 +2777,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2458,7 +2789,9 @@
    "quote": "This is a negotiated acquisition extension for Bob's Place, located at 88-55 161st Street Jamaica, NY 11432.",
    "source_date": "2021-11-15",
    "caveats": "Address from 2021 NAE notice; 2023 award notice 20230921107 also covers Bob's Place.",
-   "id": "shelter-090"
+   "id": "shelter-092",
+   "lat": 40.706772,
+   "lng": -73.799902
   },
   {
    "name": "Amani House",
@@ -2474,6 +2807,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2485,7 +2819,9 @@
    "quote": "226 Beach 101st Street, Rockaway Park, NY 11694.",
    "source_date": "2024-06-27",
    "caveats": null,
-   "id": "shelter-091"
+   "id": "shelter-093",
+   "lat": 40.584494,
+   "lng": -73.822041
   },
   {
    "name": "Jamaica YMCA Annex",
@@ -2501,6 +2837,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2512,7 +2849,9 @@
    "quote": "(175 beds) Annexes: Jamaica YMCA Annex, 89-25 Parsons Boulevard, Jamaica, NY 11432.",
    "source_date": "2026-09-03",
    "caveats": "Annex of Samaritan Daytop's Van Siclen Shelter (Brooklyn), 140 beds.",
-   "id": "shelter-092"
+   "id": "shelter-094",
+   "lat": 40.705153,
+   "lng": -73.800672
   },
   {
    "name": "Colonial (Jamaica) YMCA Annex",
@@ -2528,6 +2867,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2539,7 +2879,9 @@
    "quote": "for the following shelter locations: Forbell Men Shelter 338 Forbell Street Brooklyn, NY 11208 Harlem YMCA 180 West 135th Street New York, NY 10030 Colonial (Jamaica) YMCA 87-70 &72 148th Street Jamaica NY 11435 The proposed NAE term will be from July 1, 2026 through June 30, 2027 with contract amount of $21,463,323.",
    "source_date": "2026-02-25",
    "caveats": "Annex of Samaritan Daytop's Forbell Men Shelter; house numbers printed as '87-70 &72 148th Street'.",
-   "id": "shelter-093"
+   "id": "shelter-095",
+   "lat": 40.705526,
+   "lng": -73.80851
   },
   {
    "name": "Baxter Avenue Safe Haven (The Baxter)",
@@ -2555,6 +2897,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2566,7 +2909,9 @@
    "quote": "Homeless Single Adults at Baxter Avenue Safe Haven located at 81-30 Baxter Avenue, Queens, NY 11373 - 75 Beds.",
    "source_date": "2025-06-12",
    "caveats": null,
-   "id": "shelter-094"
+   "id": "shelter-096",
+   "lat": 40.745847,
+   "lng": -73.883542
   },
   {
    "name": "Union Hall Street Safe Haven",
@@ -2582,6 +2927,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2593,7 +2939,9 @@
    "quote": "Union Hall Street, 92-32 Union Hall Street, Queens, NY 11433 (Round 10).",
    "source_date": "2024-08-27",
    "caveats": null,
-   "id": "shelter-095"
+   "id": "shelter-097",
+   "lat": 40.703194,
+   "lng": -73.797531
   },
   {
    "name": "Beaver Pond Residence",
@@ -2609,6 +2957,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2620,7 +2969,9 @@
    "quote": "Shelter Facilities for Homeless Adult Families located at 170-01 Douglas Avenue, Jamaica, NY 11433.",
    "source_date": "2026-06-11",
    "caveats": "Operator brc.org/shelter: 'Serving 165 adult families who have recently become homeless'.",
-   "id": "shelter-096"
+   "id": "shelter-098",
+   "lat": 40.704474,
+   "lng": -73.788243
   },
   {
    "name": "Blue Sky Residence",
@@ -2636,6 +2987,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2647,7 +2999,9 @@
    "quote": "Provision of Transitional Shelter Services for Adult Families at Blue Sky Residence, 112-18 Astoria Blvd, Flushing, NY 11369 (Grp 20).",
    "source_date": "2022-04-28",
    "caveats": "DOUBT: address differs across government sources: 2022 notice '112-18 Astoria Blvd, Flushing, NY 11369'; 2026 notice (20260617025) '12-16 Astoria Blvd'; NYSED '112-116 Astoria Blvd'. Operator brc.org: 'Serving 140 adult families'.",
-   "id": "shelter-097"
+   "id": "shelter-099",
+   "lat": 40.75924,
+   "lng": -73.85746
   },
   {
    "name": "North Star Adult Family Residence",
@@ -2663,6 +3017,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2674,7 +3029,9 @@
    "quote": "SHELTER FOR HOMELESS ADULT FAMILIES HOME/LIFE SERVICES, INC 9201 4th Avenue, 6th Floor Brooklyn, NY 11209 Site: North Star Adult Family Residence 52-34 Van Dam Street Long Island City, NY 11101 EPIN: 07118P8313KXLR001 Renewal Term: 7/1/2023\u001a6/30/2026",
    "source_date": "2023-03-23",
    "caveats": null,
-   "id": "shelter-098"
+   "id": "shelter-100",
+   "lat": 40.736236,
+   "lng": -73.936758
   },
   {
    "name": "El Camino Family Residence (El Camino Inn)",
@@ -2690,6 +3047,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2701,7 +3059,9 @@
    "quote": "El Camino Family Residence, 160-11 89th Avenue, Queens, NY 11432 (Round 1)",
    "source_date": "2023-11-02",
    "caveats": "Notice: serves 'homeless Adult Families who apply for shelter at an intake facility during the hours of 10:00pm and 10:00am'.",
-   "id": "shelter-099"
+   "id": "shelter-101",
+   "lat": 40.706431,
+   "lng": -73.800373
   },
   {
    "name": "Beach Residence",
@@ -2717,6 +3077,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2728,7 +3089,9 @@
    "quote": "Located at 316 Beach 65 Street, Arverne, NY 11692.",
    "source_date": "2026-07-07",
    "caveats": null,
-   "id": "shelter-100"
+   "id": "shelter-102",
+   "lat": 40.591873,
+   "lng": -73.793512
   },
   {
    "name": "Brunswick Avenue Shelter",
@@ -2744,6 +3107,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2755,7 +3119,9 @@
    "quote": "Shelter Facilities for Homeless Adult Fam - Brunswick Avenue Shelter at 12-60 Brunswick Avenue, Queens, NY 11691 (Group 13).",
    "source_date": "2026-02-19",
    "caveats": null,
-   "id": "shelter-101"
+   "id": "shelter-103",
+   "lat": 40.60934,
+   "lng": -73.74967
   },
   {
    "name": "Saratoga Family Residence (Saratoga Inn)",
@@ -2771,6 +3137,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2782,7 +3149,9 @@
    "quote": "Shelter Facilities for Homeless Families with Children at Saratoga Family Residence, 175-15 Rockaway Boulevard, Jamaica , NY 11434.",
    "source_date": "2026-06-23",
    "caveats": null,
-   "id": "shelter-102"
+   "id": "shelter-104",
+   "lat": 40.657927,
+   "lng": -73.769462
   },
   {
    "name": "Ditmars Manor",
@@ -2798,6 +3167,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2809,7 +3179,9 @@
    "quote": "90-10 Ditmars Boulevard, East Elmhurst, NY 11369 (Round 15) 288 units.",
    "source_date": "2026-05-08",
    "caveats": "Directory match 'MANOR' (Midway Living, Queens) by provider + NYSED name 'Ditmars Manor'; capacity differs (directory 82 vs notice 288 units).",
-   "id": "shelter-103"
+   "id": "shelter-105",
+   "lat": 40.769154,
+   "lng": -73.879473
   },
   {
    "name": "Springfield Gardens Family Residence",
@@ -2825,6 +3197,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2836,7 +3209,9 @@
    "quote": "This site serves Families with Children and is located at 146-80 Guy R. Brewer Blvd., Queens, NY 11434, 82-unit capacity.",
    "source_date": "2024-02-01",
    "caveats": null,
-   "id": "shelter-104"
+   "id": "shelter-106",
+   "lat": 40.661624,
+   "lng": -73.76852
   },
   {
    "name": "Briarwood Family Residence",
@@ -2852,6 +3227,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2863,7 +3239,9 @@
    "quote": "At Briarwood Family Residence, located at 80-20 134 th Street, Jamaica, NY 11435.",
    "source_date": "2023-06-27",
    "caveats": null,
-   "id": "shelter-105"
+   "id": "shelter-107",
+   "lat": 40.715486,
+   "lng": -73.824569
   },
   {
    "name": "Summerfield Family Residence",
@@ -2879,6 +3257,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2890,7 +3269,9 @@
    "quote": "Provision of Shelter Facilities for Homeless FWC at Summerfield Family Residence, 1616 Summerfield St., Ridgewood, NY 11385 (Grp 50).",
    "source_date": "2022-02-09",
    "caveats": null,
-   "id": "shelter-106"
+   "id": "shelter-108",
+   "lat": 40.69485,
+   "lng": -73.90181
   },
   {
    "name": "Queens Family Residence",
@@ -2906,6 +3287,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2917,7 +3299,9 @@
    "quote": "Provision of Shelter Facilities for Homeless Families with Children at Queens Family Residence, 7300-7304 Queens Boulevard Woodside NY 11377 (Grp 25)",
    "source_date": "2022-02-09",
    "caveats": null,
-   "id": "shelter-107"
+   "id": "shelter-109",
+   "lat": 40.738514,
+   "lng": -73.89048
   },
   {
    "name": "Ocean View Family Residence",
@@ -2933,6 +3317,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2944,7 +3329,9 @@
    "quote": "Renewal + 25% miscellaneous allowance - The Homeless Families Shelter located at 22-21 Loretta Road, Far Rockaway, NY 11691.",
    "source_date": "2023-06-15",
    "caveats": null,
-   "id": "shelter-108"
+   "id": "shelter-110",
+   "lat": 40.602958,
+   "lng": -73.755811
   },
   {
    "name": "Belt Park Family Residence",
@@ -2960,6 +3347,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2971,7 +3359,9 @@
    "quote": "Belt Park Family 07119I0003018 $105,718,003.00 138-02 Queens Boulevard Residence Briarwood, NY 11435 153-90 Rockaway Blvd.",
    "source_date": "2020-07-23",
    "caveats": "2020 notice; contract term 10/2020-6/2029.",
-   "id": "shelter-109"
+   "id": "shelter-111",
+   "lat": 40.668092,
+   "lng": -73.782777
   },
   {
    "name": "Boulevard Family Residence",
@@ -2987,6 +3377,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -2998,7 +3389,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Samaritan Daytop Village, Inc., located at 138-02 Queens Boulevard, Briarwood, NY 11435, for the Provision of Shelter Facilities for Families with Children at 79-00 Queens Boulevard, Queens, NY 11373.",
    "source_date": "2024-04-19",
    "caveats": null,
-   "id": "shelter-110"
+   "id": "shelter-112",
+   "lat": 40.737768,
+   "lng": -73.884657
   },
   {
    "name": "Corona Family Residence",
@@ -3014,6 +3407,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3025,7 +3419,9 @@
    "quote": "Shelter services for homeless families with children at Corona Family Residence, 38-01 112th Street, Queens, NY 11368 - 54 units.",
    "source_date": "2025-06-12",
    "caveats": null,
-   "id": "shelter-111"
+   "id": "shelter-113",
+   "lat": 40.753479,
+   "lng": -73.855114
   },
   {
    "name": "Westway Family Residence",
@@ -3041,6 +3437,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3052,7 +3449,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Women in Need, Inc., located at One State Street Plaza, 18th Floor, New York, NY 10004, for the Provision of Shelter Facilities for Homeless Families with Children at 71-11 & 72-05 Astoria Boulevard, East Elmhurst, NY 11370.",
    "source_date": "2024-04-19",
    "caveats": null,
-   "id": "shelter-112"
+   "id": "shelter-114",
+   "lat": 40.767172,
+   "lng": -73.896662
   },
   {
    "name": "LaGuardia Family Residence",
@@ -3068,6 +3467,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3079,7 +3479,9 @@
    "quote": "LaGuardia Family Center 07110P0002200 $19,778,400.00 115 West 31st Street 102-10 Ditmars Blvd.",
    "source_date": "2017-10-27",
    "caveats": "Address from 2017 City Record table + NYSED record (Women In Need, 102-10 Ditmars Boulevard, East Elmhurst, NY 11369); renewed 2022.",
-   "id": "shelter-113"
+   "id": "shelter-115",
+   "lat": 40.768245,
+   "lng": -73.868177
   },
   {
    "name": "The Landing",
@@ -3095,6 +3497,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3106,7 +3509,9 @@
    "quote": "The Landing AT 94-00 Ditmars Boulevard, EAST ELMHURST, NY",
    "source_date": "2022-07-01",
    "caveats": null,
-   "id": "shelter-114"
+   "id": "shelter-116",
+   "lat": 40.770101,
+   "lng": -73.875825
   },
   {
    "name": "Kings Inn",
@@ -3122,6 +3527,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3133,7 +3539,9 @@
    "quote": "Shelter Services for homeless families with children at Kings Inn, 87-02 23rd Avenue, East Elmhurst, NY 11369.",
    "source_date": "2022-06-30",
    "caveats": null,
-   "id": "shelter-115"
+   "id": "shelter-117",
+   "lat": 40.767015,
+   "lng": -73.882093
   },
   {
    "name": "Atlantic Assessment Shelter (Bedford-Atlantic Armory)",
@@ -3148,6 +3556,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3161,7 +3570,9 @@
    "quote": "Sunset Park Health Council, Inc., 150 55th Street, Brooklyn, New York 11220.t o provide Medical and Behavioral Health Services for Homeless Single Adults at Atlantic Assessment Shelter 1322 Bedford Avenue, Brooklyn, New York 11216.",
    "source_date": "2022-08-18",
    "caveats": "City Record notice dated 2022-08-25. Gender from City Record 2009 notice (20090515023) naming it the 'Bedford Atlantic Mens Shelter located at 1322 Bedford Avenue'. On-site medical/behavioral health contract (Sunset Park Health Council).",
-   "id": "shelter-116"
+   "id": "shelter-118",
+   "lat": 40.678455,
+   "lng": -73.953876
   },
   {
    "name": "Marcus Garvey Shelter (men's assessment)",
@@ -3176,6 +3587,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3187,7 +3599,9 @@
    "quote": "for assessment services at the emergency shelter, located at 357 Marcus Garvey Boulevard, Brooklyn, NY, 11221 .",
    "source_date": "2026-05-21",
    "caveats": "City Record notice dated 2026-05-28. Notice says DHS needs 'to keep 357 Marcus Garvey as a provider operated site' while it determines 'a new mens city owned assessment site by 7/1/27'. Same building formerly housed BVSJ's Pamoja employment shelter (directory 'Pamoja  Employment Men's Shelter'); Pamoja's current location not verified.",
-   "id": "shelter-117"
+   "id": "shelter-119",
+   "lat": 40.685122,
+   "lng": -73.937269
   },
   {
    "name": "BRC McGuinness Assessment Center",
@@ -3202,6 +3616,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3213,7 +3628,9 @@
    "quote": "Shelter services for single adults ocated at 146 Clay Street, Brooklyn, NY 11222.",
    "source_date": "2026-07-01",
    "caveats": "City Record notice dated 2026-07-08. Gender taken from the DHS facility name in directory.json ('BRC Men's Assessment Shelter'); 2021 City Record notice 20210514004 names the site 'BRC Assessment Center, 146 Clay Street'.",
-   "id": "shelter-118"
+   "id": "shelter-120",
+   "lat": 40.736673,
+   "lng": -73.952141
   },
   {
    "name": "Kingsboro MICA Men's Shelter",
@@ -3228,6 +3645,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3242,7 +3660,9 @@
    "quote": "To provide Shelter Services for Homeless Single Adults at Kingsboro MICA Men's Shelter, 681 Clarkson Avenue, Brooklyn, NY 11203.",
    "source_date": "2022-04-21",
    "caveats": "City Record notice dated 2022-04-29. MICA = mentally ill chemically addicted. Feb 2026 notice 20260127011 extends Salvation Army operation at 681 Clarkson Ave through June 30, 2029 during Kingsboro campus redevelopment.",
-   "id": "shelter-119"
+   "id": "shelter-121",
+   "lat": 40.656621,
+   "lng": -73.936239
   },
   {
    "name": "Midwood Safe Haven",
@@ -3258,6 +3678,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3273,7 +3694,9 @@
    "quote": "BREAKING GROUND MANAGEMENT 505 8th Ave, Suite 5 New York, NY 10018 E-PIN: 07116I0010001R001 To provide Shelter Services for Homeless Adult Families at Midwood Safe Haven 800 E. 12th Street Brooklyn, NY 11230 Renewal Term: 2/1/2021- 1/31/2025",
    "source_date": "2021-02-19",
    "caveats": "City Record notice dated 2021-03-04. The DHS notice wording says 'Adult Families' but the program is a single-adult Safe Haven. Breaking Ground (breakingground.org/our-housing/midwood): serves 'vulnerable street homeless individuals, primarily women'; residents 'Chronically street homeless men and women'; offers mental health and substance abuse assistance.",
-   "id": "shelter-120"
+   "id": "shelter-122",
+   "lat": 40.629423,
+   "lng": -73.965208
   },
   {
    "name": "Williamsburg Safe Haven",
@@ -3289,6 +3712,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3304,7 +3728,9 @@
    "quote": "Located at 339 Broadway, Brooklyn, NY 11211.",
    "source_date": "2026-06-16",
    "caveats": "City Record notice dated 2026-06-23. Breaking Ground page: 78 units, residents 'Chronically street homeless men and women'.",
-   "id": "shelter-121"
+   "id": "shelter-123",
+   "lat": 40.708048,
+   "lng": -73.956071
   },
   {
    "name": "The Continental Safe Haven (GreenPoint Safe Haven)",
@@ -3320,6 +3746,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3335,7 +3762,9 @@
    "quote": "of Homeless Services of the City of New York and Common Ground Management Corp d/b/a Breaking Ground Management, located at 505 Eighth Avenue, 15th Floor, New York, NY 10018, to develop and operate a Stand-Alone Safe Haven for Chronic Street Homeless Single Adults at GreenPoint Safe Haven located 83 Apollo Street, Brooklyn, NY 11222.",
    "source_date": "2021-08-02",
    "caveats": "City Record notice dated 2021-08-06. Breaking Ground page: 'Opened in the summer of 2024'; residents 'Chronically street homeless men and women'; fully accessible for clients with disabilities.",
-   "id": "shelter-122"
+   "id": "shelter-124",
+   "lat": 40.72706,
+   "lng": -73.93833
   },
   {
    "name": "Hegeman Street Safe Haven",
@@ -3351,6 +3780,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3364,7 +3794,9 @@
    "quote": "Stand-alone Safe Haven for Chronic Street Homeless Single Adults at Hegeman Street Safe Haven located at 740 Hegeman Ave, Brooklyn, NY 11207.",
    "source_date": "2024-06-24",
    "caveats": "City Record notice dated 2024-06-28.",
-   "id": "shelter-123"
+   "id": "shelter-125",
+   "lat": 40.662681,
+   "lng": -73.884751
   },
   {
    "name": "Parkside Residence (stabilization beds)",
@@ -3380,6 +3812,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3393,7 +3826,9 @@
    "quote": "205 Parkside Avenue, Brooklyn, NY 11226.",
    "source_date": "2024-04-19",
    "caveats": "City Record notice dated 2024-04-25.",
-   "id": "shelter-124"
+   "id": "shelter-126",
+   "lat": 40.65555,
+   "lng": -73.960923
   },
   {
    "name": "Infinity II Stabilization Beds",
@@ -3409,6 +3844,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3422,7 +3858,9 @@
    "quote": "Located at 1393-1395 Dean Street, Brooklyn, NY 11216.",
    "source_date": "2026-06-09",
    "caveats": "City Record notice dated 2026-06-15. Referral route per DHS stabilization-bed notice 20220910105 for 1395 Dean Street: 'Contracted outreach teams and the Joint Command Center will be the referral sources into Stabilization beds.'",
-   "id": "shelter-125"
+   "id": "shelter-127",
+   "lat": 40.676715,
+   "lng": -73.942411
   },
   {
    "name": "Salim House",
@@ -3437,6 +3875,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3448,7 +3887,9 @@
    "quote": "EPIN 07120P8190KXLR001.To provide Shelter Services for Single Adults at Salim House at 566 Coney Island Avenue, Brooklyn, NY 11218.",
    "source_date": "2024-01-29",
    "caveats": "City Record notice dated 2024-02-05. Gender from operator bvsj.org/housing-division: 'SALIM HOUSE 135-bed men’s shelter in Kensington, Brooklyn.'",
-   "id": "shelter-126"
+   "id": "shelter-128",
+   "lat": 40.643397,
+   "lng": -73.970272
   },
   {
    "name": "Duryea Residence",
@@ -3464,6 +3905,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3475,7 +3917,9 @@
    "quote": "Shelter Services for Single Adults at Duryea Residence, 21 Duryea Place, Brooklyn, NY 11226.",
    "source_date": "2026-08-24",
    "caveats": "City Record notice dated 2026-08-28. Phone from operator bvsj.org/housing-division: 'DURYEA 200-bed shelter. Contact (718) 852-6004 for availability.'",
-   "id": "shelter-127"
+   "id": "shelter-129",
+   "lat": 40.64558,
+   "lng": -73.95694
   },
   {
    "name": "Harry's Place",
@@ -3491,6 +3935,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3502,7 +3947,9 @@
    "quote": "Provision of shelter facilities for Homeless Single Adults at Harrys Place, 977 Bedford Avenue, Brooklyn, NY 11205. 50 units (Round 48).",
    "source_date": "2025-07-29",
    "caveats": "City Record notice dated 2025-08-04.",
-   "id": "shelter-128"
+   "id": "shelter-130",
+   "lat": 40.690685,
+   "lng": -73.955041
   },
   {
    "name": "Kenilworth House",
@@ -3518,6 +3965,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3529,7 +3977,9 @@
    "quote": "1 Kenilworth Place, Brooklyn, NY 11210. 200 beds",
    "source_date": "2026-06-05",
    "caveats": "City Record notice dated 2026-06-11. A 2021 notice (20211115019) printed ZIP 11220; the 2026 notice says 11210.",
-   "id": "shelter-129"
+   "id": "shelter-131",
+   "lat": 40.635744,
+   "lng": -73.951743
   },
   {
    "name": "Prospect Place Transitional Housing Community",
@@ -3544,6 +3994,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3558,7 +4009,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Center For Urban Community Services, Inc., located at 198 East 121st Street, 6th Floor, New York, NY 10035, for the provision of Shelter Facilities for Homeless Single Adults at 174 Prospect Place, Brooklyn, NY 11238.",
    "source_date": "2024-09-12",
    "caveats": "City Record notice dated 2024-09-30. Population from operator cucs.org/transitional-housing: 'offers holistic, integrated services to 90 homeless women with mental illnesses every night' with psychiatric and primary medical care.",
-   "id": "shelter-130"
+   "id": "shelter-132",
+   "lat": 40.677888,
+   "lng": -73.971087
   },
   {
    "name": "Eldert Lane Shelter",
@@ -3573,6 +4026,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3586,7 +4040,9 @@
    "quote": "Shelter for Homeless Adults at Eldert Lane Shelter with two Annex Sites (344 Beds) Eldert Lane Shelter at 74 Eldert Lane, Brooklyn, NY 11208 (104 beds) Quality Inn at 30-03 40th Ave Long Island City, NY 11101 ( 70 beds) Sleep Inn at 38-71 13th Street Long Island City, NY 11101 (170 beds)",
    "source_date": "2024-07-06",
    "caveats": "City Record notice dated 2024-07-12. Operator iclinc.org transitional-shelters: 'Eldert Lane Shelter opened in East New York in 2018, ICL’s second shelter for women providing the full range of case management, entitlements, housing and employment services.'",
-   "id": "shelter-131"
+   "id": "shelter-133",
+   "lat": 40.689367,
+   "lng": -73.867968
   },
   {
    "name": "Tillary Street Women's Shelter",
@@ -3601,6 +4057,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3612,7 +4069,9 @@
    "quote": "Stand Alone Transitional Residence for Homeless Single Adults at 200 Tillary Street, Brooklyn, NY 11201.",
    "source_date": "2026-08-17",
    "caveats": "City Record notice dated 2026-08-24. Gender taken from the DHS facility name in directory.json ('Tillary Women's Shelter').",
-   "id": "shelter-132"
+   "id": "shelter-134",
+   "lat": 40.695624,
+   "lng": -73.982174
   },
   {
    "name": "Linden Women's Shelter",
@@ -3627,6 +4086,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -3640,7 +4100,9 @@
    "quote": "Mental health population shelter services for single adults at the Linden Womens Shelter, located at 501 New Lots Avenue, Brooklyn, NY 11207.",
    "source_date": "2026-06-10",
    "caveats": "City Record notice dated 2026-06-16.",
-   "id": "shelter-133"
+   "id": "shelter-135",
+   "lat": 40.663626,
+   "lng": -73.889543
   },
   {
    "name": "Lexington Avenue Shelter",
@@ -3656,6 +4118,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3667,7 +4130,9 @@
    "quote": "for the 85 Lexington Shelter services located at 85 Lexington Avenue, Brooklyn, NY 11238.",
    "source_date": "2025-12-12",
    "caveats": "City Record notice dated 2025-12-19. Was a women's shelter until ~2020; news reports (Brooklyn Paper) say it was converted to a men's shelter focused on mental illness — not verified on an official page, so gender left blank.",
-   "id": "shelter-134"
+   "id": "shelter-136",
+   "lat": 40.686986,
+   "lng": -73.958677
   },
   {
    "name": "49th Street Shelter",
@@ -3682,6 +4147,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3693,7 +4159,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Samaritan Daytop Village, Inc., located at 138-02 Queens Boulevard, Briarwood, NY 11435, for the provision of Shelter Facilities for Homeless Single Adults at 247 49th Street, Brooklyn, NY 11220 .",
    "source_date": "2024-09-04",
    "caveats": "City Record notice dated 2024-09-16. Operator samaritanvillage.org/transitional-housing lists shelters 'For Men: Forbell, Myrtle Avenue, 49th Street, 53rd Street, and Clermont Shelters'.",
-   "id": "shelter-135"
+   "id": "shelter-137",
+   "lat": 40.6491,
+   "lng": -74.015011
   },
   {
    "name": "Forbell Men's Shelter",
@@ -3708,6 +4176,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3719,7 +4188,9 @@
    "quote": "for the following shelter locations: Forbell Men Shelter 338 Forbell Street Brooklyn, NY 11208 Harlem YMCA 180 West 135th Street New York, NY 10030 Colonial (Jamaica) YMCA 87-70 &72 148th Street Jamaica NY 11435 The proposed NAE term will be from July 1, 2026 through June 30, 2027 with contract amount of $21,463,323.",
    "source_date": "2026-02-25",
    "caveats": "City Record notice dated 2026-03-04.",
-   "id": "shelter-136"
+   "id": "shelter-138",
+   "lat": 40.674295,
+   "lng": -73.86339
   },
   {
    "name": "Myrtle Avenue Shelter",
@@ -3734,6 +4205,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3745,7 +4217,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Samaritan Daytop Village, Inc., located at 138-02 Queens Boulevard, Briarwood, NY 11435, for the provision of Shelter Facilities for Homeless Single Adults at 988 Myrtle Avenue, Brooklyn, NY 11206.",
    "source_date": "2023-12-12",
    "caveats": "City Record notice dated 2023-12-18. Notice names the address but not the shelter; matched to 'Myrtle Avenue Men's Shelter' via same operator + street. Operator lists Myrtle Avenue among its shelters 'For Men'.",
-   "id": "shelter-137"
+   "id": "shelter-139",
+   "lat": 40.696004,
+   "lng": -73.941766
   },
   {
    "name": "Van Siclen Women's Shelter",
@@ -3760,6 +4234,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3771,7 +4246,9 @@
    "quote": "Located at 645 Van Siclen Avenue, Brooklyn, NY 11207.",
    "source_date": "2026-09-03",
    "caveats": "City Record notice dated 2026-09-10. Operator samaritanvillage.org lists 'For Women: Van Siclen Women’s Shelter'. Annexes under same contract listed separately.",
-   "id": "shelter-138"
+   "id": "shelter-140",
+   "lat": 40.663689,
+   "lng": -73.887389
   },
   {
    "name": "Second Avenue Men's Shelter",
@@ -3786,6 +4263,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3797,7 +4275,9 @@
    "quote": "Shelter Facilities for Homeless Single Adults located at 5113 2nd Avenue, Brooklyn, NY 11232.",
    "source_date": "2026-06-11",
    "caveats": "City Record notice dated 2026-06-17.",
-   "id": "shelter-139"
+   "id": "shelter-141",
+   "lat": 40.648051,
+   "lng": -74.017608
   },
   {
    "name": "Blake Avenue Shelter",
@@ -3813,6 +4293,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3824,7 +4305,9 @@
    "quote": "Located at 1000 Blake Avenue, Brooklyn NY 11208..",
    "source_date": "2026-08-18",
    "caveats": "City Record notice dated 2026-08-24.",
-   "id": "shelter-140"
+   "id": "shelter-142",
+   "lat": 40.669717,
+   "lng": -73.881326
   },
   {
    "name": "Renaissance Shelter",
@@ -3839,6 +4322,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3850,7 +4334,9 @@
    "quote": "Shelter facilities for Homeess Single Adults at Renaissance Shelter 599 Ralph Avenue, Brooklyn, NY 11233 - 200 beds (Round 31)",
    "source_date": "2025-07-15",
    "caveats": "City Record notice dated 2025-07-21. Gender taken from the DHS facility name in directory.json ('Renaissance Men's Shelter').",
-   "id": "shelter-141"
+   "id": "shelter-143",
+   "lat": 40.669144,
+   "lng": -73.922213
   },
   {
    "name": "Saratoga Avenue Shelter (HELP Brownsville Women's Center)",
@@ -3865,6 +4351,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3876,7 +4363,9 @@
    "quote": "To provide Shelter Services for Homeless Single Adults, 357 Saratoga Avenue, Brooklyn, NY 11233 .",
    "source_date": "2022-04-19",
    "caveats": "City Record notice dated 2022-04-26. Gender taken from the DHS facility name in directory.json ('Saratoga Women's Shelter'). Latest notice found: renewal 7/1/2022–6/30/2026.",
-   "id": "shelter-142"
+   "id": "shelter-144",
+   "lat": 40.673566,
+   "lng": -73.916454
   },
   {
    "name": "Magnolia House Women's Shelter",
@@ -3891,6 +4380,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3902,7 +4392,9 @@
    "quote": "Shelter Facilities for Homeless Single Adults at Magnolia House Shelter, 1424 Herkimer Street, Brooklyn, NY 11233.",
    "source_date": "2026-08-04",
    "caveats": "City Record notice dated 2026-08-10. Gender from operator camba.org adult-shelters page ('Magnolia House Women’s Shelter'). Phone from the DonateNYC (nyc.gov) directory listing for this shelter.",
-   "id": "shelter-143"
+   "id": "shelter-145",
+   "lat": 40.677052,
+   "lng": -73.906306
   },
   {
    "name": "Broadway House Women's Shelter",
@@ -3917,6 +4409,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3928,7 +4421,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and CAMBA, Inc., located at 1720 Church Avenue, 2nd Floor, Brooklyn, NY 11226, for the Provision of Shelter Facilities for Homeless Single Adults at 1245 Broadway, Brooklyn, NY 11221.",
    "source_date": "2023-04-07",
    "caveats": "City Record notice dated 2023-04-17. Gender from camba.org ('Broadway House Women’s Shelter'). Phone from the DonateNYC (nyc.gov) directory listing for this shelter.",
-   "id": "shelter-144"
+   "id": "shelter-146",
+   "lat": 40.691584,
+   "lng": -73.925149
   },
   {
    "name": "Park Slope Women's Shelter",
@@ -3943,6 +4438,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3954,7 +4450,9 @@
    "quote": "To provide a Shelter Services for Homeless Single Adults at Park Slope Shelter 1402 8th Avenue, Brooklyn, NY 11215.",
    "source_date": "2022-04-05",
    "caveats": "City Record notice dated 2022-04-12. Latest notice found: renewal 7/1/2022–6/30/2026. Phone from the DonateNYC (nyc.gov) directory listing for this shelter.",
-   "id": "shelter-145"
+   "id": "shelter-147",
+   "lat": 40.662933,
+   "lng": -73.982983
   },
   {
    "name": "Opportunity House Men's Shelter",
@@ -3969,6 +4467,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -3980,7 +4479,9 @@
    "quote": "EPIN 07120P8183KXLR001.To provide Shelter Services for Single Adults at Opportunity House located at 59-65 Prince Street, Brooklyn, NY 11201.",
    "source_date": "2024-03-07",
    "caveats": "City Record notice dated 2024-03-22. Gender from camba.org ('Opportunity House Men’s Shelter'). Phone from the DonateNYC (nyc.gov) directory listing for this shelter.",
-   "id": "shelter-146"
+   "id": "shelter-148",
+   "lat": 40.695624,
+   "lng": -73.982174
   },
   {
    "name": "Atlantic House Men's Shelter",
@@ -3995,6 +4496,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4006,7 +4508,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and CAMBA, Inc., located at 1720 Church Avenue, 2nd Floor, Brooklyn, NY 11226, for the provision of Shelter Facilities for Homeless Single Adults at Atlantic House Shelter, located at 2402 Atlantic Avenue, Brooklyn, NY 11233.",
    "source_date": "2023-12-12",
    "caveats": "City Record notice dated 2023-12-18. Same address as CAMBA's The Gathering Place drop-in center (a separate program). Phone from the DonateNYC (nyc.gov) directory listing for this shelter.",
-   "id": "shelter-147"
+   "id": "shelter-149",
+   "lat": 40.675755,
+   "lng": -73.905331
   },
   {
    "name": "New Beginnings Men's Shelter (Hoyt Residence)",
@@ -4021,6 +4525,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4032,7 +4537,9 @@
    "quote": "Located at 1 Hoyt Street, Brooklyn, NY 11201.",
    "source_date": "2026-07-09",
    "caveats": "City Record notice dated 2026-07-15.",
-   "id": "shelter-148"
+   "id": "shelter-150",
+   "lat": 40.690265,
+   "lng": -73.984985
   },
   {
    "name": "Sackett Street Rapid Re-Housing Center",
@@ -4048,6 +4555,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4059,7 +4567,9 @@
    "quote": "Shelter Services for Homeless Single Adults at Sackett Street Rapid ReHousing Center, located at 601 Sackett Street, Brooklyn, NY 11217 (200 Single Adults)",
    "source_date": "2025-07-07",
    "caveats": "City Record notice dated 2025-07-10.",
-   "id": "shelter-149"
+   "id": "shelter-151",
+   "lat": 40.678928,
+   "lng": -73.984215
   },
   {
    "name": "Hanson Rapid Re-Housing Center",
@@ -4075,6 +4585,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4086,7 +4597,9 @@
    "quote": "Hanson Rapid Re-Housing Center at 62 Hanson Place, Brooklyn, NY 11217",
    "source_date": "2022-10-25",
    "caveats": "City Record notice dated 2022-10-31.",
-   "id": "shelter-150"
+   "id": "shelter-152",
+   "lat": 40.685154,
+   "lng": -73.97497
   },
   {
    "name": "Gates Avenue Transitional Residence",
@@ -4101,6 +4614,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -4114,7 +4628,9 @@
    "quote": "The Doe Fund announced that it recently acquired 510 Gates Avenue in the Bedford Stuyvesant neighborhood in Brooklyn. The site is adjacent to 520 Gates Avenue, the organization’s first homeless transitional residence originally developed in 1990.",
    "source_date": null,
    "caveats": "Operator: residents are 'formerly homeless men that have been referred by the NYC Department of Homeless Services' and can join the Ready, Willing & Able work program. The ~60 residents at 520 Gates are to move next door to a new 200-bed building at 510 Gates Avenue (DHS contract notice 20190726107); confirm which building is open. ZIP 11216 from City Record notice 20190726107 for 510 Gates Ave.",
-   "id": "shelter-151"
+   "id": "shelter-153",
+   "lat": 40.686597,
+   "lng": -73.945079
   },
   {
    "name": "Barbara Kleiman Men's Shelter (Greenpoint Shelter)",
@@ -4129,6 +4645,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -4144,7 +4661,9 @@
    "quote": "The development’s first phase is an extensive renovation of the campus’ historic Nurse’s Residence at 19 Debevoise Avenue to convert it into the new purpose-built shelter.",
    "source_date": null,
    "caveats": "200-bed men's shelter; Project Renewal to provide 'employment counselling, occupational therapy, psychiatry, and primary care at an on-site medical clinic'. Completion was expected October 2025 — opening NOT confirmed. ZIP 11211 from City Record notice 20221129105 ('19 Debevoise Avenue, Brooklyn, NY 11211'). It replaces the older shelter on the Greenpoint Hospital campus.",
-   "id": "shelter-152"
+   "id": "shelter-154",
+   "lat": 40.716492,
+   "lng": -73.938329
   },
   {
    "name": "Liberty Center",
@@ -4160,6 +4679,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4171,7 +4691,9 @@
    "quote": "Contractor/Address Site Name/Address CB PIN # Amount Care for the Homeless Care Found Here 5 21PHEDA02501 $52,503,737.00 30 East 33rd Street, Liberty Center 5th Floor 486 Liberty Avenue New York, NY 10016 Brooklyn, NY 11207 The proposed contractor has been selected through HHS ACCELERATOR, pursuant to Section 3-16 of the Procurement Policy Board Rules.",
    "source_date": "2021-06-09",
    "caveats": "City Record notice dated 2021-06-11. Contract term 5/1/2022–6/30/2027.",
-   "id": "shelter-153"
+   "id": "shelter-155",
+   "lat": 40.674836,
+   "lng": -73.891984
   },
   {
    "name": "Ainslie Street Shelter",
@@ -4187,6 +4709,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4198,7 +4721,9 @@
    "quote": "Located at 39 Ainslie Street, Brooklyn, NY 11211.",
    "source_date": "2026-06-09",
    "caveats": "City Record notice dated 2026-06-15. Could be CAMBA's 'Rising Up Men's Shelter' (same ZIP 11211, ~141 beds) but the notice does not name the operator, so not matched.",
-   "id": "shelter-154"
+   "id": "shelter-156",
+   "lat": 40.713058,
+   "lng": -73.952819
   },
   {
    "name": "6530 4th Avenue Shelter",
@@ -4214,6 +4739,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4225,7 +4751,9 @@
    "quote": "IN THE MATTER OF one (1) proposed contract between the Department of Homeless Services of the City of New York and the contractor listed below, for the Provision of Shelter Facilities for Homeless Single Adults, located at 6530 4 th Avenue, Brooklyn, NY 11220.",
    "source_date": "2024-05-01",
    "caveats": "City Record notice dated 2024-05-14. Contract 7/1/2024–6/30/2029.",
-   "id": "shelter-155"
+   "id": "shelter-157",
+   "lat": 40.63759,
+   "lng": -74.02223
   },
   {
    "name": "Turning Point Shelter",
@@ -4241,6 +4769,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4252,7 +4781,9 @@
    "quote": "To provide Shelter Services for Homeless Single Adults at Turning Point Shelter 968 3rd Avenue, Brooklyn, NY 11232.",
    "source_date": "2022-04-13",
    "caveats": "City Record notice dated 2022-04-22. Latest notice found: renewal 7/1/2022–6/30/2026.",
-   "id": "shelter-156"
+   "id": "shelter-158",
+   "lat": 40.655295,
+   "lng": -74.007309
   },
   {
    "name": "Chauncey House (Eddie Harris Residential Facility)",
@@ -4268,6 +4799,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4279,7 +4811,9 @@
    "quote": "Chauncey House 07119I0001016 $38,665,633.00 45 Main Street, Suite 711 629 Chauncey Street Brooklyn, NY 11201 Brooklyn, NY 11207 The proposed contractor has been selected through HHS ACCELERATOR, pursuant to Section 3-16 of the Procurement Policy Board Rules.",
    "source_date": "2020-04-23",
    "caveats": "City Record notice dated 2020-05-01. Contract 7/1/2020–6/30/2025 with a renewal option to 2029; no later notice found — confirm still open.",
-   "id": "shelter-157"
+   "id": "shelter-159",
+   "lat": 40.683266,
+   "lng": -73.909897
   },
   {
    "name": "Wyckoff House",
@@ -4295,6 +4829,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4306,7 +4841,9 @@
    "quote": "Wyckoff House 07110P0002265 $33,799,333.00 45 Main Street, Suite 711 97 Wyckoff Avenue Brooklyn, NY 11201 Brooklyn, NY 11237 The proposed contractor has been selected by Competitive Sealed Proposal method (Open Ended Request for Proposals), pursuant to Section 3-03 (b)(2) of the Procurement Policy Board Rules.",
    "source_date": "2019-02-07",
    "caveats": "City Record notice dated 2019-02-15. Contract 2/1/2019–6/30/2024 with renewal option to 6/30/2027; no later notice found — confirm still open.",
-   "id": "shelter-158"
+   "id": "shelter-160",
+   "lat": 40.705013,
+   "lng": -73.919927
   },
   {
    "name": "Sumner Hotel",
@@ -4322,6 +4859,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -4335,7 +4873,9 @@
    "quote": "Homeless Single Adults at: Julios Place at 102 West 128th St, NY, NY 10027, 72 beds Clarion Hotel at 429 Park Avenue South, New York, NY 10016, 64 beds Sumner Hotel at 22 Sumner Place, Brooklyn, NY 11206, 88 beds Days Inn Crown Heights at 1691 East New York Avenue, Brooklyn, NY 11212, 75 beds.",
    "source_date": "2025-07-29",
    "caveats": "City Record notice dated 2025-08-04. 'seniors' taken from the DHS facility name in directory.json ('Sumner Hotel Senior'); age cutoff not published.",
-   "id": "shelter-159"
+   "id": "shelter-161",
+   "lat": 40.700784,
+   "lng": -73.940383
   },
   {
    "name": "Days Inn Crown Heights",
@@ -4351,6 +4891,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -4364,7 +4905,9 @@
    "quote": "Homeless Single Adults at: Julios Place at 102 West 128th St, NY, NY 10027, 72 beds Clarion Hotel at 429 Park Avenue South, New York, NY 10016, 64 beds Sumner Hotel at 22 Sumner Place, Brooklyn, NY 11206, 88 beds Days Inn Crown Heights at 1691 East New York Avenue, Brooklyn, NY 11212, 75 beds.",
    "source_date": "2025-07-29",
    "caveats": "City Record notice dated 2025-08-04. 'seniors' taken from the DHS facility name in directory.json ('Days Inn Crown Heights Senior').",
-   "id": "shelter-160"
+   "id": "shelter-162",
+   "lat": 40.67471,
+   "lng": -73.90581
   },
   {
    "name": "Comfort Inn Sunset Park (annex)",
@@ -4380,6 +4923,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -4393,7 +4937,9 @@
    "quote": "(174 beds) This contract includes the following annexes: Days Inn JFK Hotel, 144-26 153rd Court, Jamaica, NY 11434 (124 beds) Travel Inn Hotel, 515 West 42nd Street, New York, NY 10036 (264 beds) Comfort Inn Sunset Park, 353 38th Street Brooklyn, NY 11232 (124 beds) Sleep Inn Stillwell 2586 Stillwell Ave.Brooklyn, NY 11223 (76 beds) Total of 762 beds.",
    "source_date": "2026-07-06",
    "caveats": "City Record notice dated 2026-07-10. Annex of Skyway Queens shelter. 'seniors' from DHS facility name in directory.json ('Comfort Inn Sunset Senior Hotel').",
-   "id": "shelter-161"
+   "id": "shelter-163",
+   "lat": 40.653809,
+   "lng": -74.006196
   },
   {
    "name": "Sleep Inn Stillwell (annex)",
@@ -4409,6 +4955,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4420,7 +4967,9 @@
    "quote": "(174 beds) This contract includes the following annexes: Days Inn JFK Hotel, 144-26 153rd Court, Jamaica, NY 11434 (124 beds) Travel Inn Hotel, 515 West 42nd Street, New York, NY 10036 (264 beds) Comfort Inn Sunset Park, 353 38th Street Brooklyn, NY 11232 (124 beds) Sleep Inn Stillwell 2586 Stillwell Ave.Brooklyn, NY 11223 (76 beds) Total of 762 beds.",
    "source_date": "2026-07-06",
    "caveats": "City Record notice dated 2026-07-10. Possibly directory 'Sleep Inn xx' (Acacia) but name is redacted there, so not matched.",
-   "id": "shelter-162"
+   "id": "shelter-164",
+   "lat": 40.584531,
+   "lng": -73.983252
   },
   {
    "name": "Hotel Super 8 Annex",
@@ -4436,6 +4985,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4447,7 +4997,9 @@
    "quote": "Shelter Facilities for Homeless Single Adults, at Haven House Shelter, 1591 East 233rd Street, Bronx, NY 10466 (200 beds); Hotel Super 8 Annex, 267 3rd Avenue, Brooklyn, NY 11215 (105 beds); Red Lion Hotel Annex, 279 Butler Street, Brooklyn, NY 11217 (198 beds).",
    "source_date": "2026-06-29",
    "caveats": "City Record notice dated 2026-07-06. Contractor not named in the notice excerpt; provider per directory.json.",
-   "id": "shelter-163"
+   "id": "shelter-165",
+   "lat": 40.677825,
+   "lng": -73.98556
   },
   {
    "name": "Red Lion Hotel Annex",
@@ -4463,6 +5015,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4474,7 +5027,9 @@
    "quote": "Shelter Facilities for Homeless Single Adults, at Haven House Shelter, 1591 East 233rd Street, Bronx, NY 10466 (200 beds); Hotel Super 8 Annex, 267 3rd Avenue, Brooklyn, NY 11215 (105 beds); Red Lion Hotel Annex, 279 Butler Street, Brooklyn, NY 11217 (198 beds).",
    "source_date": "2026-06-29",
    "caveats": "City Record notice dated 2026-07-06. A 2024 notice (20240910115) listed 279 Butler St as a families-with-children sanctuary site; the July 2026 notice lists it as a single-adult annex. Provider per directory.json.",
-   "id": "shelter-164"
+   "id": "shelter-166",
+   "lat": 40.681433,
+   "lng": -73.98457
   },
   {
    "name": "Hotel Omega (annex)",
@@ -4490,6 +5045,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4501,7 +5057,9 @@
    "quote": "Located at 170-174 East 123rd Street, New York, NY 10035 (135 beds) and annex site at Hotel Omega, 27 Pennsylvania Avenue, Brooklyn, NY 11207 (112 beds).",
    "source_date": "2026-06-15",
    "caveats": "City Record notice dated 2026-06-22. Annex of VIP's Harlem Men's Shelter contract (notice 20251203015).",
-   "id": "shelter-165"
+   "id": "shelter-167",
+   "lat": 40.677484,
+   "lng": -73.896971
   },
   {
    "name": "Hotel Arex (annex)",
@@ -4517,6 +5075,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4528,7 +5087,9 @@
    "quote": "Shelter Facilities for Homeless SA at El Cacique Court located at 2314 Jerome Avenue, Bronx, NY 10468 (197 beds) as well as annex Hotel Arex, 9 Malcolm X Boulevard, Brooklyn, NY 11221 (204 beds) (total 401 beds)",
    "source_date": "2026-07-28",
    "caveats": "City Record notice dated 2026-08-03.",
-   "id": "shelter-166"
+   "id": "shelter-168",
+   "lat": 40.693967,
+   "lng": -73.931006
   },
   {
    "name": "Myrtle Emergency Shelter",
@@ -4544,6 +5105,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4555,7 +5117,9 @@
    "quote": "Sites: Myrtle Emergency Shelter 1090 Myrtle Avenue Brooklyn NY 11206. 87 units. 802 Hotel 802 Flushing Avenue Brooklyn NY 11206. 63 units.",
    "source_date": "2026-07-28",
    "caveats": "City Record notice dated 2026-08-03. Single adults per notice 20250407004 ('Emergency shelter services for Single Adults at 1090 Myrtle Avenue Brooklyn - Units: 87').",
-   "id": "shelter-167"
+   "id": "shelter-169",
+   "lat": 40.696573,
+   "lng": -73.937026
   },
   {
    "name": "North Brooklyn YMCA Annex",
@@ -4571,6 +5135,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4582,7 +5147,9 @@
    "quote": "(40 beds) North Brooklyn YMCA Annex, 570 Jamaica Avenue, Brooklyn, NY 11208.",
    "source_date": "2026-09-03",
    "caveats": "City Record notice dated 2026-09-10. Annex under the Van Siclen Shelter contract (the parent is a women's shelter per the operator); the annex's own gender is not stated, so left blank.",
-   "id": "shelter-168"
+   "id": "shelter-170",
+   "lat": 40.684855,
+   "lng": -73.882704
   },
   {
    "name": "3rd Avenue Annex",
@@ -4598,6 +5165,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4609,7 +5177,9 @@
    "quote": "(140 beds) 3rd Avenue Annex, 30 3rd Avenue, Brooklyn, NY 11217.",
    "source_date": "2026-09-03",
    "caveats": "City Record notice dated 2026-09-10. Annex under the Van Siclen Shelter contract (the parent is a women's shelter per the operator); the annex's own gender is not stated, so left blank.",
-   "id": "shelter-169"
+   "id": "shelter-171",
+   "lat": 40.685676,
+   "lng": -73.980738
   },
   {
    "name": "Bedstuy Beacon Annex",
@@ -4625,6 +5195,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4636,7 +5207,9 @@
    "quote": "(90 beds) Bedstuy Beacon Annex, 1325 Atlantic Avenue, Brooklyn, NY 11216.",
    "source_date": "2026-09-03",
    "caveats": "City Record notice dated 2026-09-10. Annex under the Van Siclen Shelter contract (the parent is a women's shelter per the operator); the annex's own gender is not stated, so left blank.",
-   "id": "shelter-170"
+   "id": "shelter-172",
+   "lat": 40.678616,
+   "lng": -73.946265
   },
   {
    "name": "Greenpoint YMCA Annex",
@@ -4652,6 +5225,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4663,7 +5237,9 @@
    "quote": "Westchester Avenue Single Adult Shelter (164 Single Adult units) Annex site at Flushing YMCA/138-46 NORTHERN BLVD Flushing NY 11354 (154 Single Adult units) Annex site at Greenpoint YMCA/99 Meserole Avenue, Brooklyn NY 11222 (130 Single Adult units)",
    "source_date": "2024-07-06",
    "caveats": "City Record notice dated 2024-07-12. Annex of the Bronx Westchester Avenue single-adult shelter; operator not named in the notice.",
-   "id": "shelter-171"
+   "id": "shelter-173",
+   "lat": 40.727101,
+   "lng": -73.953395
   },
   {
    "name": "Clay Street Adult Family Residence",
@@ -4679,6 +5255,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4690,7 +5267,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Home/Life Services, Inc., located at 440 89th Street, 5th Floor, Brooklyn, NY 11209, for the provision of shelter facilities for Homeless Adult Families at 66 Clay Street, Brooklyn, NY 11222 .",
    "source_date": "2024-04-19",
    "caveats": "City Record notice dated 2024-05-06.",
-   "id": "shelter-172"
+   "id": "shelter-174",
+   "lat": 40.736323,
+   "lng": -73.955918
   },
   {
    "name": "3rd Avenue Adult Family Shelter",
@@ -4706,6 +5285,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4717,7 +5297,9 @@
    "quote": "Shelter Services for Homeless Adult Families located at 399 3rd Ave, Brooklyn, NY 11215.",
    "source_date": "2024-07-25",
    "caveats": "City Record notice dated 2024-07-31.",
-   "id": "shelter-173"
+   "id": "shelter-175",
+   "lat": 40.673339,
+   "lng": -73.989133
   },
   {
    "name": "East 104th Street Adult Family Residence",
@@ -4733,6 +5315,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4744,7 +5327,9 @@
    "quote": "To provide A Stand Alone Transitional Residence for Adult Families, 615 East 104th Street, Brooklyn, NY 11236.",
    "source_date": "2022-05-26",
    "caveats": "City Record notice dated 2022-06-03. Renewal term 7/1/2022–6/30/2026; no later notice found.",
-   "id": "shelter-174"
+   "id": "shelter-176",
+   "lat": 40.649988,
+   "lng": -73.898083
   },
   {
    "name": "Auburn Adult Residence",
@@ -4760,6 +5345,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4771,7 +5357,9 @@
    "quote": "A mandatory pre-bid conference has been scheduled on Friday, April 4,2016 at Auburn Adult Residence, at 10:00 AM, at 39 Auburn Place,Brooklyn New York 11205.",
    "source_date": "2016-03-15",
    "caveats": "City Record notice dated 2016-03-21. Only source found is a 2016 DHS bid notice; directory.json lists AUBURN FAMILY RESIDENCE as a DHS-run adult family shelter. Confirm current use.",
-   "id": "shelter-175"
+   "id": "shelter-177",
+   "lat": 40.6951,
+   "lng": -73.976475
   },
   {
    "name": "Flagstone Family Center",
@@ -4787,6 +5375,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4798,7 +5387,9 @@
    "quote": "Shelter services for homeless families with children located at 185, 186, 191, 196, 199, 202, 207 and 211-217 Amboy Street, Brooklyn, NY 11212.",
    "source_date": "2026-07-01",
    "caveats": "City Record notice dated 2026-07-08.",
-   "id": "shelter-176"
+   "id": "shelter-178",
+   "lat": 40.665935,
+   "lng": -73.913423
   },
   {
    "name": "Albemarle Family Residence",
@@ -4814,6 +5405,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4825,7 +5417,9 @@
    "quote": "Shelter services for families with children at Albemarle Family Residence, 2514 Albemarle Road, Brooklyn, NY 11226.",
    "source_date": "2026-06-23",
    "caveats": "City Record notice dated 2026-06-29.",
-   "id": "shelter-177"
+   "id": "shelter-179",
+   "lat": 40.647807,
+   "lng": -73.953613
   },
   {
    "name": "Woodruff Family Residence",
@@ -4841,6 +5435,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4852,7 +5447,9 @@
    "quote": "for Homeless Families With Children at Woodruff Family Residence, 155 Woodruff Avenue, Brooklyn, NY 11226.",
    "source_date": "2025-07-16",
    "caveats": "City Record notice dated 2025-07-22.",
-   "id": "shelter-178"
+   "id": "shelter-180",
+   "lat": 40.654642,
+   "lng": -73.960995
   },
   {
    "name": "Kingston Family Residence",
@@ -4868,6 +5465,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4879,7 +5477,9 @@
    "quote": "Renewal for homeless families at Kingston Family Residence, 64 Kingston Avenue, Brooklyn, NY 11216.",
    "source_date": "2023-06-15",
    "caveats": "City Record notice dated 2023-06-21.",
-   "id": "shelter-179"
+   "id": "shelter-181",
+   "lat": 40.677727,
+   "lng": -73.941629
   },
   {
    "name": "New York Family Residence",
@@ -4895,6 +5495,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4906,7 +5507,9 @@
    "quote": "Shelter Services for Homeless Families with Children at New York Family Residence located at 1040 East New York Avenue, Brooklyn N.Y. 11212.",
    "source_date": "2025-08-01",
    "caveats": "City Record notice dated 2025-08-07.",
-   "id": "shelter-180"
+   "id": "shelter-182",
+   "lat": 40.664682,
+   "lng": -73.927726
   },
   {
    "name": "Tilden Hall Residence",
@@ -4922,6 +5525,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4933,7 +5537,9 @@
    "quote": "Tilden Hall Residence, located at 2518 -2520 Tilden Avenue, Brooklyn, NY 11226.",
    "source_date": "2025-07-03",
    "caveats": "City Record notice dated 2025-07-09.",
-   "id": "shelter-181"
+   "id": "shelter-183",
+   "lat": 40.646438,
+   "lng": -73.953315
   },
   {
    "name": "Glenmore Family Residence",
@@ -4949,6 +5555,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4960,7 +5567,9 @@
    "quote": "Shelter services for homeless families with children (FWC) at Glenmore Family Residence, located at 820 Glenmore Avenue, Brooklyn, NY 11208.",
    "source_date": "2025-06-12",
    "caveats": "City Record notice dated 2025-06-18.",
-   "id": "shelter-182"
+   "id": "shelter-184",
+   "lat": 40.675428,
+   "lng": -73.879602
   },
   {
    "name": "Rose McCarthy Residence",
@@ -4976,6 +5585,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -4987,7 +5597,9 @@
    "quote": "(SUS) for the provision of vital services for the agency\u001as clients at the Rose McCarthy Residence, located at 882 Dumont Ave & 433 VanSiclen, Brooklyn, NY 11207.",
    "source_date": "2026-07-17",
    "caveats": "City Record notice dated 2026-07-23.",
-   "id": "shelter-183"
+   "id": "shelter-185",
+   "lat": 40.669128,
+   "lng": -73.889123
   },
   {
    "name": "Dean Street Family Shelter",
@@ -5003,6 +5615,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5014,7 +5627,9 @@
    "quote": "The Dean Street site, located at 2155 Dean Street, Brooklyn, NY11233, has 12 Families with Children shelter units.",
    "source_date": "2025-07-22",
    "caveats": "City Record notice dated 2025-07-28.",
-   "id": "shelter-184"
+   "id": "shelter-186",
+   "lat": 40.675258,
+   "lng": -73.916078
   },
   {
    "name": "Fannie Barnes Residence",
@@ -5030,6 +5645,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5041,7 +5657,9 @@
    "quote": "The Fannie Barnes s Residence, located at 829 Saratoga Avenue, Brooklyn, NY 11212, has 33 units.",
    "source_date": "2025-07-22",
    "caveats": "City Record notice dated 2025-07-28.",
-   "id": "shelter-185"
+   "id": "shelter-187",
+   "lat": 40.660327,
+   "lng": -73.91475
   },
   {
    "name": "Maternity Family Residence",
@@ -5057,6 +5675,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5068,7 +5687,9 @@
    "quote": "EPIN 07119P8267KXLR001.To provide Shelter Services for Families with Children at Maternity Family Residence at 808 Saratoga Avenue, Brooklyn, NY 11212.",
    "source_date": "2024-01-26",
    "caveats": "City Record notice dated 2024-02-02. Name indicates a maternity residence; source only says 'Families with Children'.",
-   "id": "shelter-186"
+   "id": "shelter-188",
+   "lat": 40.660842,
+   "lng": -73.91558
   },
   {
    "name": "Liberty Avenue Family Residence",
@@ -5084,6 +5705,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5095,7 +5717,9 @@
    "quote": "To provide a Shelter Services for Homeless Families with Children at Liberty Avenue Family Residence 51 Junius Street, Brooklyn, NY 11212.",
    "source_date": "2023-02-23",
    "caveats": "City Record notice dated 2023-03-02. Renewal 7/1/2023–6/30/2027.",
-   "id": "shelter-187"
+   "id": "shelter-189",
+   "lat": 40.673699,
+   "lng": -73.903725
   },
   {
    "name": "Junius Street Family Residence",
@@ -5111,6 +5735,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5122,7 +5747,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Women in Need, Inc., located at One State Street Plaza, 18th Floor, New York, NY 10004, for the provision of Shelter Facilities for Homeless Families with Children at 1-25 Junius Street, Brooklyn, NY 11212 .",
    "source_date": "2024-04-19",
    "caveats": "City Record notice dated 2024-05-06.",
-   "id": "shelter-188"
+   "id": "shelter-190",
+   "lat": 40.674826,
+   "lng": -73.904011
   },
   {
    "name": "Glenwood Residence",
@@ -5138,6 +5765,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5149,7 +5777,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Women in Need, Inc., located at One State Street Plaza, 18th Floor, New York, NY 10004, for the provision of shelter facilities for homeless families with children at 4612 Glenwood Road, Brooklyn, NY 11234.",
    "source_date": "2022-04-11",
    "caveats": "City Record notice dated 2022-04-18. Contract 7/1/2022–6/30/2027.",
-   "id": "shelter-189"
+   "id": "shelter-191",
+   "lat": 40.634016,
+   "lng": -73.932544
   },
   {
    "name": "Dr. McKinney Steward Family Residence (Neptune)",
@@ -5165,6 +5795,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5176,7 +5807,9 @@
    "quote": "Shelter Services for Homeless Families at 2201-2227 Neptune Ave, Brooklyn, NY 11224",
    "source_date": "2022-09-10",
    "caveats": "City Record notice dated 2022-09-16.",
-   "id": "shelter-190"
+   "id": "shelter-192",
+   "lat": 40.5788,
+   "lng": -73.99025
   },
   {
    "name": "Stockholm Family Residence",
@@ -5192,6 +5825,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5203,7 +5837,9 @@
    "quote": "between the Department of Homeless Services of the City of New York and Volunteers of America Greater New York, Inc., located at 135 West 50 Street, New York, NY 10020, for the provision of Stand Alone Transitional Residence for Families with Children at Stockholm Family Residence, located at 99-103 Stockholm Street, Brooklyn NY 11221.",
    "source_date": "2024-01-17",
    "caveats": "City Record notice dated 2024-02-05. Operator changed from SCO Family of Services to VOA-GNY from 7/1/2024.",
-   "id": "shelter-191"
+   "id": "shelter-193",
+   "lat": 40.697722,
+   "lng": -73.92483
   },
   {
    "name": "Bushwick Family Residence",
@@ -5219,6 +5855,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5230,7 +5867,9 @@
    "quote": "a proposed contract between the Department of Homeless Services of the City of New York and Volunteers of America Greater New York, Inc., located at 135 West 50th Street, 9th Floor, New York, NY 10020, for the provision of a Stand Alone Transitional Residence for Homeless Families with Children at 1675 Broadway, Brooklyn, NY 11207.",
    "source_date": "2023-12-12",
    "caveats": "City Record notice dated 2023-12-18.",
-   "id": "shelter-192"
+   "id": "shelter-194",
+   "lat": 40.684461,
+   "lng": -73.912413
   },
   {
    "name": "Legacy Family Residence (Flatlands Family Shelter)",
@@ -5246,6 +5885,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5257,7 +5897,9 @@
    "quote": "between the Department of Homeless Services of the City of New York and Volunteers Of America Greater New York, Inc., located at 135 West 50th Street, 9th Floor, New York, NY 10020, for the provision of a Stand Alone Transitional Residence for Families with Children at Flatlands Family Shelter, 108-75 Avenue D, Brooklyn, NY 11236.",
    "source_date": "2022-02-07",
    "caveats": "City Record notice dated 2022-02-14.",
-   "id": "shelter-193"
+   "id": "shelter-195",
+   "lat": null,
+   "lng": null
   },
   {
    "name": "The Kensington Family Shelter",
@@ -5273,6 +5915,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5284,7 +5927,9 @@
    "quote": "To provide a Stand Alone Transitional Residence for Families with Children, 385 McDonald Avenue, Brooklyn, NY 11218.",
    "source_date": "2022-03-17",
    "caveats": "City Record notice dated 2022-03-24. Latest notice found: renewal 7/1/2022–6/30/2026. Phone from the DonateNYC (nyc.gov) directory listing for this shelter.",
-   "id": "shelter-194"
+   "id": "shelter-196",
+   "lat": 40.644561,
+   "lng": -73.979357
   },
   {
    "name": "St. John's Family Center",
@@ -5300,6 +5945,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5311,7 +5957,9 @@
    "quote": "1604, 1620 & 1630 St. Johns Place, Brooklyn, NY 11233 (Group 39).",
    "source_date": "2022-05-13",
    "caveats": "City Record notice dated 2022-05-19.",
-   "id": "shelter-195"
+   "id": "shelter-197",
+   "lat": 40.669907,
+   "lng": -73.923691
   },
   {
    "name": "Pacific Street Family Residence",
@@ -5327,6 +5975,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5338,7 +5987,9 @@
    "quote": "Vendor/Address Site Address E-PIN # Amount Urban Resource Institute 1270 Pacific Street 07110P0002259 $99,961,899.00 75 Broad Street, 5th Floor Brooklyn, NY 11216 New York, NY 10004 The proposed contractor has been selected by Competitive Sealed Proposal Method (Open Ended Request for Proposal), pursuant to Section 3-03 (b)(2) of the Procurement Policy Board Rules.",
    "source_date": "2019-04-26",
    "caveats": "City Record notice dated 2019-05-03. Matched to directory 'PACIFIC PLACE' (URI) by operator + street; contract runs to 2049.",
-   "id": "shelter-196"
+   "id": "shelter-198",
+   "lat": 40.677381,
+   "lng": -73.949091
   },
   {
    "name": "Pulaski Family Residence",
@@ -5354,6 +6005,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5365,7 +6017,9 @@
    "quote": "Pulasky Family Residence 07119I0003031 $22,627,291.00 1028 Dahill Rd 466, 468, 470, 476 Pulasky Street Brooklyn, NY 11204 Brooklyn, NY 11221 The proposed contractor has been selected through HHS ACCELERATOR, pursuant to Section 3-16 of the Procurement Policy Board Rules.",
    "source_date": "2021-01-07",
    "caveats": "City Record notice dated 2021-01-14. Notice spells it 'Pulasky'. Directory.json lists provider Overcoming-Love Ministries; 2021 notice awards it to Midway Living. Term 3/1/2021–6/30/2025 with renewal option to 2029.",
-   "id": "shelter-197"
+   "id": "shelter-199",
+   "lat": 40.694257,
+   "lng": -73.931756
   },
   {
    "name": "Kianga House",
@@ -5381,6 +6035,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5392,7 +6047,9 @@
    "quote": "Vendor/Address Site/Address E-PIN # Amount Brooklyn Neighborhood Kianga House 07110P0002148 $5,552,736.00 Improvement Association 1504 Bedford Avenue 465 Sterling Pl.",
    "source_date": "2018-05-03",
    "caveats": "City Record notice dated 2018-05-07. Contract 2018–2023 with option to 2027; no later notice found.",
-   "id": "shelter-198"
+   "id": "shelter-200",
+   "lat": 40.67466,
+   "lng": -73.962671
   },
   {
    "name": "Bridge Family Residence II",
@@ -5408,6 +6065,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5419,7 +6077,9 @@
    "quote": "Families with Children's Shelter at 642,646,652 Willoughby Ave, Br; 1149 Putnam Ave, Brooklyn NY 11221",
    "source_date": "2022-06-20",
    "caveats": "City Record notice dated 2022-06-24. Operator per directory.json; notice text does not name it. Willoughby Ave ZIP printed as 11206 in 2017 notices.",
-   "id": "shelter-199"
+   "id": "shelter-201",
+   "lat": 40.695859,
+   "lng": -73.933599
   },
   {
    "name": "Flushing Family Residence",
@@ -5435,6 +6095,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5446,7 +6107,9 @@
    "quote": "To operate Stand Alone Transitional Residence for Homeless Families (OERFP) at 1226 Flushing Avenue, Brooklyn, NY 11237",
    "source_date": "2022-07-27",
    "caveats": "City Record notice dated 2022-08-02.",
-   "id": "shelter-200"
+   "id": "shelter-202",
+   "lat": 40.707556,
+   "lng": -73.923629
   },
   {
    "name": "Rogers Avenue Family Residence",
@@ -5462,6 +6125,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5473,7 +6137,9 @@
    "quote": "To provide ShelterServices for Families with Children, 267 Rogers Avenue, Brooklyn, NY 11225.",
    "source_date": "2022-05-25",
    "caveats": "City Record notice dated 2022-06-02. Renewal 5/15/2022–5/14/2027.",
-   "id": "shelter-201"
+   "id": "shelter-203",
+   "lat": 40.66686,
+   "lng": -73.95308
   },
   {
    "name": "Park Avenue Manor",
@@ -5489,6 +6155,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5500,7 +6167,9 @@
    "quote": "Located at 652 Park Avenue, Brooklyn, NY 11206 (Group 23).",
    "source_date": "2022-09-15",
    "caveats": "City Record notice dated 2022-09-21.",
-   "id": "shelter-202"
+   "id": "shelter-204",
+   "lat": 40.69742,
+   "lng": -73.949306
   },
   {
    "name": "St. Edwards Rapid Re-Housing Center",
@@ -5516,6 +6185,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5527,7 +6197,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Westhab, Inc., located at 8 Bashford Street, Yonkers, NY 10701, for the provision of Shelter Facility for Homeless Families with Children at 108 St. Edwards Street, Brooklyn, NY 11205.",
    "source_date": "2021-11-15",
    "caveats": "City Record notice dated 2021-11-18. A 2022 notice (20220627014) lists '96 St. Edwards Street' for the same contract.",
-   "id": "shelter-203"
+   "id": "shelter-205",
+   "lat": 40.69407,
+   "lng": -73.97824
   },
   {
    "name": "Coyle Family Residence",
@@ -5543,6 +6215,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5554,7 +6227,9 @@
    "quote": "located at 8 Bashford St., Yonkers, NY 10701, for the provision of Shelter Facilities for Homeless Families With Children at 2134 Coyle Street, Brooklyn NY 11229.",
    "source_date": "2023-09-11",
    "caveats": "City Record notice dated 2023-09-18.",
-   "id": "shelter-204"
+   "id": "shelter-206",
+   "lat": 40.600255,
+   "lng": -73.937349
   },
   {
    "name": "Kings Highway Family Residence",
@@ -5570,6 +6245,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5581,7 +6257,9 @@
    "quote": "IN THE MATTER OF a proposed contract between the Department of Homeless Services of the City of New York and Home/Life Services, Inc., located at 9201 4th Avenue, 6th Floor, Brooklyn, NY 11209, for the provision of Shelter Facilities for Homeless Families with Children at 9720 Kings Highway, Brooklyn, NY 11212.",
    "source_date": "2023-03-22",
    "caveats": "City Record notice dated 2023-03-30.",
-   "id": "shelter-205"
+   "id": "shelter-207",
+   "lat": 40.661111,
+   "lng": -73.919066
   },
   {
    "name": "Hello Opportunity",
@@ -5597,6 +6275,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5608,7 +6287,9 @@
    "quote": "21 East 29th Street d/b/a WESTCOP Brooklyn NY 11226 2 Westchester Plaza, Suite 137 Elmsford, NY 10523 The proposed contractor has been selected through HHS ACCELERATOR, pursuant to Section 3-16 of the Procurement Policy Board Rules.",
    "source_date": "2021-07-01",
    "caveats": "City Record notice dated 2021-07-06.",
-   "id": "shelter-206"
+   "id": "shelter-208",
+   "lat": 40.647617,
+   "lng": -73.949973
   },
   {
    "name": "Logan Fountain Family Shelter",
@@ -5624,6 +6305,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5635,7 +6317,9 @@
    "quote": "Logan Fountain 5 21PHEDC03401 $470,508,000.00 115 East 13th Street Family Shelter New York, NY 10003 3200 Atlantic Avenue Brooklyn, NY 11208 The proposed contractor was selected through HHS ACCELERATOR, pursuant to Section 3-16 of the Procurement Policy Board Rules.",
    "source_date": "2021-06-09",
    "caveats": "City Record notice dated 2021-06-11.",
-   "id": "shelter-207"
+   "id": "shelter-209",
+   "lat": 40.67969,
+   "lng": -73.87694
   },
   {
    "name": "Midway Living 10th Avenue / 50th Street residence",
@@ -5651,6 +6335,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5662,7 +6347,9 @@
    "quote": "Shelter Facilities for Homeless Families with Children at 5001 10th Avenue, Brooklyn, NY 11219 and 1016 50th Street, Brooklyn, NY 11219.",
    "source_date": "2025-07-29",
    "caveats": "City Record notice dated 2025-08-04. May correspond to directory 'MANOR' (Midway Living) but not named in notice.",
-   "id": "shelter-208"
+   "id": "shelter-210",
+   "lat": 40.637928,
+   "lng": -73.998851
   },
   {
    "name": "Pennsylvania Avenue Family Residence",
@@ -5678,6 +6365,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5689,7 +6377,9 @@
    "quote": "To provide a Stand Alone Shelter Services for Families with Children, 526 Pennsylvania Avenue, Brooklyn, NY 11207.",
    "source_date": "2022-05-24",
    "caveats": "City Record notice dated 2022-06-01. May correspond to directory 'PENN HOUSE' (Midway Living) but not named in notice. Renewal 7/1/2022–6/30/2026.",
-   "id": "shelter-209"
+   "id": "shelter-211",
+   "lat": 40.664187,
+   "lng": -73.894174
   },
   {
    "name": "802 Hotel",
@@ -5705,6 +6395,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5716,7 +6407,9 @@
    "quote": "Emergency shelter services for families with children at 802 Flushing Avenue, Brooklyn, NY 11206.",
    "source_date": "2025-05-30",
    "caveats": "City Record notice dated 2025-06-05. Also listed in the Aug 2026 Integrated Support Hotels notice (20260728012).",
-   "id": "shelter-210"
+   "id": "shelter-212",
+   "lat": 40.700984,
+   "lng": -73.939957
   },
   {
    "name": "Linden House",
@@ -5732,6 +6425,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5743,7 +6437,9 @@
    "quote": "Linden House 07110P0002237 $32,328,832.00 45 Main Street, Suite 711 200 Linden Boulevard Brooklyn, NY 11201 Brooklyn, NY 11226 The proposed contractor has been selected by means of the Competitive Sealed Proposal method (Open Ended Request for Proposals), pursuant to Section 3-03 (b)(2) of the Procurement Policy Board Rules.",
    "source_date": "2018-07-02",
    "caveats": "City Record notice dated 2018-07-05. Contract 10/1/2018–9/30/2023 with option to 2027; no later notice found.",
-   "id": "shelter-211"
+   "id": "shelter-213",
+   "lat": 40.65226,
+   "lng": -73.951222
   },
   {
    "name": "WIN 4th Avenue Family Residence (535 4th Ave)",
@@ -5759,6 +6455,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5770,7 +6467,9 @@
    "quote": "535 4th Avenue 07119I0003001 $147,413,525.00 115 West 31st Street Brooklyn, NY 11215 New York, NY 10001 The proposed contractor has been selected through HHS ACCELERATOR Method, pursuant to Section 3-16 of the Procurement Policy Board Rules.",
    "source_date": "2019-06-07",
    "caveats": "City Record notice dated 2019-06-14. Contract 9/1/2019–6/30/2028. Possibly directory 'SHIRLEY CHISOLM' or 'Rosa Parks Family Residence' (both WIN) but not named in notice.",
-   "id": "shelter-212"
+   "id": "shelter-214",
+   "lat": 40.666901,
+   "lng": -73.99114
   },
   {
    "name": "WIN 4th Avenue Family Residence (555 4th Ave)",
@@ -5786,6 +6485,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5797,7 +6497,9 @@
    "quote": "555 4th Avenue 07119I0003002 $114,177,640.00 115 West 31st Street Brooklyn, NY 11215 New York, NY 10001 The proposed contractor has been selected through HHS ACCELERATOR Method, pursuant to Section 3-16 of the Procurement Policy Board Rules.",
    "source_date": "2019-06-07",
    "caveats": "City Record notice dated 2019-06-14. Contract 12/1/2019–6/30/2028.",
-   "id": "shelter-213"
+   "id": "shelter-215",
+   "lat": 40.666338,
+   "lng": -73.991628
   },
   {
    "name": "Single Adult Intake Center (men)",
@@ -5812,6 +6514,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5823,7 +6526,9 @@
    "quote": "All single adult males must apply at: Single Adult Intake Center 8 E. 3rd Street New York, NY 10003",
    "source_date": null,
    "caveats": "Official DHS intake point for all single men in NYC. Same building as Project Renewal's Third Street Men's Shelter.",
-   "id": "shelter-214"
+   "id": "shelter-216",
+   "lat": 40.725867,
+   "lng": -73.991115
   },
   {
    "name": "Kenton Hall Men's Shelter",
@@ -5838,6 +6543,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -5852,7 +6558,9 @@
    "quote": "Health Care, Scattersite Permanent Supportive Housing 11 KENTON HALL MEN’S SHELTER   333 Bowery, New York, NY 10002 Serves: Men with mental illness diagnoses and/ or substance use histories Offers: Emergency Shelter, Mental Health Care, Occupational Thera",
    "source_date": null,
    "caveats": "City Record (2025) lists ZIP 10003 for the same address; operator says 10002.",
-   "id": "shelter-215"
+   "id": "shelter-217",
+   "lat": 40.714943,
+   "lng": -73.995706
   },
   {
    "name": "Fort Washington Men's Shelter",
@@ -5867,6 +6575,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -5880,7 +6589,9 @@
    "quote": "Occupational Therapy, Permanent Supportive Housing 8 FORT WASHINGTON MEN’S SHELTER    651 West 168th Street New York, NY 10032 Serves: Men with mental illness diagnoses Offers: Dental Care, Emergency Shelter, Mental Health Care, Occupational Therapy, Primary Care 9",
    "source_date": null,
    "caveats": "Inside the Fort Washington Armory. DHS renewal notice (IntentotRenew_ProjectRenewal_FortWashington.pdf) confirms this site address.",
-   "id": "shelter-216"
+   "id": "shelter-218",
+   "lat": 40.842156,
+   "lng": -73.941334
   },
   {
    "name": "New Providence Women's Shelter",
@@ -5895,6 +6606,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -5909,7 +6621,9 @@
    "quote": "Shelter, Mental Health Care, Primary Care Nursing 14 NEW PROVIDENCE WOMEN’S SHELTER AND HOUSING    225 East 45th Street New York, NY 10017 Serves: Women with mental illness diagnoses and/or substance use histories Offers: Emergency Shelter, Mental Health Care, Occupational Ther",
    "source_date": null,
    "caveats": "CAUTION: operator map (Oct 2023) says \"Redevelopment Projected Opening: Fall 2026\"; the site may be closed or partly open during redevelopment.",
-   "id": "shelter-217"
+   "id": "shelter-219",
+   "lat": 40.75254,
+   "lng": -73.97209
   },
   {
    "name": "West 59th Street Women's Shelter",
@@ -5924,6 +6638,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -5937,7 +6652,9 @@
    "quote": "Occupational Therapy, Permanent Supportive Housing 20 WEST 59TH STREET WOMEN’S SHELTER    537 West 59th Street New York, NY 10019 Serves: Women with mental illness diagnoses Offers: Emergency Shelter, Occupational Therapy, Primary Care Projected Opening: March 2025 21",
    "source_date": null,
    "caveats": "Operator map (Oct 2023) listed \"Projected Opening: March 2025\"; DHS contract for this site is in City Record 20210326007. Not in the Dec 2022 directory.",
-   "id": "shelter-218"
+   "id": "shelter-220",
+   "lat": 40.77132,
+   "lng": -73.98917
   },
   {
    "name": "30th Street Men's Assessment Shelter",
@@ -5952,6 +6669,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5963,7 +6681,9 @@
    "quote": "DHS/Health Services Office intends to enter into a Negotiated Acquisition Extension (NAE) contract for on-site medical and behavioral services at 30th Street Men's Assessment, located at 400 E 30th St, New York, NY 10016 with current provider Care for the Homeless.",
    "source_date": "2026-06-09",
    "caveats": "CAUTION: a May 2026 City Record notice (20260427018) mentions \"the relocation of the 30th Street Shelter\", and men's intake has moved to 8 E. 3rd St. Confirm before sending anyone.",
-   "id": "shelter-219"
+   "id": "shelter-221",
+   "lat": 40.740598,
+   "lng": -73.974727
   },
   {
    "name": "Schwartz Assessment Shelter",
@@ -5979,6 +6699,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -5990,7 +6711,9 @@
    "quote": "Site: Schwartz Assessment Shelter 65 Charles Gay Loop, New York, NY , 10035.",
    "source_date": null,
    "caveats": "Gender not stated in source.",
-   "id": "shelter-220"
+   "id": "shelter-222",
+   "lat": 40.784334,
+   "lng": -73.931719
   },
   {
    "name": "Clarke Thomas Shelter",
@@ -6005,6 +6728,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6018,7 +6742,9 @@
    "quote": "The Department of Homeless Services of the New York City Department of Social Services, plans to renew (1) contract with the contractor listed below, to provide Shelter Services for Single Adults at Clarke Thomas Shelter located at 121 Hell Gate Circle, New York, NY 10035.",
    "source_date": "2024-01-30",
    "caveats": "Gender from the DHS directory name (\"Men's\"); mental-health focus from City Record 20191008109 (\"Clarke Thomas Mental Health Shelter\").",
-   "id": "shelter-221"
+   "id": "shelter-223",
+   "lat": 40.786119,
+   "lng": -73.928517
   },
   {
    "name": "Keener Rapid Rehousing Shelter",
@@ -6033,6 +6759,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6044,7 +6771,9 @@
    "quote": "The Department of Homeless Services intends to enter into a one-year Negotiated Acquisition Extension (NAE) for the existing vendor, HELP Social Service Corporation, to provide services at the Keener Rapid Rehousing Shelter, located at 64Sunken Garden Loop Wards Island, NY, NY 10035.",
    "source_date": "2025-07-15",
    "caveats": "Gender from the DHS directory name. The source prints \"64Sunken Garden Loop\" with no space.",
-   "id": "shelter-222"
+   "id": "shelter-224",
+   "lat": 40.78522,
+   "lng": -73.931516
   },
   {
    "name": "HELP Supportive Employment Center (SEC)",
@@ -6060,6 +6789,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6073,7 +6803,9 @@
    "quote": "Department of Homeless Services (DHS) is requesting a one-year Negotiated Acquisition Extension (NAE) with Help Social Service Corporation to provide vital services for the agency's clients at the Supportive Employment Shelter, located at 111 Sunken Garden Loop (One Wards Island), New York, NY 10035.",
    "source_date": "2026-03-16",
    "caveats": "Gender not stated in source.",
-   "id": "shelter-223"
+   "id": "shelter-225",
+   "lat": 40.786065,
+   "lng": -73.932483
   },
   {
    "name": "Audubon Shelter",
@@ -6089,6 +6821,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6100,7 +6833,9 @@
    "quote": "Stand Alone Transitional Residence shelter services for homeless single adults at Audubon Shelter, 284-286 Audubon Avenue, New York, NY 10033.",
    "source_date": "2024-07-16",
    "caveats": "GENDER CONFLICT: the DHS directory (2022) says \"Womens\", City Record 20240129109 (Feb 2024) says \"Audubon Mens Shelter\", and Manhattan Times reported a switch to 175 single women. Gender left blank; confirm with DHS.",
-   "id": "shelter-224"
+   "id": "shelter-226",
+   "lat": 40.847791,
+   "lng": -73.933398
   },
   {
    "name": "Women's Mental Health Shelter at the Park Avenue Armory",
@@ -6115,6 +6850,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": 45,
    "max_age": null,
    "populations": [
@@ -6128,7 +6864,9 @@
    "quote": "Park Avenue Armory, 643 Park Avenue, New York, NY 10065",
    "source_date": null,
    "caveats": "Operator: serves \"homeless women age 45-and-over living with severe and persistent mental illness\"; \"We can only accept new clients who have been assigned to us by DHS.\"",
-   "id": "shelter-225"
+   "id": "shelter-227",
+   "lat": 40.76724,
+   "lng": -73.965501
   },
   {
    "name": "52nd Street Women's Center",
@@ -6143,6 +6881,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6157,7 +6896,9 @@
    "quote": "52nd Street Women’s Center 427 W.52nd Street New York, NY, 10019 (212) 366-4459 52nd Street Women’s Center contains 120-beds that will house mentally ill and medically frail women",
    "source_date": null,
    "caveats": "Site address 427-429 West 52nd Street also confirmed in the DHS renewal notice IntenttoRenew_CarefortheHomeless.pdf.",
-   "id": "shelter-226"
+   "id": "shelter-228",
+   "lat": 40.765437,
+   "lng": -73.989251
   },
   {
    "name": "Alexander Abraham Residence (WIN 51st Street Shelter)",
@@ -6172,6 +6913,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6186,7 +6928,9 @@
    "quote": "Alexander Abraham Residence 341 West 51st Street (212) 582-8680 The Alexander Abraham Residence provides shelter and support services for homeless women with mental health diagnoses and chemical dependencies",
    "source_date": null,
    "caveats": "City Record 20240912007 (2024) confirms a WIN single-adult shelter at 341 West 51st Street, New York, NY 10019. The directory match is inferred (WIN, women, West 51st).",
-   "id": "shelter-227"
+   "id": "shelter-229",
+   "lat": 40.763778,
+   "lng": -73.987134
   },
   {
    "name": "Fane Shelter",
@@ -6201,6 +6945,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6212,7 +6957,9 @@
    "quote": "Shelter Facilities for Homeless Single Adults at Fane Shelter located at 205 West 135th Street, New York, NY 10030.",
    "source_date": "2026-07-15",
    "caveats": "Gender from the DHS directory name.",
-   "id": "shelter-228"
+   "id": "shelter-230",
+   "lat": 40.815817,
+   "lng": -73.94421
   },
   {
    "name": "The Spot Shelter (126th Street Shelter)",
@@ -6228,6 +6975,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6239,7 +6987,9 @@
    "quote": "Located at 31-35 West 126th Street, New York, NY 10027.",
    "source_date": "2026-07-28",
    "caveats": "City Record 20210409008 names it \"The Spot – 126th Street Shelter\", which matches the masked directory name \"xxxth Street Shelter\" (SUS). Gender not stated.",
-   "id": "shelter-229"
+   "id": "shelter-231",
+   "lat": 40.807787,
+   "lng": -73.942951
   },
   {
    "name": "Julio's Place",
@@ -6255,6 +7005,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6266,7 +7017,9 @@
    "quote": "of Homeless Services is requesting a one-year Negotiated Acquisition Extension (NAE) contract with ACACIA Network Housing Inc. This is NAE for provision of shelter services for 72 single adults at Julio's Place Shelter, located at 102 West 128th Street, New York, NY 10027 and Clarion Hotel at 429 Park Avenue South, New York, NY 10",
    "source_date": "2024-06-21",
    "caveats": null,
-   "id": "shelter-230"
+   "id": "shelter-232",
+   "lat": 40.809755,
+   "lng": -73.944687
   },
   {
    "name": "Harlem Men's Shelter",
@@ -6281,6 +7034,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6292,7 +7046,9 @@
    "quote": "Located at 170-174 East 123rd Street, New York, NY 10035 (135 beds) and annex site at Hotel Omega, 27 Pennsylvania A",
    "source_date": "2026-06-15",
    "caveats": "The site name comes from the DHS renewal notice Renewal-Intent_to_Award-07122P0004001R001.pdf (\"Site: Harlem's Men's Shelter, Annex Site: Hotel Omega\"). The City Record gives the address with the same Hotel Omega annex.",
-   "id": "shelter-231"
+   "id": "shelter-233",
+   "lat": 40.802542,
+   "lng": -73.937745
   },
   {
    "name": "Samaritan Daytop Village shelter, 225 East 53rd Street",
@@ -6308,6 +7064,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6319,7 +7076,9 @@
    "quote": "Services of the City of New York and Samaritan Daytop Village, Inc., located at 138-02 Queens Boulevard, Briarwood, NY 11435, for the provision of Shelter Facilities for Homeless Single Adults at 225 East 53rd Street, New York, NY 10022.",
    "source_date": "2023-12-12",
    "caveats": "This may be the directory's masked \"xxrd Street Men's Shelter\" (Samaritan Daytop), but that match is not confirmed.",
-   "id": "shelter-232"
+   "id": "shelter-234",
+   "lat": 40.757412,
+   "lng": -73.968223
   },
   {
    "name": "Harlem YMCA shelter site",
@@ -6335,6 +7094,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6346,7 +7106,9 @@
    "quote": "to enter into a Negotiated Acquisition Extension (NAE) contract with Samaritan Daytop Village Inc. for the following shelter locations: Forbell Men Shelter 338 Forbell Street Brooklyn, NY 11208 Harlem YMCA 180 West 135th Street New York, NY 10030 Colonial (Jamaica) YMCA 87-70 &72 148th Street Jamaica NY 1",
    "source_date": "2026-02-25",
    "caveats": "Listed as a shelter location under the Forbell Men's Shelter contract (FY27 extension). Gender not stated for this site.",
-   "id": "shelter-233"
+   "id": "shelter-235",
+   "lat": 40.814712,
+   "lng": -73.942976
   },
   {
    "name": "Harlem Employment Shelter (Harlem I)",
@@ -6362,6 +7124,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6375,7 +7138,9 @@
    "quote": "SHELTER FOR SINGLE ADULTS THE DOE FUND INC 345 E 102nd Street, Suite 305 New York, NY 10029 Site: Harlem Employment Shelter 2960 Frederick Douglass Blvd, New York, NY 10039 EPIN: 07119P8234KXLR001 Renewal Term: 7/1/2023'6/30/2027",
    "source_date": "2023-03-07",
    "caveats": null,
-   "id": "shelter-234"
+   "id": "shelter-236",
+   "lat": 40.829776,
+   "lng": -73.935888
   },
   {
    "name": "George Daly House",
@@ -6391,6 +7156,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": true,
    "min_age": 45,
    "max_age": null,
    "populations": [
@@ -6404,7 +7170,9 @@
    "quote": "269 East 4th Street, New York, NY 10009",
    "source_date": null,
    "caveats": "Operator: transitional housing for \"homeless men and women ages 45 and older\". The same site address is in the DHS renewal notice (George Daly, EPIN 07119P8235KXLR001).",
-   "id": "shelter-235"
+   "id": "shelter-237",
+   "lat": 40.722939,
+   "lng": -73.981251
   },
   {
    "name": "Jack Ryan Residence",
@@ -6419,6 +7187,7 @@
    "gender": [
     "man"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6432,7 +7201,9 @@
    "quote": "Shelter services to homeless single adults at Jack Ryan Residence, 127 West 25th Street, New York, NY 11011.",
    "source_date": "2026-08-05",
    "caveats": "The source prints ZIP \"11011\", a typo; 10001 is the ZIP for this block (City Record 20250909010). BRC website: \"Men with mental health service needs\", Chelsea, 200 beds.",
-   "id": "shelter-236"
+   "id": "shelter-238",
+   "lat": 40.744923,
+   "lng": -73.993042
   },
   {
    "name": "BRC Bowery Safe Haven",
@@ -6448,6 +7219,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6459,7 +7231,9 @@
    "quote": "Renewal + 25% Miscellaneous Allowance for Chronic Homeless Single Adults at Bowery Safe Haven, 315 Bowery, New York, NY 10003",
    "source_date": "2023-06-15",
    "caveats": "For chronically homeless single adults.",
-   "id": "shelter-237"
+   "id": "shelter-239",
+   "lat": 40.725106,
+   "lng": -73.991742
   },
   {
    "name": "The Lex Safe Haven",
@@ -6475,6 +7249,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6486,7 +7261,9 @@
    "quote": "The Lex Safe Haven AT 566 West 182nd Street, New York, NY 10033",
    "source_date": "2023-05-26",
    "caveats": null,
-   "id": "shelter-238"
+   "id": "shelter-240",
+   "lat": 40.849443,
+   "lng": -73.932664
   },
   {
    "name": "BRC Inwood Shelter (Inwood Women's Residence)",
@@ -6501,6 +7278,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6514,7 +7292,9 @@
    "quote": "Provision of Shelter Facilities for Homeless Single Adults at Inwood Mental Health Center at 3966 10th Ave, NY 10034",
    "source_date": "2022-02-01",
    "caveats": "BRC website lists \"Inwood Women's Residence\" (Inwood, Manhattan; single adult women; 116 beds). City Record 20200924014 names BRC's \"Inwood Shelter\" at 3966 10th Avenue. Opened after the 2022 directory.",
-   "id": "shelter-239"
+   "id": "shelter-241",
+   "lat": 40.86758,
+   "lng": -73.91705
   },
   {
    "name": "BRC Safe Haven, 21 East 115th Street",
@@ -6530,6 +7310,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6541,7 +7322,9 @@
    "quote": "of the City of New York and Bowery Residents' Committee, Inc., located at 131 West 25th Street, 12th Floor, New York, NY 10001, for the provision of Safe Haven for Street Homeless clients at 21 East 115th Street, New York, NY 10029.",
    "source_date": "2023-10-04",
    "caveats": "Contract term started May 2024. Not in the 2022 directory.",
-   "id": "shelter-240"
+   "id": "shelter-242",
+   "lat": 40.799696,
+   "lng": -73.94574
   },
   {
    "name": "BRC single-adult shelter, 55 West 110th Street",
@@ -6557,6 +7340,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6568,7 +7352,9 @@
    "quote": "of the City of New York and Bowery Residents' Committee, Inc., located at 131 West 25th Street, 12th Floor, New York, NY 10001, for the provision of Shelter Facilities for Homeless Single Adults at 55 West 110th Street, New York, NY 10026.",
    "source_date": "2022-05-27",
    "caveats": "Probably BRC \"Parkview Residence\" (Central Harlem, men with mental health needs, per BRC website), but the notice does not name it, so no directory match was set.",
-   "id": "shelter-241"
+   "id": "shelter-243",
+   "lat": 40.798283,
+   "lng": -73.951755
   },
   {
    "name": "The Andrews Safe Haven",
@@ -6584,6 +7370,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6595,7 +7382,9 @@
    "quote": "Located at 197 Bowery, New York, NY 10002.",
    "source_date": "2023-07-28",
    "caveats": "Breaking Ground: 146 Safe Haven units \"reserved for individuals served by Breaking Ground's Street to Home program and other outreach programs.\"",
-   "id": "shelter-242"
+   "id": "shelter-244",
+   "lat": 40.720893,
+   "lng": -73.993332
   },
   {
    "name": "Seafarer's Safe Haven",
@@ -6611,6 +7400,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6622,7 +7412,9 @@
    "quote": "Safe Haven for Homeless Single Adults at 123 East 15th Street, New York, NY 10003.",
    "source_date": "2026-06-10",
    "caveats": "The notice title reads \"FY27 Renewal - SA Seafarer's Safe Haven (100 beds)\". This may be the directory's \"Breaking Ground\" Safe Haven (100 beds), but the match is not confirmed.",
-   "id": "shelter-243"
+   "id": "shelter-245",
+   "lat": 40.734679,
+   "lng": -73.987947
   },
   {
    "name": "Breaking Ground Safe Haven, 320 Pearl Street",
@@ -6638,6 +7430,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6649,7 +7442,9 @@
    "quote": "Safe Haven for street homeless clients at 320 Pearl Street, New York, NY 10038 Round 12 (106 beds)",
    "source_date": "2025-03-05",
    "caveats": "106 beds. Not in the 2022 directory.",
-   "id": "shelter-244"
+   "id": "shelter-246",
+   "lat": 40.708902,
+   "lng": -74.002033
   },
   {
    "name": "Traveler's Safe Haven",
@@ -6665,6 +7460,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6676,7 +7472,9 @@
    "quote": "Site: Traveler’s Safe Haven 274 West 40th Street New York, NY 10018",
    "source_date": null,
    "caveats": "The Urban Pathways website lists the same address (\"Travelers Safe Haven (+Annex)\").",
-   "id": "shelter-245"
+   "id": "shelter-247",
+   "lat": 40.755735,
+   "lng": -73.990526
   },
   {
    "name": "105th Street Safe Haven",
@@ -6692,6 +7490,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6703,7 +7502,9 @@
    "quote": "Department Homeless Services (DHS) intends to enter into a Negotiated Acquisition Extension (NAE) contract with Urban Pathways, Inc. for the 105th Street Safe Haven located at 54 West 105th Street, New York, NY 10025.",
    "source_date": "2026-08-14",
    "caveats": "The Urban Pathways website lists the same address. This may be the directory's \"XX Street Safe Haven\" (Urban Pathways, 33 beds), but the match is not confirmed.",
-   "id": "shelter-246"
+   "id": "shelter-248",
+   "lat": 40.798003,
+   "lng": -73.962567
   },
   {
    "name": "Catherine Street Shelter (Two Bridges)",
@@ -6719,6 +7520,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6730,7 +7532,9 @@
    "quote": "FY26 Renewal - Provision of shelter services to homeless single adults at Catherine Street LIFE General Shelter, 78 Catherine Street, New York, NY 10038.",
    "source_date": "2025-06-11",
    "caveats": "City Record 20240618120 also lists \"Two Bridges, Catherine Street Mental Health Shelter, 78 Catherine Street\" (100 beds), so the building may hold both a general program and a mental-health program.",
-   "id": "shelter-247"
+   "id": "shelter-249",
+   "lat": 40.71075,
+   "lng": -73.9979
   },
   {
    "name": "Third Street Women's Residence",
@@ -6745,6 +7549,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6758,7 +7563,9 @@
    "quote": "To provide Mental Health Shelter Services for Homeless Single Adults at Third Street Women's Residence 282 East 3rd Street, New York, NY 10009.",
    "source_date": "2022-04-19",
    "caveats": "Directory name is masked; matched on provider + street (Henry Street, East 3rd).",
-   "id": "shelter-248"
+   "id": "shelter-250",
+   "lat": 40.72123,
+   "lng": -73.980148
   },
   {
    "name": "HELP single-adult shelter, 23 West 106th Street",
@@ -6774,6 +7581,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6785,7 +7593,9 @@
    "quote": "Shelter Facilities for Homeless Single Adults, at 23 West 106th Street, New York, NY 10025 The Department of Homeless Services works to prevent homele",
    "source_date": "2025-05-28",
    "caveats": "135 units. Not in the 2022 directory.",
-   "id": "shelter-249"
+   "id": "shelter-251",
+   "lat": 40.798762,
+   "lng": -73.96107
   },
   {
    "name": "160 West 74th Street Shelter",
@@ -6801,6 +7611,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6812,7 +7623,9 @@
    "quote": "Shelter for Homeless Single Adults, 160 West 74th Street Shelter, 160 West 74th Street, New York, NY 10023.",
    "source_date": "2025-06-16",
    "caveats": "Not in the 2022 directory.",
-   "id": "shelter-250"
+   "id": "shelter-252",
+   "lat": 40.779471,
+   "lng": -73.980086
   },
   {
    "name": "Weston House",
@@ -6828,6 +7641,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6841,7 +7655,9 @@
    "quote": "To provide Mental Health Shelter Services for Homeless Single Adults at Weston House 2262 Adam Clayton Powell Boulevard, New York,NY 10030.",
    "source_date": "2022-06-03",
    "caveats": "Directory match inferred (only Weston United site). The source prints \"New York,NY\".",
-   "id": "shelter-251"
+   "id": "shelter-253",
+   "lat": 40.814306,
+   "lng": -73.944883
   },
   {
    "name": "The Fortune Academy (Riverside Drive Shelter)",
@@ -6857,6 +7673,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6870,7 +7687,9 @@
    "quote": "THE FORTUNE SOCIETY INC 29-76 Northern Blvd Long Island City, NY 11101-2822 EPIN: 07121P0114001R001 To provide Transitional Shelter Services for Single Adults at Riverside Drive Shelter 630 Riverside Drive, New York, NY 10031.",
    "source_date": "2024-11-26",
    "caveats": "Fortune Society: the \"Castle\" houses \"people returning from incarceration\". Referral path is not stated; DHS-contracted.",
-   "id": "shelter-252"
+   "id": "shelter-254",
+   "lat": 40.824292,
+   "lng": -73.954462
   },
   {
    "name": "The Plaza",
@@ -6885,6 +7704,7 @@
    "gender": [
     "woman"
    ],
+   "gender_stated": true,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6896,7 +7716,9 @@
    "quote": "Lantern Community The Plaza 07119I0001017 $35,806,322.00 Services, Inc. 555 West 174th Street 494 Eighth Ave., 20th Fl. New York, NY 10033",
    "source_date": "2020-04-23",
    "caveats": "The quote is a table row as rendered in the City Record: 555 West 174th Street, New York, NY 10033 is the site and 494 Eighth Ave. is the contractor. Gender from the DHS directory name. Source is from 2020.",
-   "id": "shelter-253"
+   "id": "shelter-255",
+   "lat": 40.844555,
+   "lng": -73.936084
   },
   {
    "name": "Canal Rapid Re-Housing Center",
@@ -6912,6 +7734,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6923,7 +7746,9 @@
    "quote": "Westhab, Inc. Canal Rapid 2 21PHEDA03301 $62,182,839.00 8 Bashford Street Re-Housing Center Yonkers, NY 10701 349 Canal Street New York, NY 10013",
    "source_date": "2021-06-09",
    "caveats": "Table row: the site is 349 Canal Street and the contractor is in Yonkers. Contract March 2022 to June 2027. Not in the 2022 directory.",
-   "id": "shelter-254"
+   "id": "shelter-256",
+   "lat": 40.721106,
+   "lng": -74.003399
   },
   {
    "name": "Manhattan Welcome Center",
@@ -6939,6 +7764,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -6950,7 +7776,9 @@
    "quote": "Manhattan Welcome Center located at 419 East 91st Street, New York, NY 10128.",
    "source_date": "2025-10-08",
    "caveats": "88 beds for single adults (notice title). An earlier contract for this site (2021) was with Goddard Riverside as a Safe Haven.",
-   "id": "shelter-255"
+   "id": "shelter-257",
+   "lat": 40.779758,
+   "lng": -73.945704
   },
   {
    "name": "Valley Lodge Shelter",
@@ -6966,6 +7794,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -6979,7 +7808,9 @@
    "quote": "West Side Federation Valley Lodge Shelter 07110P0002198 $148,889,966.50 For Senior and Supportive 149 West 108th Street Housing, Inc. New York, NY 10025",
    "source_date": "2018-02-02",
    "caveats": "Table row from 2018. HPD (2022) says the redeveloped Valley Lodge \"provides 110 beds for homeless older adults\" on \"this same block of West 108th Street\". The street number is from 2018 and should be confirmed. WSFSSH's own page shows its HQ, 2345 Broadway.",
-   "id": "shelter-256"
+   "id": "shelter-258",
+   "lat": 40.801487,
+   "lng": -73.963658
   },
   {
    "name": "Icahn House East",
@@ -6995,6 +7826,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7006,7 +7838,9 @@
    "quote": "The site has a total of 199 units, and it is located at the following address: 4 East 28 Street, New York, NY 10016 (Grp 40).",
    "source_date": "2021-11-23",
    "caveats": "City Record 20260730013 (2026) confirms \"Located at 4 East 28th Street, New York, NY 10016\".",
-   "id": "shelter-257"
+   "id": "shelter-259",
+   "lat": 40.744303,
+   "lng": -73.986754
   },
   {
    "name": "Urban Family Center",
@@ -7022,6 +7856,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7033,7 +7868,9 @@
    "quote": "Renewal and Allowance for FY 27 of Urban Family Center at 130 Baruch Place, New York, NY 10002 with services to be provided to 82 Families with Children.",
    "source_date": "2023-06-12",
    "caveats": null,
-   "id": "shelter-258"
+   "id": "shelter-260",
+   "lat": 40.718434,
+   "lng": -73.976421
   },
   {
    "name": "Helen's House",
@@ -7049,6 +7886,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7060,7 +7898,9 @@
    "quote": "Henry Street Settlement Helen’s House 07110P0002221 $3,994,276.00 265 Henry Street 309 Henry Street New York, NY 10002",
    "source_date": "2018-05-03",
    "caveats": "Table row from 2018: the site is 309 Henry Street and 265 Henry Street is the contractor HQ.",
-   "id": "shelter-259"
+   "id": "shelter-261",
+   "lat": 40.714247,
+   "lng": -73.982326
   },
   {
    "name": "Huntington House",
@@ -7076,6 +7916,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7087,7 +7928,9 @@
    "quote": "Services of the City of New York and Women's Prison Association & Home, Inc., located at 110 Second Avenue, New York, NY 10003, for the provision of Shelter Facilities for Families with Children at 347 East 10th Street, New York, NY 10009.",
    "source_date": "2022-05-09",
    "caveats": "An earlier City Record notice (20210802024) prints ZIP 10003 for the same address.",
-   "id": "shelter-260"
+   "id": "shelter-262",
+   "lat": 40.726908,
+   "lng": -73.979589
   },
   {
    "name": "Jennie Clarke Residence",
@@ -7103,6 +7946,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7114,7 +7958,9 @@
    "quote": "Provision of Homeless Shelter (Tier II) Services for Families with Children at Jennie Clarke Residence, 179, 183, 187, 189, and 191 E. 100th St, NY, NY 10029",
    "source_date": "2022-06-17",
    "caveats": null,
-   "id": "shelter-261"
+   "id": "shelter-263",
+   "lat": 40.788201,
+   "lng": -73.948013
   },
   {
    "name": "WIN family shelter, 325 East 104th Street",
@@ -7130,6 +7976,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7141,7 +7988,9 @@
    "quote": "of the City of New York and Women in Need, Inc., located at One State Street Plaza, 18th Floor, New York, NY 10004, for the provision of shelter facilities for homeless families with children at 325 East 104th Street, New York, NY 10029.",
    "source_date": "2022-05-09",
    "caveats": "Directory name not identified; may be one of the WIN family residences in the directory (e.g. \"EAST RIVER - WIN\").",
-   "id": "shelter-262"
+   "id": "shelter-264",
+   "lat": 40.789144,
+   "lng": -73.942054
   },
   {
    "name": "Regent Family Residence",
@@ -7157,6 +8006,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7168,7 +8018,9 @@
    "quote": "York and Volunteers of America Greater New York,Inc., located at 135 West 50th Street, 9th Floor, New York, NY 10020, for the provision of Shelter Facilities for Homeless Families with Children at Regent Family Residence, 2720 Broadway, New York, NY 10025.",
    "source_date": "2022-07-18",
    "caveats": null,
-   "id": "shelter-263"
+   "id": "shelter-265",
+   "lat": 40.799805,
+   "lng": -73.967718
   },
   {
    "name": "Clinton Family Residence",
@@ -7184,6 +8036,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7195,7 +8048,9 @@
    "quote": "of the City of New York and Homes for the Homeless, Inc., located at 36 Cooper Square, 3rd Floor, New York, NY 10003, for the provision of Shelter Facilities for Homeless Families with Children at 519 West 49th Street, New York, NY 10019.",
    "source_date": "2022-06-27",
    "caveats": "The notice gives the address but not the site name; the directory match is inferred (HFH, Clinton/Hell's Kitchen).",
-   "id": "shelter-264"
+   "id": "shelter-266",
+   "lat": 40.764695,
+   "lng": -73.99318
   },
   {
    "name": "New Broadway Residence",
@@ -7211,6 +8066,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7222,7 +8078,9 @@
    "quote": "To provide a Stand Alone Transitional Residence for Families with Children, 11 & 17-19 Old Broadway, New York, NY 10027.",
    "source_date": "2022-04-11",
    "caveats": "Directory match inferred (Harlem United family shelter on Old Broadway).",
-   "id": "shelter-265"
+   "id": "shelter-267",
+   "lat": 40.815363,
+   "lng": -73.95702
   },
   {
    "name": "Adam's House I",
@@ -7238,6 +8096,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7249,7 +8108,9 @@
    "quote": "Renewal + 25% Miscellaneous Allowance for Homeless Families at ADAM'S HOUSE; ADAM'S HOUSE I - 2250 ADAM CLAYTON POWELL JR. BOULEVARD, NEW YORK, NY 10027 AND ADAM'S HOUSE II - 2332 ADAM CLAYTON POWELL JR.",
    "source_date": "2023-07-13",
    "caveats": null,
-   "id": "shelter-266"
+   "id": "shelter-268",
+   "lat": 40.813844,
+   "lng": -73.945295
   },
   {
    "name": "Adam's House II",
@@ -7265,6 +8126,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7276,7 +8138,9 @@
    "quote": "BOULEVARD, NEW YORK, NY 10027 AND ADAM'S HOUSE II - 2332 ADAM CLAYTON POWELL JR. BOULEVARD, NEW YORK, NY 10030",
    "source_date": "2023-07-13",
    "caveats": null,
-   "id": "shelter-267"
+   "id": "shelter-269",
+   "lat": 40.816658,
+   "lng": -73.943213
   },
   {
    "name": "URI Harlem Family Residence",
@@ -7292,6 +8156,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7303,7 +8168,9 @@
    "quote": "URBAN RESOURCE INSTITUTE 75 Broad Street, 5th Floor New York, NY 10004 E-PIN: 07118P8325KXLR001 Site: Harlem Residence 151 - 153 West 133rd Street New York, NY 10030 Renewal Term: 7/1/2021 - 6/30/2025",
    "source_date": "2021-03-18",
    "caveats": "A 2022 notice (20220107109) prints ZIP 10004, a typo; 10030 is correct for this block.",
-   "id": "shelter-268"
+   "id": "shelter-270",
+   "lat": 40.813623,
+   "lng": -73.943233
   },
   {
    "name": "Hamilton Family Residence",
@@ -7319,6 +8186,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7330,7 +8198,9 @@
    "quote": "Renewal + Allowance - Stand Alone Transitional Residence for Homeless Families with Children at Hamilton located at 30 Hamilton Place, NY 10031",
    "source_date": "2024-07-24",
    "caveats": null,
-   "id": "shelter-269"
+   "id": "shelter-271",
+   "lat": 40.822068,
+   "lng": -73.952668
   },
   {
    "name": "West End Intergenerational Residence",
@@ -7346,6 +8216,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7357,7 +8228,9 @@
    "quote": "Located at 483 West End Avenue, New York, NY.",
    "source_date": "2022-07-01",
    "caveats": "The notice has no ZIP and no site name; the directory match is inferred from \"West End\".",
-   "id": "shelter-270"
+   "id": "shelter-272",
+   "lat": 40.787182,
+   "lng": -73.97945
   },
   {
    "name": "Samuel Proctor Residence",
@@ -7373,6 +8246,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7384,7 +8258,9 @@
    "quote": "South Bronx Overall Samuel Proctor Residence 07110P0002218 $8,162,237.00 Economic Development 139-43 West 138th Street Corporation New York, NY 10030",
    "source_date": "2018-05-03",
    "caveats": "Table row from 2018.",
-   "id": "shelter-271"
+   "id": "shelter-273",
+   "lat": 40.817118,
+   "lng": -73.941562
   },
   {
    "name": "West Harlem Residence",
@@ -7400,6 +8276,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7411,7 +8288,9 @@
    "quote": "West Harlem Group West Harlem Residence 07119I0003025 $111,223,482.00 Assistance, Inc. 138 West 143rd Street 1652 Amsterdam Ave. New York, NY 10030",
    "source_date": "2021-03-26",
    "caveats": "Table row: the site column is 138 West 143rd Street, New York, NY 10030 and 1652 Amsterdam Ave. (10031) is the contractor.",
-   "id": "shelter-272"
+   "id": "shelter-274",
+   "lat": 40.819771,
+   "lng": -73.939105
   },
   {
    "name": "41st Street Residence",
@@ -7427,6 +8306,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7438,7 +8318,9 @@
    "quote": "Westhab, Inc. 41st Street Residence 07119I0003042 $91,455,882.00 8 Bashford Street. 440 West 41st Street Yonkers, NY 10701 New York, NY 1003",
    "source_date": "2021-01-22",
    "caveats": "Table row: the site is 440 West 41st Street, New York, NY 10036 (City Record detail page). Contract Oct 2021 to June 2030.",
-   "id": "shelter-273"
+   "id": "shelter-275",
+   "lat": 40.75827,
+   "lng": -73.99485
   },
   {
    "name": "Midway Living family shelter, 130 East 39th Street",
@@ -7454,6 +8336,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7465,7 +8348,9 @@
    "quote": "of Homeless Services of the City of New York and Midway Living, Inc., located at 1028 Dahill Road, Brooklyn, NY 11204, for the Provision of Shelter Services for Homeless Families with Children at 130 East 39th Street, New York, NY 10016.",
    "source_date": "2023-04-07",
    "caveats": "Contract July 2023 to June 2028.",
-   "id": "shelter-274"
+   "id": "shelter-276",
+   "lat": 40.749427,
+   "lng": -73.977808
   },
   {
    "name": "PHI Riverside Adult Family Shelter",
@@ -7481,6 +8366,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7492,7 +8378,9 @@
    "quote": "SHELTER FOR HOMELESS ADULT FAMILIES Praxis Housing Initiatives, Inc. 130 West 29th Street 7th Floor New York, NY 10001 Site: PHI Riverside Adult Family Shelter 306 West 94th Street, New York, NY 10025 EPIN: 07119P8255KXLR001 Renewal Term: 7/1/2023'6/30/2027",
    "source_date": "2023-03-23",
    "caveats": null,
-   "id": "shelter-275"
+   "id": "shelter-277",
+   "lat": 40.794029,
+   "lng": -73.974895
   },
   {
    "name": "SUS adult-family residence, 12-18 East 31st Street",
@@ -7508,6 +8396,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7519,7 +8408,9 @@
    "quote": "To provide a Stand Alone Transitional Residences for Adult Families, 12-18 East 31st Street, New York, NY 10016.",
    "source_date": "2022-06-06",
    "caveats": "This may be the directory's \"HARMONIA RESIDENCE\" (SUS adult families), but the match is not confirmed.",
-   "id": "shelter-276"
+   "id": "shelter-278",
+   "lat": 40.745964,
+   "lng": -73.985075
   },
   {
    "name": "Hylan Boulevard Shelter",
@@ -7535,6 +8426,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7546,7 +8438,9 @@
    "quote": "Shelter Facilities for Homeless Single Adult at Hylan Boulevard Shelter, located at 1055 Hylan Boulevard, Staten Island, NY 10305.",
    "source_date": "2026-06-08",
    "caveats": "50 beds (FY27 renewal).",
-   "id": "shelter-277"
+   "id": "shelter-279",
+   "lat": 40.598688,
+   "lng": -74.077817
   },
   {
    "name": "Gannon Emergency Shelter",
@@ -7562,6 +8456,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7573,7 +8468,9 @@
    "quote": "Emergency shelter services at Gannon Emergency Shelter located at 535 North Gannon Avenue, Staten Island, NY, 10314 -125 beds.",
    "source_date": "2025-05-05",
    "caveats": "125 beds. The notice title says it is for single adults (\"SA\").",
-   "id": "shelter-278"
+   "id": "shelter-280",
+   "lat": 40.608586,
+   "lng": -74.146594
   },
   {
    "name": "Tompkins Avenue Shelter",
@@ -7589,6 +8486,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7600,7 +8498,9 @@
    "quote": "At Tompkins Avenue Shelter: 119 Tompkins Avenue, Staten Island, NY 10304.",
    "source_date": "2022-10-06",
    "caveats": "Notice title: \"Shelter Facilities for Hmls Single Adults\". Contract through June 2027 (with a renewal option to 2030).",
-   "id": "shelter-279"
+   "id": "shelter-281",
+   "lat": 40.621431,
+   "lng": -74.077449
   },
   {
    "name": "Victory Family Residence",
@@ -7616,6 +8516,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7627,7 +8528,9 @@
    "quote": "Women in Need, Inc. Victory Family Residence 07110P0002219 $124,005,770.00 One State Street Plaza, 44 Victory Blvd. 18th Floor Staten Island, NY 10301",
    "source_date": "2020-05-20",
    "caveats": "Table row from 2020: the site is 44 Victory Blvd., Staten Island, NY 10301. Contract to June 2029.",
-   "id": "shelter-280"
+   "id": "shelter-282",
+   "lat": 40.63762,
+   "lng": -74.07743
   },
   {
    "name": "Project Hospitality adult shelter, 150 Richmond Terrace",
@@ -7643,6 +8546,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [],
@@ -7654,7 +8558,9 @@
    "quote": "EPIN 07120P8201KXLR001.To provide Shelter Services for Homeless Adults, 150 Richmond Terrace, Staten Island, NY 10301.",
    "source_date": "2023-01-31",
    "caveats": "The same building houses Project Hospitality's 24/7 drop-in center for adults 21+ (entrance off Stuyvesant Place), which is excluded here as a drop-in. The DHS contract name is not given; it may be Carpenter House Safe Haven, but that is unconfirmed.",
-   "id": "shelter-281"
+   "id": "shelter-283",
+   "lat": 40.645555,
+   "lng": -74.078222
   },
   {
    "name": "Covenant House New York (crisis shelter)",
@@ -7671,6 +8577,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": 16,
    "max_age": 24,
    "populations": [
@@ -7684,7 +8591,9 @@
    "quote": "460 West 41 Street New York, NY",
    "source_date": null,
    "caveats": "Operator: \"Young people ages 16-24\"; \"You do not need an appointment or referral to get services\"; open 24/7. Also serves pregnant or parenting youth (Mother and Child program).",
-   "id": "shelter-282"
+   "id": "shelter-284",
+   "lat": 40.758543,
+   "lng": -73.995577
   },
   {
    "name": "Sylvia's Place (MCCNY Homeless Youth Services)",
@@ -7700,6 +8609,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": 18,
    "max_age": 24,
    "populations": [
@@ -7714,7 +8624,9 @@
    "quote": "446 W. 36th St., New York NY 10018",
    "source_date": null,
    "caveats": "Operator: \"one of the only shelters in the city that accepts youth directly off the street, without a referral\"; stays of up to 90 days; for 18-24-year-old LGBTQI+ runaway and homeless youth. The address block on the page is headed \"Q Clinic\" (same church building).",
-   "id": "shelter-283"
+   "id": "shelter-285",
+   "lat": 40.755342,
+   "lng": -73.99752
   },
   {
    "name": "Trinity Place Shelter",
@@ -7730,6 +8642,7 @@
     "man",
     "woman"
    ],
+   "gender_stated": false,
    "min_age": null,
    "max_age": null,
    "populations": [
@@ -7743,7 +8656,9 @@
    "quote": "164 West 100th Street, New York, New York 10025",
    "source_date": null,
    "caveats": "Operator: for \"LGBTQ* youth and young adults experiencing homelessness\". The age range is not on the operator homepage (third-party sources say 18-24). A small transitional shelter; call first.",
-   "id": "shelter-284"
+   "id": "shelter-286",
+   "lat": 40.796245,
+   "lng": -73.968076
   }
  ]
 }
