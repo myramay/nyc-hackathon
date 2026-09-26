@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shelter Finder — NYC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#0F1B2D; --ink-2:#16233A; --text:#EDEAE1; --text-dim:#9BA6B8; --border:#2B3A54;
+    --accent:#C1440E; --urgent-bg:#2A1810; --urgent:#ff8a5c; --go-bg:#122419; --go:#7fc99a; --chip:#1E2C45;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: light) {
+    :root { --ink:#F4F1EA; --ink-2:#FFFFFF; --text:#20242E; --text-dim:#5B6270; --border:#DEDACF;
+            --urgent-bg:#FBEAE2; --urgent:#A8380B; --go-bg:#E7F2EA; --go:#2E6B45; --chip:#EFEBE1; }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--ink);color:var(--text);display:flex;justify-content:center}
+  .app{width:100%;max-width:760px;padding:28px 16px 64px}
+  .eyebrow{color:var(--text-dim);font-size:13px;margin-bottom:6px}
+  h1{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(26px,5vw,34px);line-height:1.15;margin:0 0 10px}
+  h2{font-size:15px;margin:0 0 10px}
+  .lede{color:var(--text-dim);font-size:15px;line-height:1.55;margin:0 0 20px}
+  .card{background:var(--ink-2);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:16px}
+  fieldset{border:0;padding:0;margin:0 0 16px}
+  legend{font-size:14px;font-weight:600;margin-bottom:8px;padding:0}
+  .choices{display:flex;flex-wrap:wrap;gap:8px}
+  .choices label{display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:14px;cursor:pointer;min-height:44px}
+  .choices input{accent-color:var(--accent)}
+  .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+  .row label{font-size:14px;font-weight:600;display:flex;flex-direction:column;gap:6px}
+  input[type=number],input[type=text],select{font:inherit;font-size:15px;padding:10px;border-radius:7px;border:1px solid var(--border);background:var(--ink);color:var(--text);min-height:44px}
+  button{font:inherit;font-size:15px;font-weight:600;border-radius:8px;padding:12px 20px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;min-height:44px}
+  .privacy{font-size:12.5px;color:var(--text-dim);margin-top:10px}
+  .first{font-size:17px;line-height:1.5;border-left:4px solid var(--accent);padding:4px 0 4px 12px;margin:0}
+  .opt{border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:10px}
+  .opt.urgent{background:var(--urgent-bg);border-color:var(--urgent)}
+  .opt.go{background:var(--go-bg);border-color:var(--go)}
+  .opt h3{font-size:15.5px;margin:0 0 4px}
+  .why{font-size:13.5px;font-weight:600;margin:0 0 6px}
+  .opt.urgent .why{color:var(--urgent)} .opt.go .why{color:var(--go)}
+  .what{font-size:14px;line-height:1.5;margin:0 0 8px}
+  .meta{font-size:13.5px;line-height:1.6;color:var(--text-dim)}
+  .meta a{color:var(--text);font-weight:600}
+  .src{font-size:11.5px;color:var(--text-dim);margin-top:6px}
+  details summary{cursor:pointer;font-weight:600;font-size:14px;min-height:32px}
+  ul.plain{padding-left:18px;margin:8px 0 0;font-size:14px;line-height:1.6}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+  .chip{background:var(--chip);border-radius:12px;padding:3px 10px;font-size:12.5px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
+  th,td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--text-dim);font-weight:600}
+  .note{font-size:13px;color:var(--text-dim);line-height:1.5}
+  #results{display:none}
+  .err{color:var(--urgent);font-size:14px}
+  @media (max-width:520px){ .hide-sm{display:none} }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="eyebrow">For caseworkers and people looking for shelter in NYC</div>
+  <h1>Where can I go tonight?</h1>
+  <p class="lede">Answer a few questions. We'll narrow down the right door into the shelter system, walk-in options, and hotlines, and explain what doesn't fit and why.</p>
+
+  <form class="card" id="form">
+    <fieldset>
+      <legend>Who needs shelter?</legend>
+      <div class="choices">
+        <label><input type="radio" name="household" value="single" checked> One adult</label>
+        <label><input type="radio" name="household" value="adult_family"> Adults together, no kids under 18</label>
+        <label><input type="radio" name="household" value="family_with_children"> Family with kids under 18</label>
+        <label><input type="radio" name="household" value="youth_alone"> Young person on their own</label>
+      </div>
+    </fieldset>
+    <div class="row">
+      <label>Age <input type="number" name="age" min="0" max="120" inputmode="numeric" placeholder="e.g. 34"></label>
+      <label>Gender
+        <select name="gender"><option value="unspecified">Prefer not to say</option><option value="woman">Woman</option><option value="man">Man</option><option value="nonbinary">Nonbinary / other</option></select>
+      </label>
+      <label>Borough
+        <select name="borough"><option value="">Any</option><option>Manhattan</option><option>Brooklyn</option><option>Bronx</option><option>Queens</option><option>Staten Island</option></select>
+      </label>
+      <label>ZIP code <input type="text" name="zip" inputmode="numeric" maxlength="5" placeholder="optional"></label>
+    </div>
+    <fieldset>
+      <legend>What do you need right now?</legend>
+      <div class="choices">
+        <label><input type="radio" name="wants" value="bed_tonight" checked> A bed tonight</label>
+        <label><input type="radio" name="wants" value="daytime_help"> Daytime help (food, showers)</label>
+        <label><input type="radio" name="wants" value="not_ready_for_shelter"> Not ready for shelter</label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Anything else that applies?</legend>
+      <div class="choices">
+        <label><input type="checkbox" name="fleeing_violence"> Fleeing domestic violence</label>
+        <label><input type="checkbox" name="at_risk_not_yet_homeless"> Still housed but at risk</label>
+        <label><input type="checkbox" name="in_dhs_shelter_last_12_months"> In a NYC shelter in the last year</label>
+        <label><input type="checkbox" name="pregnant"> Pregnant</label>
+        <label><input type="checkbox" name="veteran"> Veteran</label>
+        <label><input type="checkbox" name="lgbtq"> LGBTQ+</label>
+        <label><input type="checkbox" name="employed"> Working</label>
+        <label><input type="checkbox" name="has_pet"> Has a pet</label>
+        <label><input type="checkbox" name="needs_immigration_help"> Needs immigration help</label>
+        <label><input type="checkbox" name="need" value="mental_health"> Mental health support</label>
+        <label><input type="checkbox" name="need" value="substance_use"> Substance use support</label>
+        <label><input type="checkbox" name="need" value="mobility"> Disability / mobility</label>
+      </div>
+    </fieldset>
+    <button type="submit">Find options</button>
+    <div class="privacy">Nothing you enter is saved. In an emergency, call 911.</div>
+  </form>
+
+  <div id="results" aria-live="polite"></div>
+</div>
+
+<script>
+const API = new URLSearchParams(location.search).get('api')
+  || (location.protocol.startsWith('http') && location.pathname.startsWith('/shelter-finder') ? location.origin : 'http://localhost:8000');
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const tel = p => { const d = String(p || '').match(/^[\d\s\-()+]+/); return d && d[0].replace(/\D/g,'').length >= 3 ? `<a href="tel:${d[0].replace(/\D/g,'')}">${esc(p)}</a>` : esc(p); };
+
+function card(o, cls){
+  const map = o.address ? ` · <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(o.address)}" target="_blank" rel="noopener">Map</a>` : '';
+  return `<div class="opt ${cls||''}"><h3>${esc(o.name)}</h3><p class="why">${esc(o.why)}</p><p class="what">${esc(o.what)}</p>
+    <div class="meta">${o.address ? esc(o.address) + map + '<br>' : ''}${o.phone ? 'Phone: ' + tel(o.phone) + '<br>' : ''}${o.hours ? esc(o.hours) + '<br>' : ''}${o.transit ? 'Subway: ' + esc(o.transit) : ''}</div>
+    <div class="src">Source: ${esc(o.source)}</div></div>`;
+}
+
+function render(r){
+  const lp = r.likely_placements;
+  let h = `<div class="card"><p class="first">${esc(r.first_step)}</p></div>`;
+  if (r.urgent.length) h += `<div class="card"><h2>Do this first</h2>${r.urgent.map(o => card(o,'urgent')).join('')}</div>`;
+  if (r.go_now.length) h += `<div class="card"><h2>Where to go</h2>${r.go_now.map(o => card(o,'go')).join('')}</div>`;
+  if (r.also_consider.length) h += `<div class="card"><h2>Also open to you</h2>${r.also_consider.map(o => card(o)).join('')}</div>`;
+  if (r.help_lines.length) h += `<div class="card"><h2>Help lines</h2>${r.help_lines.map(o => card(o)).join('')}</div>`;
+  if (r.not_for_you.length) h += `<div class="card"><details><summary>Not for you (${r.not_for_you.length}) and why</summary><ul class="plain">${r.not_for_you.map(e => `<li><b>${esc(e.name)}</b>: ${esc(e.reason)}</li>`).join('')}</ul></details></div>`;
+  h += `<div class="card"><h2>Shelters you may be placed in</h2><p class="note">${esc(lp.note)}</p>`;
+  if (lp.total_matching){
+    h += `<div class="chips"><span class="chip">${lp.total_matching} matching shelters</span>${Object.entries(lp.by_borough).map(([b,n]) => `<span class="chip">${esc(b)}: ${n}</span>`).join('')}</div>
+      <table><thead><tr><th>Shelter</th><th class="hide-sm">Run by</th><th>Borough</th><th>Beds</th></tr></thead><tbody>${lp.top.map(s => `<tr><td>${esc(s.name)}${s.tags_from_name.length ? '<br><span class="note">' + esc(s.tags_from_name.join(', ').replace(/_/g,' ')) + '</span>' : ''}</td><td class="hide-sm">${esc(s.provider||'')}</td><td>${esc(s.borough)}</td><td>${esc(s.capacity ?? '')}</td></tr>`).join('')}</tbody></table>
+      <p class="note">Source: <a href="${esc(lp.source)}" target="_blank" rel="noopener">NYC Open Data</a>, as of ${esc(lp.as_of)}. ${esc(lp.tags_note)}</p>`;
+  }
+  h += `</div><div class="card"><h2>Your rights and tips</h2><ul class="plain">${r.rights_and_tips.map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`;
+  const el = document.getElementById('results'); el.innerHTML = h; el.style.display = 'block';
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.getElementById('form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = new FormData(e.target);
+  const body = {
+    household: f.get('household'), gender: f.get('gender'), wants: f.get('wants'),
+    needs: f.getAll('need'),
+  };
+  if (f.get('age')) body.age = Number(f.get('age'));
+  if (f.get('borough')) body.borough = f.get('borough');
+  if (f.get('zip')) body.zip = f.get('zip');
+  for (const k of ['fleeing_violence','at_risk_not_yet_homeless','in_dhs_shelter_last_12_months','pregnant','veteran','lgbtq','employed','has_pet','needs_immigration_help'])
+    body[k] = f.get(k) === 'on';
+  const el = document.getElementById('results');
+  try {
+    const r = await fetch(API + '/shelters/match', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    if (!r.ok) throw new Error(r.status);
+    render(await r.json());
+  } catch (err) {
+    el.innerHTML = '<div class="card err">Couldn\'t reach the shelter finder. Call 311 (24/7) for shelter directions, or 800-621-4673 if you\'re fleeing violence.</div>';
+    el.style.display = 'block';
+  }
+});
+</script>
+</body>
+</html>

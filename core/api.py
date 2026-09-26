@@ -28,6 +28,23 @@ app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], all
 app.mount("/camera-scan", StaticFiles(directory=Path(__file__).resolve().parent.parent / "camera-scan", html=True), name="camera-scan")
 
 
+from shelters.match import MatchResult, Profile, directory, match as match_shelters  # noqa: E402
+
+app.mount("/shelter-finder", StaticFiles(directory=Path(__file__).resolve().parent.parent / "shelter-finder", html=True), name="shelter-finder")
+
+
+@app.post("/shelters/match", response_model=MatchResult)
+def shelters_match(profile: Profile):
+    """Narrow down shelter options from a person's situation. Nothing is stored."""
+    return match_shelters(profile)
+
+
+@app.get("/shelters/directory")
+def shelters_directory():
+    """Official NYC shelter directory (NYC Open Data): shelters, drop-in centers, Homebase offices."""
+    return directory()
+
+
 @app.get("/camera", include_in_schema=False)
 def camera():
     return RedirectResponse("/camera-scan/")

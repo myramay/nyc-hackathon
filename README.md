@@ -29,6 +29,8 @@ python -m eval.review --by "Your Name"       # label review page: http://localho
 | `eval/` | precision/recall script, label review page | Python |
 | `data/labeled/` | 144 labeled listings, rubric, blind agent labels | JSONL |
 | `tests/` | unit tests | Python |
+| `shelters/` | shelter eligibility matcher, access points (intake, drop-ins, youth, hotlines), Open Data directory builder | Python |
+| `shelter-finder/` | "Where can I go tonight?" page; calls `/shelters/match` | HTML/JS |
 | `camera-scan/` | webcam / photo scanner page (browser JS for the camera; checking + drafting via the API) | HTML/JS |
 | `/agent` | Photon Spectrum iMessage bot: **must be TypeScript** (Spectrum is TS-only); calls the API | teammate |
 | `/web` | Next.js dashboard; calls the API | teammate |
@@ -72,6 +74,23 @@ Run `uvicorn core.api:app --port 8000`, then:
 | `GET /health` | | `{ok, gemini, model}` |
 
 Full schemas at http://localhost:8000/docs.
+
+## Shelter finder
+
+Open http://localhost:8000/shelter-finder/ (API running). A caseworker or person answers: household type, age, gender, borough/ZIP, what they need tonight, and yes/no questions (fleeing violence, still housed, in shelter in the last year, pregnant, veteran, LGBTQ+, working, pet, immigration help, mental health / substance use / mobility). Nothing is stored.
+
+It returns:
+- **First step**: e.g. "go back to the shelter you were in" (DHS 12-month rule), "call the DV hotline first", "start with Homebase" (still housed), or "adult intake is 18+, go to a youth program".
+- **Where to go**: the right DHS intake door (men: 8 E. 3rd St; women: Franklin or HELP; families: PATH; adult families: 30th St), walk-in and youth options, drop-in centers, Safe Havens via outreach, with address, phone, hours, subway.
+- **Not for you, and why**: every option that was ruled out, with the reason ("Women only", "Up to age 21", "Adults 18+ only").
+- **Shelters you may be placed in**: the matching shelters from the city's directory (416 DHS shelters, NYC Open Data), ranked by the person's needs (veterans, seniors, women's, mental health…) and borough. DHS assigns shelters; people can't walk in, and the city doesn't publish shelter addresses.
+- **Rights and tips**: gender identity (NYC Human Rights Law), ID rules, family eligibility and Fair Hearings, adult-family proof, pets, disability accommodations, Legal Aid.
+
+API: `POST /shelters/match` (a `Profile`), `GET /shelters/directory`.
+
+Sources: DHS pages on nyc.gov (intake rules and addresses), Neighborhood Coalition for Shelter Street Sheets April 2024 (ncsinc.org), NYC Open Data (Shelter Repair Scorecard `dvaj-b7yx`, Drop-In Centers `bmxf-3rd4`, Homebase `ntcm-2w4k`, Pets in Shelter `5nux-zfmw`), BronxWorks, CAMBA. Every access point in `shelters/access_points.py` names its source. Where sources disagreed, DHS wins (men's intake moved from 30th St to 8 E. 3rd St).
+
+Caveats: the shelter directory's newest month is **December 2022** (refresh with `python -m shelters.build_directory`); tags like "women" or "veterans" are read from shelter names; domestic violence shelters are confidential and aren't listed.
 
 ## How a verdict is made
 
