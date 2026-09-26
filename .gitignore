@@ -6,4 +6,10 @@ data/cache/
 __pycache__/
 .next/
 
+# Python file
 .venv/
+*.pyc
+
+# Scraper output
+scanner/python/listings.json
+scanner/python/housing_opportunities.json
