@@ -14,7 +14,9 @@
     "review": "bun run eval/review.ts",
     "eval:v2": "bun run eval/run.ts --file data/labeled/holdout_v2.jsonl",
     "batch": "bun run scanner/src/batch.ts --cached",
-    "batch:live": "bun run scanner/src/batch.ts --live"
+    "batch:live": "bun run scanner/src/batch.ts --live",
+    "daily": "python3 scanner/python/discover.py && bun run batch:live",
+    "inventory": "bun run scanner/src/importInventory.ts"
   },
   "devDependencies": {
     "bun-types": "^1.4.2",

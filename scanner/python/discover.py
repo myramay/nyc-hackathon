@@ -1,176 +1,116 @@
 import argparse
 import json
+import os
+import sys
 import requests
 
 from pathlib import Path
-from bs4 import BeautifulSoup
 from datetime import datetime, timezone
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urlparse
 
 
-OUTPUT_FILE = Path(__file__).parent / "listings.json"
+HERE = Path(__file__).parent
+OUTPUT = HERE / "listings.json"
 
 
-# -----------------------------------------
-# Fetch a website
-# -----------------------------------------
+def load_feed(args):
+    if args.feed_file:
+        with open(args.feed_file, encoding="utf-8") as file:
+            return json.load(file)
 
-def fetch_page(url):
+    url = args.feed_url or os.getenv("LISTING_FEED_URL")
+
+    if not url:
+        raise ValueError(
+            "Provide --feed-file or configure LISTING_FEED_URL"
+        )
+
+    headers = {}
+    token = os.getenv("LISTING_FEED_API_KEY")
+
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
 
     response = requests.get(
         url,
-        headers={
-            "User-Agent": "DivHacks2026/1.0 (housing research)"
-        },
-        timeout=15
+        headers=headers,
+        timeout=30
     )
-
     response.raise_for_status()
+    return response.json()
 
-    return response.text
 
-
-# -----------------------------------------
-# Extract listing URLs
-# -----------------------------------------
-
-def extract_listings(html, base_url, selector, source):
-
-    soup = BeautifulSoup(html, "html.parser")
+def normalize(records):
+    if not isinstance(records, list):
+        raise ValueError("Expected a JSON array of listings")
 
     listings = []
+    seen = set()
+    now = datetime.now(timezone.utc).isoformat()
 
-    cards = soup.select(selector)
-
-    for card in cards:
-
-        href = card.get("href")
-
-        if not href:
+    for record in records:
+        if not isinstance(record, dict):
             continue
 
-        listing_url = urljoin(base_url, href)
+        url = str(record.get("url") or "").strip()
+        text = str(
+            record.get("text")
+            or record.get("description")
+            or ""
+        ).strip()
 
-        # Only accept HTTP/HTTPS links from the selected website.
-        parsed = urlparse(listing_url)
-        base = urlparse(base_url)
+        source = str(record.get("source") or "rental_feed")
+
+        parsed = urlparse(url)
 
         if parsed.scheme not in ("http", "https"):
             continue
 
-        if parsed.hostname != base.hostname:
+        if not text:
             continue
 
-        listing_url = parsed._replace(fragment="").geturl()
+        if url in seen:
+            continue
+
+        seen.add(url)
 
         listings.append({
             "source": source,
-            "url": listing_url,
-            "discovered_at": datetime.now(
-                timezone.utc
-            ).isoformat()
+            "url": url,
+            "text": text,
+            "discovered_at": now
         })
 
     return listings
 
 
-# -----------------------------------------
-# Remove duplicates
-# -----------------------------------------
-
-def remove_duplicates(listings):
-
-    seen = set()
-    unique = []
-
-    for listing in listings:
-
-        url = listing["url"]
-
-        if url not in seen:
-
-            seen.add(url)
-
-            unique.append(listing)
-
-    return unique
-
-
-# -----------------------------------------
-# Save JSON
-# -----------------------------------------
-
-def save_listings(listings):
-
-    with open(
-        OUTPUT_FILE,
-        "w",
-        encoding="utf-8"
-    ) as file:
-
-        json.dump(
-            listings,
-            file,
-            indent=4,
-            ensure_ascii=False
-        )
-
-    print(f"Saved {len(listings)} listings to {OUTPUT_FILE}")
-
-
-# -----------------------------------------
-# Main
-# -----------------------------------------
-
 def main():
-
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--search-url")
-
-    parser.add_argument("--selector", default="a.listing-card")
-
-    parser.add_argument("--source", default="test")
-
-    parser.add_argument("--sample", action="store_true")
+    parser.add_argument("--feed-file")
+    parser.add_argument("--feed-url")
 
     args = parser.parse_args()
 
-    print("Starting rental listing discovery...")
+    try:
+        records = load_feed(args)
+        listings = normalize(records)
 
-    if args.sample:
+        # Write only after successful retrieval and validation.
+        temporary = OUTPUT.with_suffix(".tmp")
 
-        sample_file = Path(__file__).parent / "sample.html"
+        temporary.write_text(
+            json.dumps(listings, indent=2, ensure_ascii=False),
+            encoding="utf-8"
+        )
 
-        html = sample_file.read_text(encoding="utf-8")
+        temporary.replace(OUTPUT)
 
-        base_url = "https://example.com"
+        print(f"Discovered {len(listings)} valid listings.")
 
-    else:
-
-        if not args.search_url:
-            parser.error("--search-url is required without --sample")
-
-        base_url = args.search_url
-
-        html = fetch_page(base_url)
-
-    listings = extract_listings(
-        html,
-        base_url,
-        args.selector,
-        args.source
-    )
-
-    listings = remove_duplicates(listings)
-
-    if not listings:
-        print("No listings found. Check the HTML selector.")
-        return
-
-    save_listings(listings)
-
-    print("Discovery completed!")
+    except Exception as error:
+        print(f"Discovery failed: {error}", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

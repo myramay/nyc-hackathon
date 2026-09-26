@@ -1,0 +1,17 @@
+[
+  {
+    "source": "demo_feed",
+    "url": "https://example.com/listing/101",
+    "description": "Two-bedroom apartment in Queens. Rent $2400/month. No vouchers accepted."
+  },
+  {
+    "source": "demo_feed",
+    "url": "https://example.com/listing/102",
+    "description": "One-bedroom apartment. Rent $2100/month. Section 8 welcome."
+  },
+  {
+    "source": "demo_feed",
+    "url": "https://example.com/listing/103",
+    "description": "Studio apartment. Rent $1900/month. Applicants must earn 40x monthly rent."
+  }
+]

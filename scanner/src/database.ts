@@ -35,6 +35,14 @@ export async function connectDatabase() {
     .collection("listings")
     .createIndex({ url: 1 }, { unique: true });
 
+  await client
+    .db(DATABASE_NAME)
+    .collection("rental_inventory")
+    .createIndex(
+      { source: 1, source_id: 1 },
+      { unique: true }
+    );
+
   console.log("Connected to MongoDB!");
 
   return client;
@@ -71,6 +79,55 @@ export async function saveListing(
       }
     },
     { upsert: true }
+  );
+
+}
+
+
+// -----------------------------------------
+// Save rental inventory records
+// -----------------------------------------
+
+export async function saveRentalInventory(
+  client: MongoClient,
+  listing: {
+    source: string;
+    source_id: string;
+    url: string;
+    address?: string;
+    unit?: string;
+    neighborhood?: string;
+    borough?: string;
+    zip_code?: string;
+    monthly_rent?: number;
+    net_effective_price?: number;
+    bedrooms?: number;
+    available_date?: string;
+    source_group?: string;
+    source_type?: string;
+    discovered_at: string;
+    description_available: boolean;
+  }
+) {
+
+  const database = client.db(DATABASE_NAME);
+
+  const collection = database.collection("rental_inventory");
+
+  await collection.updateOne(
+    {
+      source: listing.source,
+      source_id: listing.source_id
+    },
+    {
+      $set: {
+        ...listing,
+        updated_at: new Date()
+      }
+    },
+    {
+      upsert: true
+    }
   );
 
 }

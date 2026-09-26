@@ -1,192 +1,150 @@
 import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 
 import { analyze } from "../../core/src/analyze.ts";
+import { connectDatabase, saveListing } from "./database.ts";
 
-import { analyzeUrl } from "./analyzeUrl.ts";
-
-import {
-  connectDatabase,
-  saveListing
-} from "./database.ts";
-
-
-// -----------------------------------------
-// Types
-// -----------------------------------------
 
 type Listing = {
   source: string;
   url: string;
-  text?: string;
+  text: string;
   discovered_at: string;
 };
 
 
-// -----------------------------------------
-// Configuration
-// -----------------------------------------
+const live = process.argv.includes("--live");
 
-const mode = process.argv.includes("--live")
-  ? "live"
-  : "cached";
+const DB_NAME =
+  process.env.MONGODB_DB ?? "voucher_detector";
 
-
-// -----------------------------------------
-// Load JSON listings
-// -----------------------------------------
 
 async function loadListings(): Promise<Listing[]> {
-
-  const file =
-    mode === "live"
-      ? new URL("../python/listings.json", import.meta.url)
-      : new URL("../data/cached_listings.json", import.meta.url);
+  const file = live
+    ? new URL("../python/listings.json", import.meta.url)
+    : new URL("../data/cached_listings.json", import.meta.url);
 
   const contents = await readFile(file, "utf-8");
 
-  const listings: unknown = JSON.parse(contents);
+  const records: unknown = JSON.parse(contents);
 
-  if (!Array.isArray(listings)) {
-    throw new Error("Expected an array of listings.");
+  if (!Array.isArray(records)) {
+    throw new Error("Expected a JSON array");
   }
 
-  for (const listing of listings) {
-
+  for (const item of records) {
     if (
-      !listing ||
-      typeof listing !== "object" ||
-      typeof listing.source !== "string" ||
-      typeof listing.url !== "string" ||
-      typeof listing.discovered_at !== "string"
+      !item ||
+      typeof item !== "object" ||
+      typeof item.source !== "string" ||
+      typeof item.url !== "string" ||
+      typeof item.text !== "string" ||
+      typeof item.discovered_at !== "string"
     ) {
-      throw new Error("Invalid listing structure.");
+      throw new Error("Invalid listing record");
     }
-
-    if (mode === "cached" && typeof listing.text !== "string") {
-      throw new Error("Cached listing is missing text.");
-    }
-
   }
 
-  return listings as Listing[];
-
+  return records as Listing[];
 }
 
 
-// -----------------------------------------
-// Process listings
-// -----------------------------------------
+function hashText(text: string): string {
+  return createHash("sha256")
+    .update(text)
+    .digest("hex");
+}
 
-async function processListings() {
 
-  console.log(`Starting ${mode} batch analysis...`);
+async function main() {
+  console.log(`Starting ${live ? "live" : "cached"} batch...`);
 
   const listings = await loadListings();
-
-  console.log(`Loaded ${listings.length} listings.`);
-
-  if (listings.length === 0) {
-    console.log("No listings to process.");
-    return;
-  }
-
   const client = await connectDatabase();
 
-  let successful = 0;
+  const collection = client
+    .db(DB_NAME)
+    .collection("listings");
+
+  let processed = 0;
+  let skipped = 0;
   let failed = 0;
 
   try {
-
     for (const listing of listings) {
-
-      console.log(`\nAnalyzing: ${listing.url}`);
-
       try {
+        const hash = hashText(listing.text);
 
-        let result;
-        let listingText: string;
+        // Only skip unchanged records in live mode.
+        if (live) {
+          const existing = await collection.findOne({
+            url: listing.url
+          });
 
-        if (mode === "live") {
-
-          // Fetch the listing through Myra's existing scanner.
-          const analyzed = await analyzeUrl(listing.url);
-
-          result = analyzed.result;
-
-          listingText = analyzed.fetched.text;
-
-        } else {
-
-          // Cached mode doesn't contact external websites
-          // or require a Gemini API key.
-          listingText = listing.text!;
-
-          result = await analyze(
-            {
-              text: listingText,
-              url: listing.url
-            },
-            {
-              useGemini: false
-            }
-          );
-
+          if (
+            existing &&
+            existing.content_hash === hash
+          ) {
+            skipped++;
+            continue;
+          }
         }
 
-        await saveListing(
-          client,
+        const result = await analyze(
           {
-            source: listing.source,
-            url: listing.url,
-            text: listingText,
-            discovered_at: listing.discovered_at
+            text: listing.text,
+            url: listing.url
           },
-          result
+          {
+            // Cached mode is reliable without Gemini.
+            useGemini: live
+          }
         );
 
-        console.log(`Result: ${result.verdict}`);
+        await saveListing(client, listing, result);
 
-        successful++;
+        await collection.updateOne(
+          { url: listing.url },
+          {
+            $set: {
+              content_hash: hash,
+              last_seen_at: new Date()
+            }
+          }
+        );
+
+        processed++;
+
+        console.log(
+          `${listing.url}: ${result.verdict}`
+        );
 
       } catch (error) {
-
         failed++;
 
         console.error(
-          `Failed to process ${listing.url}:`,
+          `Failed: ${listing.url}`,
           error
         );
-
       }
-
     }
 
   } finally {
-
     await client.close();
-
-    console.log("\nDatabase connection closed.");
-
   }
 
-  console.log(`Successful: ${successful}`);
+  console.log("\nBatch complete");
+  console.log(`Processed: ${processed}`);
+  console.log(`Unchanged: ${skipped}`);
   console.log(`Failed: ${failed}`);
 
   if (failed > 0) {
     process.exitCode = 1;
   }
-
 }
 
 
-// -----------------------------------------
-// Run
-// -----------------------------------------
-
-processListings().catch((error) => {
-
-  console.error("Batch processing failed:", error);
-
+main().catch(error => {
+  console.error(error);
   process.exitCode = 1;
-
 });
