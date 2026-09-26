@@ -107,7 +107,13 @@ JEV_DIR=/Users/<you>/jev-ultrafast
 TYPESAFE_BASE_URL=https://api.codiv.ai     # or http://127.0.0.1:8080 for a self-hosted OpenJev
 TYPESAFE_API_KEY=sk-codiv-...              # free Codiv key (codiv.ai)
 TYPESAFE_MODEL=openjev-latest
+JEV_CHROME_PORT=9333
 ```
+Before using links, start jev's private Chrome in its own terminal and leave it running (empty profile, none of your logins, no window):
+```bash
+scanner/jev/start_chrome.sh          # uses JEV_CHROME_PORT=9333 from .env
+```
+
 `TEXT_MODEL_API_KEY` is only used to type into fields, which our guard blocks, so it shouldn't be needed. Without any of this, links fall back to a plain download. Listing page text is sent to Codiv to choose clicks; it's public listing content, never tenant data.
 
 ## Eval: read before quoting numbers

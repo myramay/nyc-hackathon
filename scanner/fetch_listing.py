@@ -40,7 +40,13 @@ def _via_jev(url: str, jev_dir: str) -> dict:
     jev_env = Path(jev_dir) / ".env"
     cmd = ["uv", "run", "--project", jev_dir, *(["--env-file", str(jev_env)] if jev_env.exists() else []), "python", str(SIDECAR), url]
     # Our environment (incl. TYPESAFE_BASE_URL / TYPESAFE_API_KEY from .env) is inherited by the subprocess.
-    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+    env = dict(os.environ)
+    port = os.environ.get("JEV_CHROME_PORT")
+    if port:
+        # Use a dedicated Chrome (separate empty profile) instead of the user's everyday
+        # browser: browser-harness connects to whatever websocket BU_CDP_WS names.
+        env["BU_CDP_WS"] = httpx.get(f"http://127.0.0.1:{port}/json/version", timeout=3).json()["webSocketDebuggerUrl"]
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, env=env)
     last = (proc.stdout.strip().splitlines() or ["{}"])[-1]
     try:
         r = json.loads(last)
