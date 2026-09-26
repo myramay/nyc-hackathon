@@ -86,9 +86,26 @@ Gemini extracts facts only (rent, bedrooms, income requirement, exclusion phrase
 - **The narrative is a template**, not model-written: it only states facts from the flagged clauses and the math, quotes full sentences, and says the listing was found with an automated tool and checked by a person.
 - **Deadlines:** CCHR one year from the last act; NYS Division of Human Rights (`agency="nysdhr"`) three years for incidents on or after Feb 15, 2024. CCHR can't take a complaint already filed elsewhere, so the draft makes the reviewer answer that.
 
-## jev-ultrafast (browser agent)
+## jev-ultrafast (browser agent) on OpenJev
 
-[browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) opens a listing link, dismisses pop-ups, clicks "See more", and returns the full page text plus a screenshot. `scanner/jev/fetch_listing.py` runs jev's steps itself and **blocks** typing into any field and clicking anything labeled contact / message / apply / call / schedule / sign in, so it can't contact a landlord. jev needs Python 3.12+, so it runs in its own environment: `brew install uv`, clone jev, fill its `.env` (`TYPESAFE_API_KEY`, `TEXT_MODEL_API_KEY`), and set `JEV_DIR` in ours. Without it, links fall back to a plain download.
+[browser-use/jev-ultrafast](https://github.com/browser-use/jev-ultrafast) opens a listing link, dismisses pop-ups, clicks "See more", and returns the full page text plus a screenshot. `scanner/jev/fetch_listing.py` runs jev's steps itself and **blocks** typing into any field and clicking anything labeled contact / message / apply / call / schedule / sign in, so it can't contact a landlord.
+
+jev's decisions come from a "System One" model API. TypeSafe's hosted API is paused, so we use **[OpenJev](https://github.com/razorback16/openjev)**, an open-source server with the same API (open model: DiffusionGemma 26B-A4B), hosted free at Codiv. jev hardcodes TypeSafe's URL, so the sidecar redirects it when `TYPESAFE_BASE_URL` is set.
+
+Setup:
+```bash
+brew install uv
+git clone https://github.com/browser-use/jev-ultrafast.git ~/jev-ultrafast
+cd ~/jev-ultrafast && uv sync
+```
+Then in our `.env`:
+```
+JEV_DIR=/Users/<you>/jev-ultrafast
+TYPESAFE_BASE_URL=https://api.codiv.ai     # or http://127.0.0.1:8080 for a self-hosted OpenJev
+TYPESAFE_API_KEY=sk-codiv-...              # free Codiv key (codiv.ai)
+TYPESAFE_MODEL=openjev-latest
+```
+`TEXT_MODEL_API_KEY` is only used to type into fields, which our guard blocks, so it shouldn't be needed. Without any of this, links fall back to a plain download. Listing page text is sent to Codiv to choose clicks; it's public listing content, never tenant data.
 
 ## Eval: read before quoting numbers
 

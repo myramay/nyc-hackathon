@@ -13,8 +13,25 @@ import re
 import sys
 import time
 
+import os
+
+import jev_ultrafast.model as _jev_model
 from jev_ultrafast import Agent
 from jev_ultrafast.browser import StalePage
+
+# TypeSafe's hosted API is paused. OpenJev (github.com/razorback16/openjev)
+# serves the same /v1/systemone API with an open model, hosted free at Codiv or
+# self-hosted. jev-ultrafast hardcodes TypeSafe's URL, so redirect it here
+# instead of forking jev:
+#   TYPESAFE_BASE_URL=https://api.codiv.ai   TYPESAFE_API_KEY=sk-codiv-...   TYPESAFE_MODEL=openjev-latest
+_BASE = os.environ.get("TYPESAFE_BASE_URL", "").rstrip("/")
+if _BASE:
+    _post_json = _jev_model.post_json
+
+    def _redirected(url, key, body):
+        return _post_json(url.replace("https://api.typesafe.ai", _BASE, 1), key, body)
+
+    _jev_model.post_json = _redirected
 
 GOAL = """Reveal the complete rental listing description on this page.
 Close cookie banners, pop-ups, and sign-up prompts. Click "See more", "Read more",

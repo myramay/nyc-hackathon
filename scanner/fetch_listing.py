@@ -17,6 +17,8 @@ from pathlib import Path
 
 import httpx
 
+import core  # noqa: F401  loads our .env, so TYPESAFE_* / JEV_DIR reach the jev subprocess
+
 SIDECAR = Path(__file__).resolve().parent / "jev" / "fetch_listing.py"
 
 
@@ -35,13 +37,18 @@ def fetch_listing(url: str) -> dict:
 
 def _via_jev(url: str, jev_dir: str) -> dict:
     timeout = float(os.environ.get("JEV_TIMEOUT_MS", 45000)) / 1000
-    proc = subprocess.run(
-        ["uv", "run", "--project", jev_dir, "--env-file", str(Path(jev_dir) / ".env"), "python", str(SIDECAR), url],
-        capture_output=True, text=True, timeout=timeout)
+    jev_env = Path(jev_dir) / ".env"
+    cmd = ["uv", "run", "--project", jev_dir, *(["--env-file", str(jev_env)] if jev_env.exists() else []), "python", str(SIDECAR), url]
+    # Our environment (incl. TYPESAFE_BASE_URL / TYPESAFE_API_KEY from .env) is inherited by the subprocess.
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
     last = (proc.stdout.strip().splitlines() or ["{}"])[-1]
-    r = json.loads(last)
+    try:
+        r = json.loads(last)
+    except json.JSONDecodeError:
+        r = {}
     if not r.get("ok"):
-        raise RuntimeError(r.get("error") or f"jev exited {proc.returncode}")
+        err_tail = (proc.stderr.strip().splitlines() or [""])[-1][:200]
+        raise RuntimeError(r.get("error") or f"jev exited {proc.returncode}: {err_tail}")
     return {"url": r["url"], "title": r.get("title"), "text": r["text"], "screenshot_b64": r.get("screenshot_b64"),
             "screenshot_media_type": r.get("screenshot_media_type"), "via": "jev", "steps": r.get("steps"),
             "stopped": r.get("stopped"), "elapsed_ms": r.get("elapsed_ms")}
