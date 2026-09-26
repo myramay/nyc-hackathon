@@ -13,3 +13,7 @@ __pycache__/
 # Scraper output
 scanner/python/listings.json
 scanner/python/housing_opportunities.json
+scanner/python/real_listings.json
+
+# Camera testing
+scanner/data/camera-test/
