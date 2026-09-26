@@ -141,6 +141,8 @@ def _hc_item(summary: dict, ad: dict) -> Optional[FeedItem]:
             "ami_percent": u.get("unitRegulatoryMechanismAmi"),
             "income_by_household_size": {str(i["houseHoldSize"]): [i.get("minimumIncome"), i.get("maximumIncome")]
                                          for i in u.get("unitIncome") or []},
+            # Housing Connect leaves rent at 0 for some set-aside units whose rent depends on income.
+            "rent_set_by_income": not u.get("actualRent"),
             "rent_within_voucher_limit": (u.get("actualRent") <= C.PAYMENT_STANDARD[min(b, 4)] * C.PAYMENT_STANDARD_SLACK)
                                          if (b is not None and u.get("actualRent")) else None,
         })

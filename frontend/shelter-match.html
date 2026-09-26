@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shelter Match · Homeward NYC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 15 L16 4.5 L28.5 15"/><path d="M7 12.5 V27.5 H25 V12.5"/><path d="M13.5 27.5 V19.5 H18.5 V27.5"/><path d="M21.5 8.5 V5.5 H24.5 V11"/></svg>Homeward.</a>
+    <ul class="links">
+      <li><a href="voucher-guard.html">Voucher Guard</a></li>
+      <li><a href="open-doors.html">Open Doors</a></li>
+      <li><a href="shelter-match.html" aria-current="page">Shelter Match</a></li>
+      <li><a href="index.html#how">How it works</a></li>
+    </ul>
+    <a class="btn btn-light cta" href="voucher-guard.html#check">Check a listing</a>
+    <a class="btn btn-dark btn-sm menu" href="index.html#features">Menu</a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <img class="art" src="assets/img/house.svg" alt="">
+    <div class="wrap">
+      <span class="for">For <span class="pill-dash">Single Adults, Families, Youth &amp; Couples</span></span>
+      <h1>Shelter Match</h1>
+      <p>Narrows NYC's homeless shelters to the ones a person is eligible for tonight, with how to get in, what to bring, and who to call. Only shelters with a public address, each with its source. Nothing you enter is saved.</p>
+      <div class="ctas"><a class="btn btn-light" href="#match">Find shelters</a><a class="btn btn-dark" href="#match">How intake works</a></div>
+    </div>
+  </section>
+
+  <div class="wrap layout" id="match">
+    <aside class="side">
+      <div class="panel">
+        <h3>Who needs shelter?</h3>
+        <div class="seg" style="margin-bottom:14px">
+          <label><input type="radio" name="h" checked> One adult</label>
+          <label><input type="radio" name="h"> Couple / adults</label>
+          <label><input type="radio" name="h"> Family with kids</label>
+          <label><input type="radio" name="h"> Young person</label>
+        </div>
+        <div class="field"><label for="a">Age</label><input id="a" type="number" placeholder="34"></div>
+        <div class="field"><label for="g">Gender</label><select id="g"><option>Prefer not to say</option><option>Woman</option><option>Man</option><option>Nonbinary / other</option></select></div>
+        <div class="field"><label for="bo">Borough</label><select id="bo"><option>Any</option><option>Manhattan</option><option>Brooklyn</option><option>Bronx</option><option>Queens</option><option>Staten Island</option></select></div>
+        <h3 style="margin-top:6px">Anything else?</h3>
+        <div class="checks">
+          <label><input type="checkbox"> Fleeing domestic violence</label>
+          <label><input type="checkbox"> In a NYC shelter in the last year</label>
+          <label><input type="checkbox"> Veteran</label>
+          <label><input type="checkbox"> LGBTQ+</label>
+          <label><input type="checkbox"> Working</label>
+          <label><input type="checkbox" checked> Mental health support</label>
+          <label><input type="checkbox"> Substance use support</label>
+          <label><input type="checkbox"> HIV/AIDS · medical needs</label>
+        </div>
+        <button class="btn btn-light" type="button" style="width:100%;margin-top:16px">Find shelters</button>
+      </div>
+    </aside>
+
+    <div>
+      <div class="banner"><b>How to get in:</b> apply at Franklin Shelter, 1122 Franklin Ave, Bronx, or HELP Women's Center, 114 Snediker Ave, Brooklyn (both 24/7). DHS then assigns a shelter.</div>
+
+      <div class="toolbar">
+        <div class="counts">
+          <span class="chip">124 eligible</span>
+          <span class="chip"><i class="mk mk-solid"></i>City (DHS) shelter</span>
+          <span class="chip"><i class="mk mk-ring"></i>Walk-in / call</span>
+          <span class="sample">Sample data</span>
+        </div>
+        <div class="toggle" role="tablist" data-toggle="sm"><button role="tab" data-view="list" aria-selected="true">List</button><button role="tab" data-view="map" aria-selected="false">Map</button></div>
+      </div>
+
+      <div data-panel-for="sm" data-view="list">
+        <div class="panel" style="margin-bottom:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px">
+          <div class="field" style="margin:0"><label for="x1">Borough</label><select id="x1"><option>All</option></select></div>
+          <div class="field" style="margin:0"><label for="x2">Type</label><select id="x2"><option>All</option><option>Adult Shelter</option><option>Safe Haven</option><option>Walk-in</option></select></div>
+          <div class="field" style="margin:0"><label for="x3">Sort</label><select id="x3"><option>Best fit</option><option>Borough</option><option>Most beds</option><option>Name</option></select></div>
+        </div>
+
+        <details class="card" open>
+          <summary>
+            <span class="t">Bowery Mission, Tribeca Campus</span><span class="more">Details</span>
+            <span class="s">90 Lafayette Street, Manhattan · Serves mental health</span>
+            <span class="tags"><span class="chip"><i class="mk mk-ring"></i>Walk-in / call</span><span class="chip">Single adults 18+</span><span class="chip">Mental health</span><span class="chip">Substance use</span></span>
+          </summary>
+          <div class="body">
+            <h5>How to get in</h5><p style="margin:0">Walk in or call. Intake daily: women 3–3:30pm, men 3:30–5pm, first come, first served. Up to 7 nights.</p>
+            <h5>Eligibility</h5><ul><li>Single adults, 18+</li><li>Special focus: mental health, substance use</li></ul>
+            <h5>What to bring</h5><ul><li>ID helps but isn't required: license, state ID, passport, Social Security or Medicaid card</li></ul>
+            <h5>Contact</h5><p style="margin:0">212-226-6214 · Run by The Bowery Mission</p>
+            <h5>Source</h5><p class="quote" style="margin:0">“Adult Men &amp; Women: Bowery Mission Tribeca Campus, 90 Lafayette St.”</p>
+            <div class="row"><button class="btn btn-light btn-sm" type="button">Call</button><button class="btn btn-dark btn-sm" type="button">Directions</button><button class="btn btn-ghost btn-sm" type="button">Source</button><button class="btn btn-ghost btn-sm" type="button">+ Add to packet</button></div>
+          </div>
+        </details>
+
+        <details class="card">
+          <summary><span class="t">Tillary Street Women's Shelter</span><span class="more">Details</span>
+            <span class="s">Brooklyn · Takes women (single adults)</span>
+            <span class="tags"><span class="chip"><i class="mk mk-solid"></i>City shelter</span><span class="chip">Women</span><span class="chip">Assigned after intake</span></span></summary>
+          <div class="body"><p>How to get in, eligibility, what to bring, contact, and source link appear here.</p></div>
+        </details>
+
+        <details class="card">
+          <summary><span class="t">Jerome Avenue Men's Shelter</span><span class="more">Details</span>
+            <span class="s">3600 Jerome Avenue, Bronx · Serves mental health</span>
+            <span class="tags"><span class="chip"><i class="mk mk-solid"></i>City shelter</span><span class="chip">Men</span><span class="chip">Mental health</span><span class="chip">Source 2023 · call to confirm</span></span></summary>
+          <div class="body"><p>Shown to show the "call to confirm" warning on older sources.</p></div>
+        </details>
+
+        <details class="card">
+          <summary><span class="t">Not eligible (163) and why</span><span class="more">Show</span>
+            <span class="s">Men's shelters · family shelters · youth shelters with age limits</span></summary>
+          <div class="body"><ul><li><b>Jerome Avenue Men's Shelter</b>: Men only.</li><li><b>Covenant House</b>: Ages 16–24 only.</li><li><b>Powers Family Residence</b>: For families with children only.</li></ul></div>
+        </details>
+      </div>
+
+      <div data-panel-for="sm" data-view="map" hidden>
+        <div class="map">
+          <img class="base" src="assets/img/map-base.svg" alt="">
+          <span class="pin ring active" style="left:38%;top:56%"></span><span class="pin" style="left:52%;top:62%"></span><span class="pin" style="left:60%;top:24%"></span>
+          <span class="pin" style="left:68%;top:32%"></span><span class="pin" style="left:72%;top:18%"></span><span class="pin" style="left:46%;top:72%"></span>
+          <span class="pin" style="left:80%;top:52%"></span><span class="pin" style="left:30%;top:40%"></span><span class="pin" style="left:57%;top:46%"></span>
+          <span class="pin ring" style="left:64%;top:66%"></span><span class="pin" style="left:88%;top:30%"></span><span class="pin" style="left:22%;top:70%"></span>
+          <div class="pop" style="left:14%;top:14%"><b>Bowery Mission, Tribeca Campus</b>90 Lafayette St · Walk-in · Single adults<br><button class="btn btn-sm" type="button">See details</button></div>
+          <div class="zoom" aria-hidden="true"><span>+</span><span>−</span></div><span class="attr">Map preview · Google Maps goes here</span>
+        </div>
+        <div class="legend"><span><i class="mk mk-solid"></i>City (DHS) shelter</span><span><i class="mk mk-ring"></i>Walk-in / call</span><span>Domestic violence shelters are confidential and never shown</span></div>
+      </div>
+    </div>
+  </div>
+  <section class="block" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="head"><div><span class="eyebrow">Intake Ready Packet · preview</span><h2>One page for the client</h2></div>
+        <p>Where to go, hours and subway, what to bring, the shelters that fit, their rights, and what to do if denied. Printable, textable, and in the client's language.</p></div>
+      <div class="tiles two">
+        <div class="panel">
+          <h3>Your next step</h3>
+          <div class="banner" style="margin:0 0 14px"><b>Apply at Franklin Shelter or HELP Women's Center (both 24/7).</b> DHS then assigns you a shelter.</div>
+          <div class="table-scroll"><table><tbody>
+            <tr><td><b>Franklin Shelter</b><br><span style="color:var(--muted)">1122 Franklin Ave, Bronx · 2, 4, 5 to 149th St, then #55 bus</span></td><td>24/7</td></tr>
+            <tr><td><b>HELP Women's Center</b><br><span style="color:var(--muted)">114 Snediker Ave, Brooklyn · C to Liberty Ave</span></td><td>24/7</td></tr>
+          </tbody></table></div>
+          <h3 style="margin-top:22px">What to bring</h3>
+          <ul style="margin:0;padding-left:18px;color:#C9CBD0;font-size:14.5px"><li>Any ID (helps, not required)</li><li>A recent pay stub if you work</li><li>Medications and prescriptions</li></ul>
+        </div>
+        <div class="panel">
+          <h3>Text message · ready to send</h3>
+          <p style="margin:0;font-size:14px;color:#C9CBD0;white-space:pre-line">Apply at Franklin Shelter, 1122 Franklin Ave, Bronx, or HELP Women's Center, 114 Snediker Ave, Brooklyn (both 24/7).
+Bring: any ID you have, a recent pay stub if you work, your medications.
+Denied? Legal Aid 800-649-9125. Directions: 311.</p>
+          <h3 style="margin-top:22px">If you're denied</h3>
+          <ul style="margin:0;padding-left:18px;color:#C9CBD0;font-size:14.5px"><li>Ask for the decision in writing</li><li>Legal Aid Homeless Rights Project: 800-649-9125</li></ul>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+        <button class="btn btn-light" type="button">Create Intake Ready Packet</button><button class="btn btn-dark" type="button">Copy text message</button><button class="btn btn-ghost" type="button">Print</button>
+        <label class="field" style="margin:0;min-width:180px"><select aria-label="Client language"><option>English</option><option>Español</option><option>中文</option><option>Русский</option><option>বাংলা</option><option>Kreyòl</option></select></label>
+        <span class="sample" style="align-self:center">Sample data</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>Homeward NYC · Shelter Match</span><span>Fleeing violence? Call 800-621-4673. Shelter directions: 311.</span></div></footer>
+<script src="assets/js/shell.js"></script>
+</body>
+</html>

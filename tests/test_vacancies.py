@@ -78,5 +78,27 @@ class Feed(unittest.TestCase):
         self.assertEqual(feed.build_feed().items[0].url, "u2")
 
 
+    # ---- Housing Plan (the Open Doors deliverable) ----
+    def test_plan_lists_eligible_lotteries_with_deadlines_and_calendar(self):
+        from vacancies.plan import build_plan
+        p = build_plan(household_size=3, income=30000, has_voucher=True)
+        self.assertEqual([l.title for l in p.lotteries], ["Open Bronx"])
+        self.assertEqual(p.lotteries[0].deadline, FUTURE)
+        self.assertIn("BEGIN:VEVENT", p.calendar_ics)
+        self.assertIn("TRIGGER:-P2D", p.calendar_ics)          # reminder 2 days before
+        self.assertIn("Open Bronx", p.html)
+
+    def test_plan_letters_have_placeholders_and_are_drafts(self):
+        from vacancies.plan import build_plan
+        p = build_plan(household_size=3)
+        self.assertEqual(len(p.listings), 1)                     # only the voucher-friendly listing
+        self.assertIn("[Your name]", p.listings[0].letter)
+        self.assertEqual(p.status, "draft_for_review")
+
+    def test_plan_without_voucher_respects_minimum_income(self):
+        from vacancies.plan import build_plan
+        self.assertEqual(build_plan(household_size=3, income=30000, has_voucher=False).lotteries, [])
+
+
 if __name__ == "__main__":
     unittest.main()

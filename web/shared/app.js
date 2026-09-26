@@ -7,8 +7,9 @@ const VDD = (() => {
   const NYC = { lat: 40.7128, lng: -73.97 };
 
   function nav(current){
-    const links = [['/voucher-guard/', 'Voucher Guard'], ['/open-doors/', 'Open Doors'], ['/shelter-match/', 'Shelter Match']];
-    return `<nav class="nav" aria-label="Features"><a class="home" href="/">Homeward NYC</a>${
+    const links = [['/case/', 'Case view'], ['/voucher-guard/', 'Voucher Guard'], ['/open-doors/', 'Open Doors'], ['/shelter-match/', 'Shelter Match']];
+    const logo = '<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 15 L16 4.5 L28.5 15"/><path d="M7 12.5 V27.5 H25 V12.5"/><path d="M13.5 27.5 V19.5 H18.5 V27.5"/></svg>';
+    return `<nav class="nav" aria-label="Features"><a class="home" href="/">${logo}Homeward.</a>${
       links.map(([href, label]) => `<a href="${href}"${label === current ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</nav>`;
   }
 
@@ -54,11 +55,14 @@ const VDD = (() => {
           `<a href="https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}" target="_blank" rel="noopener">${esc(p.title)}</a>`).join(' · ')}${onMap.length > 8 ? ' …' : ''}</div>`;
       return;
     }
-    const map = new maps.Map(el, { center: NYC, zoom: 11, mapId: 'DEMO_MAP_ID', streetViewControl: false, mapTypeControl: false });
+    const map = new maps.Map(el, { center: NYC, zoom: 11, mapId: 'DEMO_MAP_ID', colorScheme: 'DARK', streetViewControl: false, mapTypeControl: false });
     const info = new maps.InfoWindow();
     const bounds = new maps.LatLngBounds();
     for (const p of onMap){
-      const pin = new maps.marker.PinElement({ background: p.color || '#C1440E', borderColor: '#ffffff', glyphColor: '#ffffff' });
+      // Grayscale pins that differ by shape/contrast, not hue: solid (paper), ring (dark with paper border), muted (gray).
+      const PIN = { solid: ['#EEEDEA', '#141619', '#141619'], ring: ['#141619', '#EEEDEA', '#EEEDEA'], muted: ['#6D7178', '#EEEDEA', '#EEEDEA'] };
+      const [bg, border, glyph] = PIN[p.color] || PIN.solid;
+      const pin = new maps.marker.PinElement({ background: bg, borderColor: border, glyphColor: glyph });
       const m = new maps.marker.AdvancedMarkerElement({ map, position: { lat: p.lat, lng: p.lng }, title: p.title, content: pin, gmpClickable: true });
       m.addEventListener('gmp-click', () => {
         const div = document.createElement('div'); div.className = 'iw';

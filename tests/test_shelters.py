@@ -2,7 +2,7 @@
 import re
 import unittest
 
-from shelters.match import Profile, match, public_shelters
+from shelters.match import Profile, doubt_note, match, public_shelters
 
 
 def names(r):
@@ -58,8 +58,14 @@ class ShelterMatch(unittest.TestCase):
 
     def test_needs_rank_first(self):
         r = match(Profile(household="single", age=40, gender="woman", needs=["mental_health"]))
-        ranked = [("mental_health" in s.populations) for s in r.shelters]
+        sure = [s for s in r.shelters if not doubt_note(s.details.get("caveats"))]
+        ranked = [("mental_health" in s.populations) for s in sure]
         self.assertEqual(ranked, sorted(ranked, reverse=True))
+
+    def test_possibly_closed_sites_rank_last(self):
+        r = match(Profile(household="single", age=40, gender="woman"))
+        flags = [bool(doubt_note(s.details.get("caveats"))) for s in r.shelters]
+        self.assertEqual(flags, sorted(flags))
 
     def test_veteran_only_shelters_excluded_for_non_veterans(self):
         for s in public_shelters():

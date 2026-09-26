@@ -27,6 +27,19 @@ HH_LABEL = {"single": "single adults", "adult_family": "adult families", "family
             "youth_alone": "young people on their own"}
 
 
+# Research notes that say a site may not be operating, or that its address is disputed.
+DOUBT = re.compile(r"reopen|re-open|not (yet )?(open|operating)|clos(ed|ing)|projected|may not be|conflict|relocat|moved to|"
+                   r"uncertain|\bdoubt\b|\bcaution\b|differs", re.I)
+
+
+def doubt_note(text: Optional[str]) -> Optional[str]:
+    """First sentence of a research note, only when it casts doubt on the site being open or where it is."""
+    if not text:
+        return None
+    first = text.split(". ")[0].strip()
+    return (first[:160].rstrip(".") + ".") if DOUBT.search(first) else None
+
+
 class Profile(BaseModel):
     household: Household = Field(description="single adult; adults with no minor children; family with children under 18; or a young person on their own")
     age: Optional[int] = Field(None, ge=0, le=120)
@@ -197,14 +210,16 @@ def match(p: Profile) -> MatchResult:
             why.append(f"Takes {_serves(s).lower()}.")
         # Confirmed for this person's gender beats "gender not stated" for single adults.
         confirmed = 1 if (hh != "single" or p.gender not in ("man", "woman") or s.get("gender_stated", True)) else 0
-        fits.append((len(hits), confirmed, 1 if p.borough and s.get("borough") == p.borough else 0, s, " ".join(why)))
+        # Sites whose research notes doubt they're open (or where they are) go below the rest.
+        sure = 0 if doubt_note(s.get("caveats")) else 1
+        fits.append((sure, len(hits), confirmed, 1 if p.borough and s.get("borough") == p.borough else 0, s, " ".join(why)))
 
-    fits.sort(key=lambda t: (t[0], t[1], t[2], t[3].get("beds") or 0), reverse=True)
+    fits.sort(key=lambda t: (t[0], t[1], t[2], t[3], t[4].get("beds") or 0), reverse=True)
     shelters = [Shelter(id=s["id"], name=s["name"], provider=s.get("provider"), address=s["address"], borough=s.get("borough"),
                         phone=s.get("phone"), facility_type=s.get("facility_type"), serves=_serves(s), populations=s["populations"],
                         beds=s.get("beds"), access=s["access"], why=why, source_url=s["source_url"],
                         lat=s.get("lat"), lng=s.get("lng"), walk_in=_walk_in(s), details=_details(s, hh, how))
-                for _, _, _, s, why in fits]
+                for _, _, _, _, s, why in fits]
     by_boro: dict = {}
     for s in shelters:
         by_boro[s.borough] = by_boro.get(s.borough, 0) + 1

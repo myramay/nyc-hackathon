@@ -64,11 +64,27 @@ WHAT_TO_BRING = {
                "Your most recent pay stub, if you work."],
     "family_with_children": ["ID for everyone in the household: photo ID with proof of age, birth certificates, Social Security cards, "
                              "Medicaid cards, or a Public Assistance ID card.",
-                             "Your most recent pay stub, if you work.",
-                             "DHS may place your family for up to 10 days while it checks eligibility. If found ineligible, you have "
-                             "60 days to request a Fair Hearing."],
+                             "Your most recent pay stub, if you work."],
     "adult_family": ["Original marriage certificate or domestic-partnership certificate, or documents proving a family, caretaking, "
                      "or medical-dependence relationship.",
                      "Proof you lived together for 180 days in the year before applying."],
     "youth_alone": ["Call ahead for a bed. Bring any ID you have."],
+}
+
+
+# The doors into DHS shelter, by household. Sources: DHS applying pages (addresses, rules), NCS Street Sheets
+# April 2024 (hours, subway). Checked 2026-09-26.
+INTAKE_CENTERS = {
+    "single_man": [{"name": "Single Adult Intake Center (men)", "address": "8 E. 3rd Street, New York, NY 10003",
+                    "hours": "Call 311 to confirm hours", "transit": None, "phone": "311", "source": "DHS"}],
+    "single_woman": [
+        {"name": "Franklin Shelter (women's intake)", "address": "1122 Franklin Avenue (near E. 166th St.), Bronx, NY",
+         "hours": "Open 24/7", "transit": "2, 4, 5 to 149th St., then #55 bus to 166th St. & 3rd Ave.", "phone": "311", "source": "DHS, NCS"},
+        {"name": "HELP Women's Center (women's intake)", "address": "114 Snediker Avenue, Brooklyn, NY",
+         "hours": "Open 24/7", "transit": "C to Liberty Ave.", "phone": "311", "source": "DHS, NCS"}],
+    "family_with_children": [{"name": "PATH (Prevention Assistance and Temporary Housing)", "address": "151 E. 151st Street (at Walton Ave.), Bronx, NY",
+                              "hours": "Open 24 hours; applications 9am–5pm", "transit": "2, 4, 5 to 149th St.", "phone": "718-503-6400",
+                              "source": "DHS, NCS"}],
+    "adult_family": [{"name": "Adult Family Intake (30th Street)", "address": "400 E. 30th Street (at 1st Ave.), Manhattan",
+                      "hours": "Open 24/7 (confirm with 311)", "transit": "6 to 28th St.", "phone": "311", "source": "NCS; confirm with 311"}],
 }

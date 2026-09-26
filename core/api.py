@@ -59,6 +59,51 @@ def vacancies_refresh():
     return {"open_lotteries": refresh_lotteries()}
 
 
+# ---------------- Deliverables for Open Doors and Shelter Match ----------------
+from fastapi.responses import Response  # noqa: E402
+
+from shelters.packet import IntakePacket, build_intake_packet  # noqa: E402
+from vacancies.plan import HousingPlan, build_plan  # noqa: E402
+
+
+class PlanRequest(BaseModel):
+    household_size: Optional[int] = None
+    income: Optional[float] = None
+    has_voucher: bool = True
+    voucher_type: str = "CityFHEPS"
+    bedrooms: Optional[int] = None
+    borough: Optional[str] = None
+    item_ids: Optional[list] = None       # feed item ids to include; default = best matches
+    client_language: Optional[str] = None
+
+
+@app.post("/vacancies/plan", response_model=HousingPlan)
+def vacancies_plan(req: PlanRequest):
+    """Open Doors deliverable: Housing Plan (lottery shortlist + deadlines, documents, landlord letters, calendar)."""
+    return build_plan(req.household_size, req.income, req.has_voucher, req.voucher_type, req.bedrooms, req.borough,
+                      req.item_ids, req.client_language)
+
+
+@app.post("/vacancies/plan.ics")
+def vacancies_plan_ics(req: PlanRequest):
+    """The plan's lottery deadlines as a calendar file (Google / Apple / Outlook)."""
+    plan = build_plan(req.household_size, req.income, req.has_voucher, req.voucher_type, req.bedrooms, req.borough, req.item_ids)
+    return Response(plan.calendar_ics, media_type="text/calendar",
+                    headers={"Content-Disposition": 'attachment; filename="housing-deadlines.ics"'})
+
+
+class PacketRequest2(Profile):
+    shelter_ids: Optional[list] = None
+    client_language: Optional[str] = None
+
+
+@app.post("/shelters/intake-packet", response_model=IntakePacket)
+def shelters_intake_packet(req: PacketRequest2):
+    """Shelter Match deliverable: Intake Ready Packet (door, documents, shortlist, rights, if denied; printable + SMS)."""
+    profile = Profile(**req.model_dump(exclude={"shelter_ids", "client_language"}))
+    return build_intake_packet(profile, req.shelter_ids, req.client_language)
+
+
 # ---------------- Voucher Guard: scraped listings checked for discrimination ----------------
 import os  # noqa: E402
 

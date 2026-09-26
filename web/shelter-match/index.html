@@ -58,6 +58,10 @@
   .filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:6px 0 12px;align-items:end}
   .filters label{font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:4px}
   .filters .choices{grid-column:1/-1}.filters .choices label{flex-direction:row;font-weight:400}
+  .packet .prow{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-top:10px}
+  .packet .prow label{font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:4px}
+  .packet button.ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .pickme{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;margin-top:12px;min-height:40px}
   .filters label.inline{flex-direction:row;align-items:center;gap:6px;font-weight:400;min-height:44px}
   ul.plain{padding-left:18px;margin:8px 0 0;font-size:14px;line-height:1.6}
   .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
@@ -71,6 +75,7 @@
   @media (max-width:520px){ .hide-sm{display:none} }
 </style>
 <link rel="stylesheet" href="/shared/app.css">
+<link rel="stylesheet" href="/shared/theme.css">
 <script src="/shared/app.js"></script>
 </head>
 <body>
@@ -145,6 +150,7 @@ function card(o){
       <h4>What to bring</h4>${list(d.what_to_bring)}
       <h4>Contact</h4><p class="meta">${esc(o.address)}${o.phone ? '<br>Phone: ' + tel(o.phone) : ''}${o.provider ? '<br>Run by ' + esc(o.provider) : ''}</p>
       <h4>Forms and links</h4><ul class="plain">${links}</ul>
+      <label class="pickme"><input type="checkbox" data-pick="${esc(o.id)}"> Add to intake packet</label>
       ${d.confirm ? `<p class="why" style="color:var(--urgent)">${esc(d.confirm)}</p>` : ''}
       ${d.caveats ? `<p class="src">Research note: ${esc(d.caveats)}</p>` : ''}
       ${d.source_quote ? `<p class="src">Source${d.source_date ? ' (' + esc(d.source_date) + ')' : ''} says: “${esc(d.source_quote.slice(0, 300))}${d.source_quote.length > 300 ? '…' : ''}”</p>` : ''}
@@ -182,9 +188,25 @@ function applyFilters(){
     '<p class="note">No shelter matches these filters. Clear a filter, or use the intake step above.</p>';
 }
 
+let lastProfile = null;
+async function packet(){
+  const st = document.getElementById('packetStatus'); st.textContent = 'Building…';
+  const body = { ...lastProfile, shelter_ids: [...document.querySelectorAll('[data-pick]:checked')].map(x => x.dataset.pick) };
+  if (!body.shelter_ids.length) delete body.shelter_ids;
+  if (document.getElementById('plang').value) body.client_language = document.getElementById('plang').value;
+  const r = await fetch(API + '/shelters/intake-packet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  if (!r.ok) { st.textContent = 'Couldn\'t build the packet.'; throw new Error(r.status); }
+  st.textContent = '';
+  return r.json();
+}
+document.addEventListener('click', async e => {
+  if (e.target.id === 'packetBtn') { const k = await packet(); window.open(URL.createObjectURL(new Blob([k.html], { type: 'text/html' })), '_blank'); }
+  if (e.target.id === 'packetSms') { const k = await packet(); await navigator.clipboard.writeText(k.text); document.getElementById('packetStatus').textContent = 'Text message copied.'; }
+});
+
 function drawMap(){
   VDD.renderMap(document.getElementById('map'), lastRows.map(s => ({
-    id: s.id, lat: s.lat, lng: s.lng, title: s.name, color: s.walk_in ? '#1A73E8' : '#2E6B45',
+    id: s.id, lat: s.lat, lng: s.lng, title: s.name, color: s.walk_in ? 'ring' : 'solid',
     subtitle: `${s.address}. ${s.serves}.${s.walk_in ? ' Walk-in / call.' : ''}`,
   })), { onDetails: id => VDD.reveal(showTab, id) });
 }
@@ -196,9 +218,14 @@ function render(r){
     ${r.total ? filterBar(r) : ''}
     <div id="tabs"></div>
     <div id="listPanel"><p class="note" id="count"></p><div id="list"></div></div>
-    <div id="mapPanel" hidden><div class="legend"><span><i style="background:#2E6B45"></i>City (DHS) shelter</span><span><i style="background:#1A73E8"></i>Walk-in / call</span></div>
+    <div id="mapPanel" hidden><div class="legend"><span><i class="pin-solid"></i>City (DHS) shelter</span><span><i class="pin-ring"></i>Walk-in / call</span></div>
       <div class="map" id="map"></div><p class="map-note"></p></div>
     <p class="note">${esc(r.note)}</p></div>`;
+  h += `<div class="card packet"><h2>Intake Ready Packet</h2>
+    <p class="note">A printable one-pager (and a text message) for the client: where to go, hours and subway, what to bring, the shelters that fit, their rights, and what to do if denied. Tick "Add to intake packet" on shelters to choose the shortlist, or leave them unticked for the best matches.</p>
+    <div class="prow"><label>Client language <select id="plang"><option value="">English</option><option value="es">Español</option><option value="zh">中文</option><option value="ru">Русский</option><option value="bn">বাংলা</option><option value="ht">Kreyòl</option></select></label>
+      <button type="button" id="packetBtn">Create packet</button><button type="button" class="ghost" id="packetSms">Copy text message</button></div>
+    <p class="note" id="packetStatus" aria-live="polite"></p></div>`;
   if (r.not_eligible.length) h += `<div class="card"><details><summary>Not eligible (${r.not_eligible.length}) and why</summary><ul class="plain">${r.not_eligible.map(e => `<li><b>${esc(e.name)}</b> (${esc(e.address)}): ${esc(e.reason)}</li>`).join('')}</ul></details></div>`;
   const el = document.getElementById('results'); el.innerHTML = h; el.style.display = 'block';
   if (r.total){
@@ -222,6 +249,7 @@ document.getElementById('form').addEventListener('submit', async (e) => {
   for (const k of ['fleeing_violence','in_dhs_shelter_last_12_months','veteran','lgbtq','employed'])
     body[k] = f.get(k) === 'on';
   const el = document.getElementById('results');
+  lastProfile = body;
   try {
     const r = await fetch(API + '/shelters/match', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
     if (!r.ok) throw new Error(r.status);

@@ -54,8 +54,15 @@
   .note{font-size:13px;color:var(--text-dim);line-height:1.5}
   .scroll{overflow-x:auto}
   .err{color:var(--warn)}
+  .plan{display:flex;flex-direction:column;gap:12px}
+  .planrow{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+  .planrow label{font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:5px}
+  .btn{font:inherit;font-size:14px;font-weight:600;border-radius:8px;padding:10px 16px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;min-height:44px}
+  .btn.ghost{background:transparent;color:var(--text);border-color:var(--border)}
+  .pick{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;margin-top:10px;min-height:40px}
 </style>
 <link rel="stylesheet" href="/shared/app.css">
+<link rel="stylesheet" href="/shared/theme.css">
 <script src="/shared/app.js"></script>
 </head>
 <body>
@@ -81,9 +88,20 @@
     <label class="inline"><input type="checkbox" id="limit"> Rent within voucher limit only</label>
   </form>
 
+  <div class="card plan" id="planCard">
+    <div><b>Housing Plan</b><div class="note">Turns this feed into a plan for the household: lotteries to apply to by deadline, a document checklist, and a letter to each voucher-friendly landlord. Tick "Add to plan" on items to choose them, or leave all unticked for the best matches.</div></div>
+    <div class="planrow">
+      <label>Client language <select id="lang"><option value="">English</option><option value="es">Español</option><option value="zh">中文</option><option value="ru">Русский</option><option value="bn">বাংলা</option><option value="ht">Kreyòl</option></select></label>
+      <button type="button" class="btn" id="planBtn">Build Housing Plan</button>
+      <button type="button" class="btn ghost" id="icsBtn">Download deadlines (.ics)</button>
+      <button type="button" class="btn ghost" id="smsBtn">Copy text message</button>
+    </div>
+    <div class="note" id="planStatus" aria-live="polite"></div>
+  </div>
+
   <div id="tabs"></div>
   <div id="listPanel"><div id="out" aria-live="polite"><div class="card note">Loading…</div></div></div>
-  <div id="mapPanel" hidden class="card"><div class="legend"><span><i style="background:#2F4FA3"></i>Housing Connect lottery</span><span><i style="background:#2E6B45"></i>Voucher-friendly listing</span></div>
+  <div id="mapPanel" hidden class="card"><div class="legend"><span><i class="pin-solid"></i>Housing Connect lottery</span><span><i class="pin-ring"></i>Voucher-friendly listing</span></div>
     <div class="map" id="map"></div><p class="map-note"></p></div>
 </div>
 
@@ -99,7 +117,7 @@ function drawMap(){
     const sub = i.kind === 'lottery'
       ? `Lottery · ${i.deadline ? 'apply by ' + i.deadline : ''}${i.bedrooms.length ? ' · ' + i.bedrooms.map(bedLabel).join(', ') : ''}`
       : `Listing · ${i.rent ? usd(i.rent) + '/mo' : ''} ${i.voucher_status}`;
-    const color = i.kind === 'lottery' ? '#2F4FA3' : '#2E6B45';
+    const color = i.kind === 'lottery' ? 'solid' : 'ring';
     if (i.buildings && i.buildings.length > 1)
       i.buildings.forEach((b, n) => pts.push({ id: i.id, lat: b.lat, lng: b.lng, title: `${i.title} (${b.address})`, subtitle: sub, color }));
     else pts.push({ id: i.id, lat: i.lat, lng: i.lon, title: i.title, subtitle: sub, color });
@@ -114,7 +132,7 @@ function lotteryCard(i, hh){
   const offers = i.unit_offers.map(u => {
     const inc = hh ? u.income_by_household_size[String(hh)] : null;
     const incTxt = inc ? `${usd(inc[0])}–${usd(inc[1])}` : Object.keys(u.income_by_household_size).length ? 'varies by size' : '—';
-    return `<tr><td>${u.count}× ${esc(u.layout)}</td><td>${usd(u.rent)}</td><td>${u.household_min ?? '?'}–${u.household_max ?? '?'}</td>
+    return `<tr><td>${u.count}× ${esc(u.layout)}</td><td>${u.rent ? usd(u.rent) : 'Set by income'}</td><td>${u.household_min ?? '?'}–${u.household_max ?? '?'}</td>
       <td>${incTxt}</td><td>${u.rent_within_voucher_limit == null ? '—' : u.rent_within_voucher_limit ? '<span class="ok">Yes</span>' : '<span class="no">No</span>'}</td></tr>`;
   }).join('');
   return `<details class="item lottery" id="item-${esc(i.id)}"><summary>
@@ -130,6 +148,7 @@ function lotteryCard(i, hh){
       <h4>If you have a voucher</h4><p>${esc(i.voucher_status)}</p>
       <h4>How to apply</h4><p>Apply online at <a href="${esc(i.url)}" target="_blank" rel="noopener">Housing Connect</a> before the deadline.${i.paper_application_address ? ` Paper applications: ${esc(i.paper_application_address)}.` : ''}</p>
       <p class="note">Source: ${esc(i.source)}</p>
+      <label class="pick"><input type="checkbox" data-pick="${esc(i.id)}"> Add to plan</label>
     </div></details>`;
 }
 
@@ -144,6 +163,7 @@ function listingCard(i){
       <h4>Why it's here</h4><p>${esc(i.voucher_status)}</p>
       ${i.url ? `<h4>Listing</h4><p><a href="${esc(i.url)}" target="_blank" rel="noopener">Open the original listing</a></p>` : ''}
       <p class="note">Source: ${esc(i.source)}. Checked by the discrimination detector; nothing discriminatory was found.</p>
+      <label class="pick"><input type="checkbox" data-pick="${esc(i.id)}"> Add to plan</label>
     </div></details>`;
 }
 
@@ -173,6 +193,40 @@ async function load(){
     out.innerHTML = '<div class="card err">Couldn\'t load the feed. Is the API running?</div>';
   }
 }
+// ---- Housing Plan ----
+function planBody(){
+  const v = id => document.getElementById(id);
+  const body = { has_voucher: v('voucher').checked, item_ids: [...document.querySelectorAll('[data-pick]:checked')].map(x => x.dataset.pick) };
+  if (v('hh').value) body.household_size = Number(v('hh').value);
+  if (v('income').value) body.income = Number(v('income').value);
+  if (v('beds').value) body.bedrooms = Number(v('beds').value);
+  if (v('boro').value) body.borough = v('boro').value;
+  if (v('lang').value) body.client_language = v('lang').value;
+  if (!body.item_ids.length) delete body.item_ids;
+  return body;
+}
+async function postPlan(path){
+  const st = document.getElementById('planStatus'); st.textContent = 'Building…';
+  const r = await fetch(API + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(planBody()) });
+  if (!r.ok) { st.textContent = 'Couldn\'t build the plan.'; throw new Error(r.status); }
+  st.textContent = '';
+  return r;
+}
+document.getElementById('planBtn').onclick = async () => {
+  const p = await (await postPlan('/vacancies/plan')).json();
+  window.open(URL.createObjectURL(new Blob([p.html], { type: 'text/html' })), '_blank');
+  document.getElementById('planStatus').textContent = p.headline;
+};
+document.getElementById('icsBtn').onclick = async () => {
+  const blob = await (await postPlan('/vacancies/plan.ics')).blob();
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'housing-deadlines.ics'; a.click();
+};
+document.getElementById('smsBtn').onclick = async () => {
+  const p = await (await postPlan('/vacancies/plan')).json();
+  await navigator.clipboard.writeText(p.text);
+  document.getElementById('planStatus').textContent = 'Text message copied.';
+};
+
 document.getElementById('filters').addEventListener('input', () => { clearTimeout(window._t); window._t = setTimeout(load, 300); });
 document.getElementById('filters').addEventListener('submit', e => { e.preventDefault(); load(); });
 load();

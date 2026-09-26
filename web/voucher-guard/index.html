@@ -59,6 +59,7 @@
   a{color:inherit}
 </style>
 <link rel="stylesheet" href="/shared/app.css">
+<link rel="stylesheet" href="/shared/theme.css">
 <script src="/shared/app.js"></script>
 </head>
 <body>
@@ -95,7 +96,7 @@
     </div>
     <div id="tabs"></div>
     <div id="listPanel"><div id="list" aria-live="polite"><p class="note">Loading…</p></div></div>
-    <div id="mapPanel" hidden><div class="legend"><span><i style="background:#C1440E"></i>Discriminatory</span><span><i style="background:#B7791F"></i>Questionable</span><span><i style="background:#2E6B45"></i>No issue found</span></div>
+    <div id="mapPanel" hidden><div class="legend"><span><i class="pin-solid"></i>Discriminatory</span><span><i class="pin-ring"></i>Questionable</span><span><i class="pin-muted"></i>No issue found</span></div>
       <div class="map" id="map"></div><p class="map-note"></p></div>
   </div>
 </div>
@@ -104,7 +105,7 @@
 const { API, esc } = VDD;
 const LABEL = { violation: 'Discriminatory', needs_review: 'Questionable', no_issue_found: 'No issue found' };
 const CHIP = { violation: 'bad', needs_review: 'warn', no_issue_found: 'ok' };
-const COLOR = { violation: '#C1440E', needs_review: '#B7791F', no_issue_found: '#2E6B45' };
+const COLOR = { violation: 'solid', needs_review: 'ring', no_issue_found: 'muted' };
 const usd = n => n == null ? '' : '$' + Math.round(n).toLocaleString('en-US');
 let items = [];
 const details = {};   // id -> full analysis, fetched when a dropdown opens
