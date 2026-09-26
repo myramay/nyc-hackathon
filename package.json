@@ -1,0 +1,16 @@
+{
+  "name": "voucher-detector",
+  "private": true,
+  "type": "module",
+  "workspaces": ["core", "eval"],
+  "scripts": {
+    "test": "bun test",
+    "eval": "bun run eval/run.ts",
+    "demo": "bun run core/demo.ts",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "devDependencies": {
+    "bun-types": "^1.4.2",
+    "typescript": "^7.0.2"
+  }
+}
