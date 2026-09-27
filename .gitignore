@@ -6,3 +6,15 @@ data/cache/
 __pycache__/
 .next/
 .gstack/
+
+# Python virtual environments
+.venv/
+venv/
+
+# Local camera test images
+scanner/data/camera-test/
+
+# Secrets
+.env
+.env.*
+!.env.example
