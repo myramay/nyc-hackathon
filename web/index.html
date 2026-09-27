@@ -15,8 +15,8 @@
     :root { --ink:#F4F1EA; --ink-2:#FFFFFF; --text:#20242E; --text-dim:#5B6270; --border:#DEDACF; --b:#2F4FA3; --s:#2E6B45; }
   }
   *,*::before,*::after{box-sizing:border-box}
-  body{margin:0;background:var(--ink);color:var(--text);display:flex;justify-content:center}
-  .app{width:100%;max-width:880px;padding:28px 16px 64px}
+  body{margin:0;background:var(--ink);color:var(--text);display:block}
+  .app{width:100%;max-width:880px;margin:0 auto;padding:28px 16px 64px}
   h1{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(30px,6vw,44px);line-height:1.1;margin:8px 0 12px}
   .lede{color:var(--text-dim);font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 28px}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
@@ -34,6 +34,9 @@
 <script src="/shared/app.js"></script>
 </head>
 <body>
+<div id="hero" data-title="HOMEWARD NYC" data-tagline="Every voucher, a way home." data-hint="SCROLL"></div>
+<script src="/shared/hero.js"></script>
+<script>MetroHero.mount(document.getElementById("hero"));</script>
 <div class="app">
   <script>document.write(VDD.nav(""))</script>
   <h1>Homeward NYC</h1>
