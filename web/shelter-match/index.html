@@ -2,263 +2,112 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Shelter Match</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink:#0F1B2D; --ink-2:#16233A; --text:#EDEAE1; --text-dim:#9BA6B8; --border:#2B3A54;
-    --accent:#C1440E; --urgent-bg:#2A1810; --urgent:#ff8a5c; --go-bg:#122419; --go:#7fc99a; --chip:#1E2C45;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  }
-  @media (prefers-color-scheme: light) {
-    :root { --ink:#F4F1EA; --ink-2:#FFFFFF; --text:#20242E; --text-dim:#5B6270; --border:#DEDACF;
-            --urgent-bg:#FBEAE2; --urgent:#A8380B; --go-bg:#E7F2EA; --go:#2E6B45; --chip:#EFEBE1; }
-  }
-  *,*::before,*::after{box-sizing:border-box}
-  body{margin:0;background:var(--ink);color:var(--text);display:flex;justify-content:center}
-  .app{width:100%;max-width:760px;padding:28px 16px 64px}
-  .eyebrow{color:var(--text-dim);font-size:13px;margin-bottom:6px}
-  h1{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(26px,5vw,34px);line-height:1.15;margin:0 0 10px}
-  h2{font-size:15px;margin:0 0 10px}
-  .lede{color:var(--text-dim);font-size:15px;line-height:1.55;margin:0 0 20px}
-  .card{background:var(--ink-2);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:16px}
-  fieldset{border:0;padding:0;margin:0 0 16px}
-  legend{font-size:14px;font-weight:600;margin-bottom:8px;padding:0}
-  .choices{display:flex;flex-wrap:wrap;gap:8px}
-  .choices label{display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:14px;cursor:pointer;min-height:44px}
-  .choices input{accent-color:var(--accent)}
-  .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
-  .row label{font-size:14px;font-weight:600;display:flex;flex-direction:column;gap:6px}
-  input[type=number],input[type=text],select{font:inherit;font-size:15px;padding:10px;border-radius:7px;border:1px solid var(--border);background:var(--ink);color:var(--text);min-height:44px}
-  button{font:inherit;font-size:15px;font-weight:600;border-radius:8px;padding:12px 20px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;min-height:44px}
-  .privacy{font-size:12.5px;color:var(--text-dim);margin-top:10px}
-  .first{font-size:17px;line-height:1.5;border-left:4px solid var(--accent);padding:4px 0 4px 12px;margin:0}
-  .opt{border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:10px}
-  .opt.urgent{background:var(--urgent-bg);border-color:var(--urgent)}
-  .opt.go{background:var(--go-bg);border-color:var(--go)}
-  .opt h3{font-size:15.5px;margin:0 0 4px}
-  .why{font-size:13.5px;font-weight:600;margin:0 0 6px}
-  .opt.urgent .why{color:var(--urgent)} .opt.go .why{color:var(--go)}
-  .what{font-size:14px;line-height:1.5;margin:0 0 8px}
-  .meta{font-size:13.5px;line-height:1.6;color:var(--text-dim)}
-  .meta a{color:var(--text);font-weight:600}
-  .src{font-size:11.5px;color:var(--text-dim);margin-top:6px}
-  details summary{cursor:pointer;font-weight:600;font-size:14px;min-height:32px}
-  details.shelter summary{list-style:none;display:flex;flex-direction:column;gap:3px;min-height:44px}
-  details.shelter summary::-webkit-details-marker{display:none}
-  details.shelter summary::after{content:"Details ▾";font-size:12.5px;color:var(--text-dim);font-weight:600}
-  details.shelter[open] summary::after{content:"Hide details ▴"}
-  details.shelter summary .chip{align-self:flex-start}
-  .sname{font-size:15.5px}.saddr{font-size:13.5px;color:var(--text-dim);font-weight:400}
-  .sbody{margin-top:10px;border-top:1px solid var(--border);padding-top:6px}
-  .sbody h4{font-size:13px;margin:12px 0 4px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-dim)}
-  .filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:6px 0 12px;align-items:end}
-  .filters label{font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:4px}
-  .filters .choices{grid-column:1/-1}.filters .choices label{flex-direction:row;font-weight:400}
-  .packet .prow{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-top:10px}
-  .packet .prow label{font-size:13px;font-weight:600;display:flex;flex-direction:column;gap:4px}
-  .packet button.ghost{background:transparent;color:var(--text);border-color:var(--border)}
-  .pickme{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;margin-top:12px;min-height:40px}
-  .filters label.inline{flex-direction:row;align-items:center;gap:6px;font-weight:400;min-height:44px}
-  ul.plain{padding-left:18px;margin:8px 0 0;font-size:14px;line-height:1.6}
-  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
-  .chip{background:var(--chip);border-radius:12px;padding:3px 10px;font-size:12.5px}
-  table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:8px}
-  th,td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--border);vertical-align:top}
-  th{color:var(--text-dim);font-weight:600}
-  .note{font-size:13px;color:var(--text-dim);line-height:1.5}
-  #results{display:none}
-  .err{color:var(--urgent);font-size:14px}
-  @media (max-width:520px){ .hide-sm{display:none} }
-</style>
-<link rel="stylesheet" href="/shared/app.css">
-<link rel="stylesheet" href="/shared/theme.css">
-<script src="/shared/app.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shelter Match · Homeward NYC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-<div class="app">
-  <script>document.write(VDD.nav("Shelter Match"))</script>
-  <div class="eyebrow">For caseworkers and people looking for shelter in NYC</div>
-  <h1>Shelter Match</h1>
-  <p class="lede">Answer a few questions to narrow NYC homeless shelters down to the ones you're eligible for. Only shelters with a public address are listed, each with its source.</p>
 
-  <form class="card" id="form">
-    <fieldset>
-      <legend>Who needs shelter?</legend>
-      <div class="choices">
-        <label><input type="radio" name="household" value="single" checked> One adult</label>
-        <label><input type="radio" name="household" value="adult_family"> Adults together, no kids under 18</label>
-        <label><input type="radio" name="household" value="family_with_children"> Family with kids under 18</label>
-        <label><input type="radio" name="household" value="youth_alone"> Young person on their own</label>
-      </div>
-    </fieldset>
-    <div class="row">
-      <label>Age <input type="number" name="age" min="0" max="120" inputmode="numeric" placeholder="e.g. 34"></label>
-      <label>Gender
-        <select name="gender"><option value="unspecified">Prefer not to say</option><option value="woman">Woman</option><option value="man">Man</option><option value="nonbinary">Nonbinary / other</option></select>
-      </label>
-      <label>Borough
-        <select name="borough"><option value="">Any</option><option>Manhattan</option><option>Brooklyn</option><option>Bronx</option><option>Queens</option><option>Staten Island</option></select>
-      </label>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="/"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 15 L16 4.5 L28.5 15"/><path d="M7 12.5 V27.5 H25 V12.5"/><path d="M13.5 27.5 V19.5 H18.5 V27.5"/><path d="M21.5 8.5 V5.5 H24.5 V11"/></svg>Homeward.</a>
+    <ul class="links">
+      <li><a href="/voucher-guard/">Voucher Guard</a></li>
+      <li><a href="/open-doors/">Open Doors</a></li>
+      <li><a href="/shelter-match/" aria-current="page">Shelter Match</a></li>
+      <li><a href="/#how">How it works</a></li>
+    </ul>
+    <a class="btn btn-light cta" href="/voucher-guard/#check">Check a listing</a>
+    <a class="btn btn-dark btn-sm menu" href="/#features">Menu</a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <img class="art" src="/assets/img/house.svg" alt="">
+    <div class="wrap">
+      <span class="for">For <span class="pill-dash">Single Adults, Families, Youth &amp; Couples</span></span>
+      <h1>Shelter Match</h1>
+      <p>Narrows NYC's homeless shelters to the ones a person is eligible for tonight, with how to get in, what to bring, and who to call. Only shelters with a public address, each with its source. Nothing you enter is saved.</p>
+      <div class="ctas"><a class="btn btn-light" href="#match">Find shelters</a><a class="btn btn-dark" href="#packet">Intake Ready Packet</a></div>
     </div>
-    <fieldset>
-      <legend>Anything else that applies?</legend>
-      <div class="choices">
-        <label><input type="checkbox" name="fleeing_violence"> Fleeing domestic violence</label>
-        <label><input type="checkbox" name="in_dhs_shelter_last_12_months"> In a NYC shelter in the last year</label>
-        <label><input type="checkbox" name="veteran"> Veteran</label>
-        <label><input type="checkbox" name="lgbtq"> LGBTQ+</label>
-        <label><input type="checkbox" name="employed"> Working</label>
-        <label><input type="checkbox" name="need" value="mental_health"> Mental health support</label>
-        <label><input type="checkbox" name="need" value="substance_use"> Substance use support</label>
-        <label><input type="checkbox" name="need" value="hiv"> HIV/AIDS</label>
-        <label><input type="checkbox" name="need" value="medical"> Medical needs</label>
+  </section>
+
+  <div class="wrap layout" id="match">
+    <aside class="side">
+      <form class="panel" id="form">
+        <h3>Who needs shelter?</h3>
+        <div class="seg" style="margin-bottom:14px">
+          <label><input type="radio" name="h" value="single" checked> One adult</label>
+          <label><input type="radio" name="h" value="adult_family"> Couple / adults</label>
+          <label><input type="radio" name="h" value="family_with_children"> Family with kids</label>
+          <label><input type="radio" name="h" value="youth_alone"> Young person</label>
+        </div>
+        <div class="field"><label for="a">Age</label><input id="a" type="number" min="0" max="120" placeholder="34"></div>
+        <div class="field"><label for="g">Gender</label><select id="g"><option value="unspecified">Prefer not to say</option><option value="woman">Woman</option><option value="man">Man</option><option value="nonbinary">Nonbinary / other</option></select></div>
+        <div class="field"><label for="bo">Borough</label><select id="bo"><option value="">Any</option><option>Manhattan</option><option>Brooklyn</option><option>Bronx</option><option>Queens</option><option>Staten Island</option></select></div>
+        <h3 style="margin-top:6px">Anything else?</h3>
+        <div class="checks">
+          <label><input type="checkbox" name="fleeing_violence"> Fleeing domestic violence</label>
+          <label><input type="checkbox" name="in_dhs_shelter_last_12_months"> In a NYC shelter in the last year</label>
+          <label><input type="checkbox" name="veteran"> Veteran</label>
+          <label><input type="checkbox" name="lgbtq"> LGBTQ+</label>
+          <label><input type="checkbox" name="employed"> Working</label>
+          <label><input type="checkbox" name="need" value="mental_health"> Mental health support</label>
+          <label><input type="checkbox" name="need" value="substance_use"> Substance use support</label>
+          <label><input type="checkbox" name="need" value="hiv"> HIV/AIDS</label>
+          <label><input type="checkbox" name="need" value="medical"> Medical needs</label>
+        </div>
+        <button class="btn btn-light" type="submit" style="width:100%;margin-top:16px">Find shelters</button>
+      </form>
+    </aside>
+
+    <div>
+      <div id="how" aria-live="polite"><div class="banner">Fill in who needs shelter and press <b>Find shelters</b>. Domestic violence shelters are confidential and never listed; call 311 or the NYC hotline 800-621-4673.</div></div>
+
+      <div id="results" hidden>
+        <div class="toolbar">
+          <div class="counts" id="counts"></div>
+          <div class="toggle" role="tablist" data-toggle="sm"><button role="tab" data-view="list" aria-selected="true">List</button><button role="tab" data-view="map" aria-selected="false">Map</button></div>
+        </div>
+
+        <div data-panel-for="sm" data-view="list">
+          <div class="panel" style="margin-bottom:14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px">
+            <div class="field" style="margin:0"><label for="x1">Borough</label><select id="x1"><option value="">All</option></select></div>
+            <div class="field" style="margin:0"><label for="x2">Type</label><select id="x2"><option value="">All</option></select></div>
+            <div class="field" style="margin:0"><label for="x3">Sort</label><select id="x3"><option value="best">Best fit</option><option value="boro">Borough</option><option value="beds">Most beds</option><option value="name">Name</option></select></div>
+          </div>
+          <div id="list"></div>
+          <div id="notEligible"></div>
+        </div>
+
+        <div data-panel-for="sm" data-view="map" hidden>
+          <div class="map"><div id="map" style="position:absolute;inset:0"></div></div>
+          <div class="legend"><span><i class="mk mk-solid"></i>City (DHS) shelter</span><span><i class="mk mk-ring"></i>Walk-in / call</span><span class="map-note"></span></div>
+        </div>
+        <p id="note" style="color:var(--muted);font-size:13px;line-height:1.55"></p>
       </div>
-    </fieldset>
-    <button type="submit">Find options</button>
-    <div class="privacy">Nothing you enter is saved. In an emergency, call 911.</div>
-  </form>
+    </div>
+  </div>
 
-  <div id="results" aria-live="polite"></div>
-</div>
+  <section class="block" id="packet" style="border-top:1px solid var(--line)">
+    <div class="wrap">
+      <div class="head"><div><span class="eyebrow">Intake Ready Packet</span><h2>One page for the client</h2></div>
+        <p>Where to go, hours and subway, what to bring, the shelters that fit, their rights, and what to do if denied. Printable, textable, and in the client's language. Tick “Add to packet” on shelters to choose the shortlist; otherwise the best matches are used.</p></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-light" type="button" id="packetBtn">Create Intake Ready Packet</button><button class="btn btn-dark" type="button" id="smsBtn">Copy text message</button>
+        <label class="field" style="margin:0;min-width:180px"><select id="lang" aria-label="Client language"><option value="">English</option><option value="es">Español</option><option value="zh">中文</option><option value="ru">Русский</option><option value="bn">বাংলা</option><option value="ht">Kreyòl</option></select></label>
+      </div>
+      <p id="packetStatus" aria-live="polite" style="margin:14px 0 0;color:var(--muted)"></p>
+      <div class="tiles two" id="packetOut" style="margin-top:18px" hidden></div>
+    </div>
+  </section>
+</main>
 
-<script>
-const API = VDD.API;
-let showTab = null, lastRows = [];
-const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
-const tel = p => { const d = String(p || '').match(/^[\d\s\-()+]+/); return d && d[0].replace(/\D/g,'').length >= 3 ? `<a href="tel:${d[0].replace(/\D/g,'')}">${esc(p)}</a>` : esc(p); };
-
-const POP = { mental_health: 'Mental health', substance_use: 'Substance use', veterans: 'Veterans', seniors: 'Seniors',
-              employment: 'Working', lgbtq: 'LGBTQ+', hiv: 'HIV/AIDS', medical: 'Medical', young_adults: 'Young adults' };
-let current = null;   // last match result; filters re-render from it without a new request
-
-// One shelter = one dropdown. Closed: name, address, why it fits. Open: everything needed to go there.
-function card(o){
-  const d = o.details || {};
-  const list = xs => (xs && xs.length) ? `<ul class="plain">${xs.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="note">Not listed by the source.</p>';
-  const links = (d.links || []).map(l => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a></li>`).join('');
-  return `<details class="opt go shelter" id="item-${esc(o.id)}">
-    <summary><span class="sname">${esc(o.name)}</span>${o.walk_in ? ' <span class="chip">Walk-in / call</span>' : ''}
-      <span class="saddr">${esc(o.address)}${o.borough ? ' · ' + esc(o.borough) : ''}</span>
-      <span class="why">${esc(o.why)}</span></summary>
-    <div class="sbody">
-      <h4>How to get in</h4><p class="what">${esc(d.how_to_get_in || o.access)}</p>
-      <h4>Eligibility</h4>${list(d.eligibility)}
-      <h4>What to bring</h4>${list(d.what_to_bring)}
-      <h4>Contact</h4><p class="meta">${esc(o.address)}${o.phone ? '<br>Phone: ' + tel(o.phone) : ''}${o.provider ? '<br>Run by ' + esc(o.provider) : ''}</p>
-      <h4>Forms and links</h4><ul class="plain">${links}</ul>
-      <label class="pickme"><input type="checkbox" data-pick="${esc(o.id)}"> Add to intake packet</label>
-      ${d.confirm ? `<p class="why" style="color:var(--urgent)">${esc(d.confirm)}</p>` : ''}
-      ${d.caveats ? `<p class="src">Research note: ${esc(d.caveats)}</p>` : ''}
-      ${d.source_quote ? `<p class="src">Source${d.source_date ? ' (' + esc(d.source_date) + ')' : ''} says: “${esc(d.source_quote.slice(0, 300))}${d.source_quote.length > 300 ? '…' : ''}”</p>` : ''}
-    </div></details>`;
-}
-
-// Filters narrow the eligible list further; they never add shelters the person isn't eligible for.
-function filterBar(r){
-  const boros = [...new Set(r.shelters.map(s => s.borough).filter(Boolean))].sort();
-  const types = [...new Set(r.shelters.map(s => s.facility_type).filter(Boolean))].sort();
-  const pops = [...new Set(r.shelters.flatMap(s => s.populations))].sort();
-  return `<div class="filters" role="group" aria-label="Filter shelters">
-    <label>Borough <select id="fBoro"><option value="">All</option>${boros.map(b => `<option>${esc(b)}</option>`).join('')}</select></label>
-    <label>Type <select id="fType"><option value="">All</option>${types.map(t => `<option>${esc(t)}</option>`).join('')}</select></label>
-    <label>Sort <select id="fSort"><option value="best">Best fit</option><option value="boro">Borough</option><option value="beds">Most beds</option><option value="name">Name</option></select></label>
-    ${pops.length ? `<div class="choices">${pops.map(p => `<label><input type="checkbox" class="fPop" value="${esc(p)}"> ${esc(POP[p] || p)}</label>`).join('')}</div>` : ''}
-    <label class="inline"><input type="checkbox" id="fWalk"> Walk-in / call only</label>
-  </div>`;
-}
-
-function applyFilters(){
-  const r = current; if (!r) return;
-  const boro = document.getElementById('fBoro').value, type = document.getElementById('fType').value;
-  const sort = document.getElementById('fSort').value, walk = document.getElementById('fWalk').checked;
-  const pops = [...document.querySelectorAll('.fPop:checked')].map(x => x.value);
-  let rows = r.shelters.filter(s => (!boro || s.borough === boro) && (!type || s.facility_type === type) &&
-                                    (!walk || s.walk_in) && pops.every(p => s.populations.includes(p)));
-  const by = { boro: (a, b) => (a.borough || '').localeCompare(b.borough || ''), beds: (a, b) => (b.beds || 0) - (a.beds || 0),
-               name: (a, b) => a.name.localeCompare(b.name) };
-  if (by[sort]) rows = [...rows].sort(by[sort]);
-  lastRows = rows;
-  if (!document.getElementById('mapPanel').hidden) drawMap();
-  document.getElementById('count').textContent = `Showing ${rows.length} of ${r.total} shelters you're eligible for`;
-  document.getElementById('list').innerHTML = rows.map(card).join('') ||
-    '<p class="note">No shelter matches these filters. Clear a filter, or use the intake step above.</p>';
-}
-
-let lastProfile = null;
-async function packet(){
-  const st = document.getElementById('packetStatus'); st.textContent = 'Building…';
-  const body = { ...lastProfile, shelter_ids: [...document.querySelectorAll('[data-pick]:checked')].map(x => x.dataset.pick) };
-  if (!body.shelter_ids.length) delete body.shelter_ids;
-  if (document.getElementById('plang').value) body.client_language = document.getElementById('plang').value;
-  const r = await fetch(API + '/shelters/intake-packet', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-  if (!r.ok) { st.textContent = 'Couldn\'t build the packet.'; throw new Error(r.status); }
-  st.textContent = '';
-  return r.json();
-}
-document.addEventListener('click', async e => {
-  if (e.target.id === 'packetBtn') { const k = await packet(); window.open(URL.createObjectURL(new Blob([k.html], { type: 'text/html' })), '_blank'); }
-  if (e.target.id === 'packetSms') { const k = await packet(); await navigator.clipboard.writeText(k.text); document.getElementById('packetStatus').textContent = 'Text message copied.'; }
-});
-
-function drawMap(){
-  VDD.renderMap(document.getElementById('map'), lastRows.map(s => ({
-    id: s.id, lat: s.lat, lng: s.lng, title: s.name, color: s.walk_in ? 'ring' : 'solid',
-    subtitle: `${s.address}. ${s.serves}.${s.walk_in ? ' Walk-in / call.' : ''}`,
-  })), { onDetails: id => VDD.reveal(showTab, id) });
-}
-
-function render(r){
-  current = r;
-  let h = `<div class="card"><p class="first">${esc(r.how_to_get_in)}</p></div>`;
-  h += `<div class="card"><h2>${r.total} shelter${r.total === 1 ? '' : 's'} you're eligible for</h2>
-    ${r.total ? filterBar(r) : ''}
-    <div id="tabs"></div>
-    <div id="listPanel"><p class="note" id="count"></p><div id="list"></div></div>
-    <div id="mapPanel" hidden><div class="legend"><span><i class="pin-solid"></i>City (DHS) shelter</span><span><i class="pin-ring"></i>Walk-in / call</span></div>
-      <div class="map" id="map"></div><p class="map-note"></p></div>
-    <p class="note">${esc(r.note)}</p></div>`;
-  h += `<div class="card packet"><h2>Intake Ready Packet</h2>
-    <p class="note">A printable one-pager (and a text message) for the client: where to go, hours and subway, what to bring, the shelters that fit, their rights, and what to do if denied. Tick "Add to intake packet" on shelters to choose the shortlist, or leave them unticked for the best matches.</p>
-    <div class="prow"><label>Client language <select id="plang"><option value="">English</option><option value="es">Español</option><option value="zh">中文</option><option value="ru">Русский</option><option value="bn">বাংলা</option><option value="ht">Kreyòl</option></select></label>
-      <button type="button" id="packetBtn">Create packet</button><button type="button" class="ghost" id="packetSms">Copy text message</button></div>
-    <p class="note" id="packetStatus" aria-live="polite"></p></div>`;
-  if (r.not_eligible.length) h += `<div class="card"><details><summary>Not eligible (${r.not_eligible.length}) and why</summary><ul class="plain">${r.not_eligible.map(e => `<li><b>${esc(e.name)}</b> (${esc(e.address)}): ${esc(e.reason)}</li>`).join('')}</ul></details></div>`;
-  const el = document.getElementById('results'); el.innerHTML = h; el.style.display = 'block';
-  if (r.total){
-    showTab = VDD.tabs(document.getElementById('tabs'), { list: document.getElementById('listPanel'), map: document.getElementById('mapPanel') }, drawMap);
-    el.querySelectorAll('.filters select, .filters input').forEach(x => x.addEventListener('change', applyFilters));
-    applyFilters();
-  } else {
-    document.getElementById('list').innerHTML = '<p class="note">No listed shelter fits. Use the intake step above.</p>';
-  }
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-document.getElementById('form').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const f = new FormData(e.target);
-  const body = {
-    household: f.get('household'), gender: f.get('gender'), needs: f.getAll('need'),
-  };
-  if (f.get('age')) body.age = Number(f.get('age'));
-  if (f.get('borough')) body.borough = f.get('borough');
-  for (const k of ['fleeing_violence','in_dhs_shelter_last_12_months','veteran','lgbtq','employed'])
-    body[k] = f.get(k) === 'on';
-  const el = document.getElementById('results');
-  lastProfile = body;
-  try {
-    const r = await fetch(API + '/shelters/match', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-    if (!r.ok) throw new Error(r.status);
-    render(await r.json());
-  } catch (err) {
-    el.innerHTML = '<div class="card err">Couldn\'t reach the shelter finder. Call 311 for shelter directions.</div>';
-    el.style.display = 'block';
-  }
-});
-</script>
+<footer><div class="wrap"><span>Homeward NYC · Shelter Match</span><span>Fleeing violence? Call 800-621-4673. Shelter directions: 311.</span></div></footer>
+<script src="/assets/js/app.js"></script>
+<script src="/assets/js/shelter-match.js"></script>
 </body>
 </html>

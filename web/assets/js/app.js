@@ -1,10 +1,9 @@
-// Connects the grayscale shell to the Homeward API (core/api.py). No backend changes needed:
-// the API allows cross-origin requests, so these pages can be served from anywhere.
-//   API base: ?api=… in the URL, else the page's own origin if it's the API (port 8000), else http://localhost:8000
+// Shared helpers for the Homeward pages. The API (core/api.py) serves these pages, so calls go to the same origin.
+//   API base: ?api=… in the URL, else the page's own origin (http://localhost:8000 when opened as a file)
 
 const HW = (() => {
   const API = new URLSearchParams(location.search).get('api')
-    || (location.port === '8000' ? location.origin : 'http://localhost:8000');
+    || (location.protocol === 'file:' ? 'http://localhost:8000' : location.origin);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   const usd = n => n == null ? '' : '$' + Math.round(n).toLocaleString('en-US');
 
