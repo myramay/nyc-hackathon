@@ -1,4 +1,3 @@
-
 """Read pre-classified MongoDB listings for Homeward NYC."""
 
 from __future__ import annotations
