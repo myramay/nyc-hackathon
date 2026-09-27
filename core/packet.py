@@ -82,7 +82,7 @@ def highlight(text: str, flags: List[Flag]) -> str:
 
 
 def et(iso: str) -> str:
-    return datetime.fromisoformat(iso).astimezone(ZoneInfo("America/New_York")).strftime("%b %d, %Y %I:%M %p")
+    return datetime.fromisoformat(iso.replace("Z", "+00:00")).astimezone(ZoneInfo("America/New_York")).strftime("%b %d, %Y %I:%M %p")
 
 
 def _html_page(r: AnalysisResult, en: List[str], tr: Optional[List[str]], lang: str, listing_url: Optional[str]) -> str:
