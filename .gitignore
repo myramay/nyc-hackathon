@@ -18,3 +18,8 @@ scanner/data/camera-test/
 .env
 .env.*
 !.env.example
+
+# Generated scraper output
+scanner/python/housing_opportunities.json
+scanner/python/listings.json
+scanner/python/real_listings.json

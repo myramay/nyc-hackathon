@@ -2620,7 +2620,7 @@
       "item3": 8
      },
      {
-      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454787.png",
+      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454785.png",
       "item2": "",
       "item3": 9
      },
@@ -2635,12 +2635,12 @@
       "item3": 11
      },
      {
-      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454797.png",
+      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454791.png",
       "item2": "",
       "item3": 12
      },
      {
-      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454798.png",
+      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454800.png",
       "item2": "",
       "item3": 13
      },
@@ -2655,24 +2655,19 @@
       "item3": 15
      },
      {
-      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454806.png",
+      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454807.png",
       "item2": "",
       "item3": 16
      },
      {
-      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454807.png",
+      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454808.png",
       "item2": "",
       "item3": 17
      },
      {
-      "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454808.png",
-      "item2": "",
-      "item3": 18
-     },
-     {
       "item1": "https://a806-housingconnectapi.nyc.gov/MailTemplates/photos/38454810.png",
       "item2": "",
-      "item3": 19
+      "item3": 18
      }
     ],
     "lotteryBuildings": [
@@ -23869,5 +23864,5 @@
    }
   }
  ],
- "fetched_at": "2026-09-27T11:36:58.256162+00:00"
+ "fetched_at": "2026-09-26T19:35:14.684982+00:00"
 }
