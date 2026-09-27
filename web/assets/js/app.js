@@ -1,9 +1,11 @@
 // Shared helpers for the Homeward pages. The API (core/api.py) serves these pages, so calls go to the same origin.
-//   API base: ?api=… in the URL, else the page's own origin (http://localhost:8000 when opened as a file)
+//   API base: ?api=… in the URL, else the page's own origin (http://localhost:8000 when opened as a file).
+//   Static-only deploys (homeward-nyc.vercel.app) use the backend deployed at nyc-hackathon.vercel.app.
 
 const HW = (() => {
   const API = new URLSearchParams(location.search).get('api')
-    || (location.protocol === 'file:' ? 'http://localhost:8000' : location.origin);
+    || (location.protocol === 'file:' ? 'http://localhost:8000'
+      : location.hostname === 'homeward-nyc.vercel.app' ? 'https://nyc-hackathon.vercel.app' : location.origin);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   const usd = n => n == null ? '' : '$' + Math.round(n).toLocaleString('en-US');
 
