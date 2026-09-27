@@ -86,19 +86,56 @@ def _scan_one(raw: dict, use_gemini: bool) -> ScannedListing:
         result=r)
 
 
+# def scan_all(use_gemini: bool = False) -> List[ScannedListing]:
+#     """Check every scraped listing (cached by url+text, so re-scans only process new listings)."""
+#     raws = raw_listings()
+#     todo = []
+#     for raw in raws:
+#         k = (raw.get("url") or "") + (raw.get("text") or "")
+#         if k not in _cache:
+#             todo.append((k, raw))
+#     with ThreadPoolExecutor(max_workers=4) as pool:
+#         for (k, _), s in zip(todo, pool.map(lambda kr: _scan_one(kr[1], use_gemini), todo)):
+#             _cache[k] = s
+#     return [_cache[(r.get("url") or "") + (r.get("text") or "")] for r in raws]
+
+
 def scan_all(use_gemini: bool = False) -> List[ScannedListing]:
-    """Check every scraped listing (cached by url+text, so re-scans only process new listings)."""
+    """Read MongoDB when configured; otherwise use local JSON."""
+
+    if __import__("os").environ.get("MONGODB_URI"):
+        from scanner.mongo_store import mongo_scan_all
+        return mongo_scan_all()
+
+    # Keep the existing JSON implementation below.
     raws = raw_listings()
     todo = []
+
     for raw in raws:
         k = (raw.get("url") or "") + (raw.get("text") or "")
         if k not in _cache:
             todo.append((k, raw))
+
     with ThreadPoolExecutor(max_workers=4) as pool:
-        for (k, _), s in zip(todo, pool.map(lambda kr: _scan_one(kr[1], use_gemini), todo)):
+        for (k, _), s in zip(
+            todo,
+            pool.map(lambda kr: _scan_one(kr[1], use_gemini), todo)
+        ):
             _cache[k] = s
-    return [_cache[(r.get("url") or "") + (r.get("text") or "")] for r in raws]
+
+    return [
+        _cache[(r.get("url") or "") + (r.get("text") or "")]
+        for r in raws
+    ]
+
+
+
+# def get(listing_id: str) -> Optional[ScannedListing]:
+#     return next((s for s in scan_all() if s.id == listing_id), None)
 
 
 def get(listing_id: str) -> Optional[ScannedListing]:
-    return next((s for s in scan_all() if s.id == listing_id), None)
+    return next(
+        (s for s in scan_all() if s.id == listing_id),
+        None
+    )
