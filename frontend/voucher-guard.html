@@ -37,78 +37,30 @@
 
   <div class="wrap layout">
     <aside class="side">
-      <div class="panel" id="check">
+      <form class="panel" id="check">
         <h3>Check a listing</h3>
-        <div class="field"><label for="t">Paste the listing text or a link</label>
+        <div class="field"><label for="t">Paste the listing text</label>
           <textarea id="t" placeholder="Sunny 1BR, $2,200/mo. Must earn 40x the rent. No programs."></textarea></div>
-        <button class="btn btn-light" type="button" style="width:100%">Check listing</button>
-      </div>
+        <button class="btn btn-light" type="submit" style="width:100%">Check listing</button>
+        <div id="checkResult" aria-live="polite" style="margin-top:14px"></div>
+      </form>
       <div class="panel">
         <h3>Filter flagged listings</h3>
-        <div class="field"><label for="f1">Show</label><select id="f1"><option>Discriminatory + questionable</option><option>Discriminatory only</option><option>Questionable only</option><option>All scanned</option></select></div>
-        <div class="field"><label for="f2">Borough</label><select id="f2"><option>Any</option><option>Manhattan</option><option>Brooklyn</option><option>Bronx</option><option>Queens</option><option>Staten Island</option></select></div>
-        <div class="field"><label for="f3">Problem</label><select id="f3"><option>Any</option><option>Refuses vouchers</option><option>Income rule on full rent</option><option>Job or credit screening</option></select></div>
+        <div class="field"><label for="f1">Show</label><select id="f1"><option value="flagged">Discriminatory + questionable</option><option value="violation">Discriminatory only</option><option value="needs_review">Questionable only</option><option value="all">All scanned</option></select></div>
+        <div class="field"><label for="f2">Borough</label><select id="f2"><option value="">Any</option><option>Manhattan</option><option>Brooklyn</option><option>Bronx</option><option>Queens</option><option>Staten Island</option></select></div>
+        <div class="field"><label for="f3">Problem</label><select id="f3"><option value="">Any</option><option value="R1">Refuses vouchers</option><option value="R2">Income rule on full rent</option><option value="R3">Job or credit screening</option></select></div>
       </div>
     </aside>
 
     <div>
       <div class="toolbar">
-        <div class="counts">
-          <span class="chip">1,240 scanned</span>
-          <span class="chip"><i class="mk mk-solid"></i>118 discriminatory</span>
-          <span class="chip"><i class="mk mk-ring"></i>46 questionable</span>
-          <span class="sample">Sample data</span>
-        </div>
+        <div class="counts" id="counts"><span class="chip">Loading…</span></div>
         <div class="toggle" role="tablist" data-toggle="vg"><button role="tab" data-view="list" aria-selected="true">List</button><button role="tab" data-view="map" aria-selected="false">Map</button></div>
       </div>
-
-      <div data-panel-for="vg" data-view="list">
-        <details class="card" open>
-          <summary>
-            <span class="t">“No programs. Must earn 40x the rent.”</span><span class="more">Details</span>
-            <span class="s">1BR · $2,200/mo · Crown Heights, Brooklyn · Craigslist · found Sep 26</span>
-            <span class="tags"><span class="chip"><i class="mk mk-solid"></i>Discriminatory</span><span class="chip">Refuses vouchers</span><span class="chip">Income rule on full rent</span></span>
-          </summary>
-          <div class="body">
-            <h5>What we found</h5>
-            <ul><li><b>“No programs”</b> refuses tenants whose rent is paid by a voucher.</li><li><b>“Must earn 40x the rent”</b> applies an income rule to the full rent instead of the tenant's share.</li></ul>
-            <h5>The math</h5>
-            <ol><li>40 × $2,200 = $88,000 a year required.</li><li>A CityFHEPS tenant pays 30% of income: example household earning $24,000 pays $600/month; the voucher pays $1,600.</li><li>Applied to the tenant's share: 40 × $600 = $24,000. The household qualifies.</li><li>$88,000 is more than any CityFHEPS household can earn. The rule excludes every voucher holder.</li></ol>
-            <h5>Listing as checked</h5>
-            <p class="quote">Sunny 1BR in Crown Heights, $2,200/mo. <mark>Must earn 40x the rent</mark>. <mark>No programs</mark>. No pets. Call Dave.</p>
-            <div class="row"><button class="btn btn-light btn-sm" type="button">Evidence packet</button><button class="btn btn-dark btn-sm" type="button">Draft CHR complaint</button><button class="btn btn-ghost btn-sm" type="button">Original listing</button></div>
-          </div>
-        </details>
-        <details class="card">
-          <summary><span class="t">“Section 8 welcome! Sorry, no CityFHEPS.”</span><span class="more">Details</span>
-            <span class="s">2BR · $2,500/mo · Jamaica, Queens · StreetEasy · found Sep 26</span>
-            <span class="tags"><span class="chip"><i class="mk mk-solid"></i>Discriminatory</span><span class="chip">Refuses one voucher type</span></span></summary>
-          <div class="body"><p>Accepting only one voucher type still refuses CityFHEPS holders.</p></div>
-        </details>
-        <details class="card">
-          <summary><span class="t">“Working professionals only.”</span><span class="more">Details</span>
-            <span class="s">1BR · $2,250/mo · Mott Haven, Bronx · Facebook · found Sep 25</span>
-            <span class="tags"><span class="chip"><i class="mk mk-ring"></i>Questionable</span><span class="chip">Job screening</span></span></summary>
-          <div class="body"><p>Employment-only requirements can exclude voucher holders, who aren't required to work. A person should review.</p></div>
-        </details>
-        <details class="card">
-          <summary><span class="t">“No aceptamos programas.”</span><span class="more">Details</span>
-            <span class="s">2BR · $2,400/mo · Washington Heights, Manhattan · Facebook · Spanish</span>
-            <span class="tags"><span class="chip"><i class="mk mk-solid"></i>Discriminatory</span><span class="chip">Refuses vouchers</span><span class="chip">Translated</span></span></summary>
-          <div class="body"><p>“We don't accept programs.” Explicit refusal, read in Spanish.</p></div>
-        </details>
-      </div>
-
+      <div data-panel-for="vg" data-view="list" id="list" aria-live="polite"></div>
       <div data-panel-for="vg" data-view="map" hidden>
-        <div class="map">
-          <img class="base" src="assets/img/map-base.svg" alt="">
-          <span class="pin" style="left:62%;top:58%"></span><span class="pin active" style="left:55%;top:40%"></span><span class="pin" style="left:78%;top:30%"></span>
-          <span class="pin ring" style="left:48%;top:22%"></span><span class="pin" style="left:30%;top:66%"></span><span class="pin ring" style="left:70%;top:72%"></span>
-          <span class="pin" style="left:84%;top:48%"></span><span class="pin" style="left:40%;top:48%"></span>
-          <div class="pop"><b>“No programs. Must earn 40x the rent.”</b>1BR · $2,200/mo · Discriminatory<br><button class="btn btn-light btn-sm" type="button">See details</button></div>
-          <div class="zoom" aria-hidden="true"><span>+</span><span>−</span></div><span class="attr">Map preview · Google Maps goes here</span>
-        </div>
-        <div class="legend"><span><i class="mk mk-solid"></i>Discriminatory</span><span><i class="mk mk-ring"></i>Questionable</span><span>Listings without an address stay in the list</span></div>
+        <div class="map"><div id="map" style="position:absolute;inset:0"></div></div>
+        <div class="legend"><span><i class="mk mk-solid"></i>Discriminatory</span><span><i class="mk mk-ring"></i>Questionable</span><span class="map-note"></span></div>
       </div>
     </div>
   </div>
@@ -116,7 +68,7 @@
   <section class="block" id="scan" style="border-top:1px solid var(--line)">
     <div class="wrap">
       <div class="head"><div><span class="eyebrow">Field scanner</span><h2>Scan a flyer or sign</h2></div>
-        <p>Point the camera at a printed listing, lobby sign, or flyer, or upload a photo. Reads any language and runs the same check.</p></div>
+        <p>Point the camera at a printed listing, lobby sign, or flyer, or upload a photo. Reads any language and runs the same check, then drafts the complaint.</p></div>
       <div class="tiles two">
         <div>
           <div class="viewfinder">
@@ -124,42 +76,19 @@
             <div class="flyer"><b>FOR RENT: 2BR APARTMENT</b>Sunny 2 bedroom, near subway. $2,400/month.<br>Requirements:<br>– Must earn 40x the monthly rent<br>– NO VOUCHERS. NO PROGRAMS.<br>Call 555-0134</div>
             <div class="scanline"></div>
           </div>
-          <div class="row" style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap"><button class="btn btn-light" type="button">Start camera</button><button class="btn btn-dark" type="button">Capture &amp; scan</button><button class="btn btn-ghost" type="button">Upload a photo</button></div>
         </div>
         <div class="panel">
-          <h3>Result preview</h3>
-          <p style="margin:0 0 10px"><span class="chip"><i class="mk mk-solid"></i>Likely discrimination</span></p>
-          <ul style="margin:0 0 14px;padding-left:18px;color:#C9CBD0"><li><b>“NO VOUCHERS”</b>: refuses vouchers</li><li><b>“NO PROGRAMS”</b>: refuses programs</li><li><b>“earn 40x”</b>: $96,000 required vs. $24,000 on the tenant's share</li></ul>
-          <div class="row" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-light btn-sm" type="button">Save photo</button><button class="btn btn-dark btn-sm" type="button">Draft complaint</button></div>
+          <h3>Open the scanner</h3>
+          <p style="margin:0 0 14px;color:#C9CBD0;font-size:14.5px">The scanner uses your camera (or a photo you upload), reads the text on the device and with Gemini, and shows the verdict, the math, and a complaint draft.</p>
+          <a class="btn btn-light" id="scanLink" href="#">Start scanning</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="wrap">
-      <div class="head"><div><span class="eyebrow">Complaint draft · preview</span><h2>Ready for the CCHR form</h2></div>
-        <p>Answers for every field on the Commission's report form, in order. Only a person can fill in their own details and send it.</p></div>
-      <div class="panel">
-        <div class="table-scroll"><table>
-          <thead><tr><th>Form field</th><th>Answer</th><th>Source</th></tr></thead>
-          <tbody>
-            <tr><td>Category of discrimination</td><td>Housing or Lending Practices</td><td><span class="chip"><i class="mk mk-solid"></i>From listing</span></td></tr>
-            <tr><td>Who discriminated</td><td>Dave</td><td><span class="chip"><i class="mk mk-solid"></i>From listing</span></td></tr>
-            <tr><td>Address or location</td><td>512 Halsey St, Brooklyn 11233</td><td><span class="chip"><i class="mk mk-solid"></i>From listing</span></td></tr>
-            <tr><td>Date of most recent incident</td><td>09/26/2026</td><td><span class="chip"><i class="mk mk-ring"></i>Confirm</span></td></tr>
-            <tr><td>Explain the issue</td><td>On September 26, a listing on Craigslist advertised a 1-bedroom for $2,200. It states: “No programs.” …</td><td><span class="chip"><i class="mk mk-ring"></i>Confirm</span></td></tr>
-            <tr><td>Your name and contact</td><td style="color:var(--muted)">You fill this in</td><td><span class="chip"><i class="mk mk-dash"></i>You</span></td></tr>
-            <tr><td>Acknowledgement</td><td style="color:var(--muted)">You check this yourself</td><td><span class="chip"><i class="mk mk-dash"></i>You</span></td></tr>
-          </tbody>
-        </table></div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><button class="btn btn-light" type="button">Open review page</button><button class="btn btn-dark" type="button">Copy all answers</button><span class="sample" style="align-self:center">Sample data</span></div>
       </div>
     </div>
   </section>
 </main>
 
 <footer><div class="wrap"><span>Homeward NYC · Voucher Guard</span><span>Drafts only. A person reviews and submits every complaint.</span></div></footer>
-<script src="assets/js/shell.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/voucher-guard.js"></script>
 </body>
 </html>

@@ -11,6 +11,8 @@
 </head>
 <body>
 
+<div id="hero" data-title="HOMEWARD NYC" data-tagline="Every voucher, a way home." data-hint="SCROLL"></div>
+
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="index.html"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 15 L16 4.5 L28.5 15"/><path d="M7 12.5 V27.5 H25 V12.5"/><path d="M13.5 27.5 V19.5 H18.5 V27.5"/><path d="M21.5 8.5 V5.5 H24.5 V11"/></svg>Homeward.</a>
@@ -72,8 +74,8 @@
   <section class="block">
     <div class="wrap">
       <div class="stats">
-        <div class="stat"><b>287</b><span>Shelters with public, sourced addresses</span></div>
-        <div class="stat"><b>11</b><span>Housing Connect lotteries open today</span></div>
+        <div class="stat"><b id="stShelters">287</b><span>Shelters with public, sourced addresses</span></div>
+        <div class="stat"><b id="stLotteries">—</b><span>Housing Connect lotteries open today</span></div>
         <div class="stat"><b>93%</b><span>Precision on listings we flag, blind test</span></div>
         <div class="stat"><b>0</b><span>Complaints filed without a person's review</span></div>
       </div>
@@ -93,5 +95,14 @@
 </main>
 
 <footer><div class="wrap"><span>Homeward NYC · DivHacks 2026</span><span>Not legal advice. In an emergency, call 911. Shelter help: 311.</span></div></footer>
+<script src="assets/js/hero.js"></script>
+<script>MetroHero.mount(document.getElementById("hero"));</script>
+<script src="assets/js/app.js"></script>
+<script>
+  // Live counts from the API; the static numbers stay if it isn't running.
+  HW.get('/shelters').then(s => { document.getElementById('stShelters').textContent = (Array.isArray(s) ? s : s.shelters || []).length || 287; }).catch(() => {});
+  HW.get('/vacancies?kind=lottery').then(f => { document.getElementById('stLotteries').textContent = f.counts.lotteries; })
+    .catch(() => { document.getElementById('stLotteries').textContent = '11'; });
+</script>
 </body>
 </html>
