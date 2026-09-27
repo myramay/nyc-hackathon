@@ -38,7 +38,7 @@ PREFS = [("lottery_mobility_percent", "mobility disability"), ("lottery_vision_h
 
 class FeedItem(BaseModel):
     id: str
-    kind: Literal["lottery", "listing"]
+    # kind: Literal["lottery", "listing"]
     title: str
     borough: Optional[str] = None
     address: Optional[str] = None
@@ -60,6 +60,9 @@ class FeedItem(BaseModel):
     lat: Optional[float] = None
     lon: Optional[float] = None
     buildings: List[dict] = []          # lotteries with several buildings: one map pin each
+    kind: Literal["lottery", "listing", "inventory"]
+    snapshot_month: Optional[str] = None
+    availability_verified: Optional[bool] = None
 
 
 class Feed(BaseModel):
@@ -227,10 +230,153 @@ def listing_items(use_gemini: bool = False):
     return items, hidden
 
 
+# def _rank(i: FeedItem) -> tuple:
+#     welcomes = i.voucher_status.startswith("Says it welcomes")
+#     return (0 if i.kind == "listing" and welcomes else 1 if i.kind == "listing" and i.within_voucher_limit else 2,
+#             i.deadline or "9999")
+
+
+
+
 def _rank(i: FeedItem) -> tuple:
+    if i.kind == "inventory":
+        return (3, i.title)
+
     welcomes = i.voucher_status.startswith("Says it welcomes")
-    return (0 if i.kind == "listing" and welcomes else 1 if i.kind == "listing" and i.within_voucher_limit else 2,
-            i.deadline or "9999")
+
+    return (
+        0 if i.kind == "listing" and welcomes
+        else 1 if i.kind == "listing" and i.within_voucher_limit
+        else 2,
+        i.deadline or "9999"
+    )
+
+
+
+
+# ---------------- historical rental inventory ----------------
+
+# def inventory_items(limit: int = 250) -> List[FeedItem]:
+    """Real FirstMover records; availability and voucher acceptance unverified."""
+    import os
+
+    if not os.getenv("MONGODB_URI"):
+        return []
+
+    from scanner.mongo_store import collection
+
+    db = collection().database
+    records = db["rental_inventory"].find(
+        {"source": "firstmover"}
+    ).sort("source_created_at", -1).limit(limit)
+
+    items = []
+
+    for doc in records:
+        rent = doc.get("rent")
+        beds = doc.get("bedrooms")
+        address = doc.get("address")
+        source_id = str(doc.get("source_id", doc["_id"]))
+
+        items.append(
+            FeedItem(
+                id=f"inventory-firstmover-{source_id}",
+                kind="inventory",
+                title=address or f"Rental record {source_id}",
+                source="FirstMover NYC (historical snapshot)",
+                address=address,
+                borough=doc.get("borough"),
+                neighborhood=doc.get("neighborhood"),
+                zip=doc.get("zip_code"),
+                bedrooms=[int(beds)] if beds is not None else [],
+                rent=rent,
+                lat=doc.get("lat"),
+                lon=doc.get("lng"),
+                url=doc.get("url"),
+                voucher_status=(
+                    "Historical rental inventory only. "
+                    "Current availability and voucher acceptance "
+                    "have not been verified."
+                ),
+                within_voucher_limit=None,
+                snapshot_month=doc.get("snapshot_month", "2026-08"),
+                availability_verified=False,
+            )
+        )
+
+    return items
+
+
+def inventory_items(
+    limit: int = 250,
+    borough: Optional[str] = None,
+    bedrooms: Optional[int] = None,
+    max_rent: Optional[float] = None,
+) -> List[FeedItem]:
+    """Filter historical rental inventory in MongoDB before limiting results."""
+    import os
+
+    if not os.getenv("MONGODB_URI"):
+        return []
+
+    from scanner.mongo_store import collection
+
+    db = collection().database
+
+    query = {"source": "firstmover"}
+
+    if borough:
+        query["borough"] = borough
+
+    if bedrooms is not None:
+        query["bedrooms"] = bedrooms
+
+    if max_rent is not None:
+        query["rent"] = {"$lte": max_rent}
+
+    records = (
+        db["rental_inventory"]
+        .find(query)
+        .sort("source_created_at", -1)
+        .limit(limit)
+    )
+
+    items = []
+
+    for doc in records:
+        rent = doc.get("rent")
+        beds = doc.get("bedrooms")
+        address = doc.get("address")
+        source_id = str(doc.get("source_id", doc["_id"]))
+
+        items.append(
+            FeedItem(
+                id=f"inventory-firstmover-{source_id}",
+                kind="inventory",
+                title=address or f"Rental record {source_id}",
+                source="FirstMover NYC (historical snapshot)",
+                address=address,
+                borough=doc.get("borough"),
+                neighborhood=doc.get("neighborhood"),
+                zip=doc.get("zip_code"),
+                bedrooms=[int(beds)] if beds is not None else [],
+                rent=rent,
+                lat=doc.get("lat"),
+                lon=doc.get("lng"),
+                url=doc.get("url"),
+                voucher_status=(
+                    "Historical rental inventory only. "
+                    "Current availability and voucher acceptance "
+                    "have not been verified."
+                ),
+                within_voucher_limit=None,
+                snapshot_month=doc.get("snapshot_month", "2026-08"),
+                availability_verified=False,
+            )
+        )
+
+    return items
+
 
 
 # ---------------- the feed ----------------
@@ -257,6 +403,43 @@ def build_feed(borough: Optional[str] = None, bedrooms: Optional[int] = None, ma
                kind: Optional[str] = None, within_voucher_limit: bool = False, household_size: Optional[int] = None,
                income: Optional[float] = None, has_voucher: bool = True, use_gemini: bool = False) -> Feed:
     """has_voucher defaults to True: this feed is for voucher holders."""
+
+
+    # Historical inventory does not need the Housing Connect API.
+    if kind == "inventory":
+        # records = inventory_items()
+        records = inventory_items(
+            borough=borough,
+            bedrooms=bedrooms,
+            max_rent=max_rent,
+        )
+
+        items = [
+            i for i in records
+            if (not borough or i.borough == borough)
+            and (bedrooms is None or bedrooms in i.bedrooms)
+            and (max_rent is None or i.rent is None or i.rent <= max_rent)
+            and not within_voucher_limit
+        ]
+
+        return Feed(
+            items=items,
+            counts={
+                "lotteries": 0,
+                "listings": 0,
+                "inventory": len(items),
+            },
+            hidden={
+                "discriminatory": 0,
+                "needs_review": 0,
+            },
+            notes=[
+                "FirstMover August 2026 historical rental inventory.",
+                "Current availability and voucher acceptance are unverified.",
+            ],
+            lotteries_as_of=None,
+        )
+
     lots = []
     for i in lottery_items():
         if i.unit_offers:
@@ -267,8 +450,16 @@ def build_feed(borough: Optional[str] = None, bedrooms: Optional[int] = None, ma
                 continue
             i = i.model_copy(update={"unit_offers": offers, "bedrooms": sorted({u["bedrooms"] for u in offers if u["bedrooms"] is not None})})
         lots.append(i)
+    # lists, hidden = listing_items(use_gemini)
+    # items = [i for i in lots + lists
     lists, hidden = listing_items(use_gemini)
-    items = [i for i in lots + lists
+    # inventory = inventory_items()
+    inventory = inventory_items(
+        borough=borough,
+        bedrooms=bedrooms,
+        max_rent=max_rent,
+    )
+    items = [i for i in lots + lists + inventory
              if (not borough or i.borough == borough)
              and (bedrooms is None or bedrooms in i.bedrooms)
              and (max_rent is None or i.rent is None or i.rent <= max_rent)
@@ -283,5 +474,24 @@ def build_feed(borough: Optional[str] = None, bedrooms: Optional[int] = None, ma
     ]
     if not lists and not any(hidden.values()):
         notes.append("No scraped listings found yet. The scraper writes them to scanner/python/listings.json.")
-    return Feed(items=items, counts={"lotteries": sum(i.kind == "lottery" for i in items), "listings": sum(i.kind == "listing" for i in items)},
-                hidden=hidden, notes=notes, lotteries_as_of=as_of)
+    # return Feed(items=items, counts={"lotteries": sum(i.kind == "lottery" for i in items), "listings": sum(i.kind == "listing" for i in items)},
+    #             hidden=hidden, notes=notes, lotteries_as_of=as_of)
+
+
+    notes.append(
+        "FirstMover inventory is an August 2026 historical snapshot. "
+        "These records do not confirm present availability or voucher acceptance."
+    )
+
+    return Feed(
+        items=items,
+        counts={
+            "lotteries": sum(i.kind == "lottery" for i in items),
+            "listings": sum(i.kind == "listing" for i in items),
+            "inventory": sum(i.kind == "inventory" for i in items),
+        },
+        hidden=hidden,
+        notes=notes,
+        lotteries_as_of=as_of,
+    )
+

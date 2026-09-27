@@ -924,6 +924,13 @@
 "lat": 40.584531,
 "lng": -73.983252
 },
+"260 Broadway, Manhattan": {
+"borough": "Manhattan",
+"confidence": 0.8,
+"label": "260 BROADWAY, New York, NY, USA",
+"lat": 40.713951,
+"lng": -74.007092
+},
 "267 3rd Avenue, Brooklyn, NY 11215": {
 "borough": "Brooklyn",
 "confidence": 0.8,

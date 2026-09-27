@@ -7,7 +7,7 @@ import os
 import re
 import certifi
 from datetime import datetime
-
+from core.geo import geocode
 from pymongo import MongoClient
 
 from config.phrases import WELCOME
@@ -71,6 +71,21 @@ def convert_listing(doc: dict) -> ScannedListing:
 
     bedrooms = extraction.bedrooms
 
+    # Resolve listing location for the map.
+    address = doc.get("address") or extraction.address
+    borough = doc.get("borough") or extraction.borough
+
+    lat = doc.get("lat")
+    lng = doc.get("lng")
+
+    # Only geocode when coordinates are missing.
+    if (lat is None or lng is None) and address:
+        location = geocode(address, borough)
+
+        if location:
+            lat = location["lat"]
+            lng = location["lng"]
+
     return ScannedListing(
         id=listing_id,
         url=doc.get("url"),
@@ -82,10 +97,10 @@ def convert_listing(doc: dict) -> ScannedListing:
         within_voucher_limit=analysis.within_voucher_range,
         rent=extraction.monthly_rent,
         bedrooms=int(bedrooms) if bedrooms is not None else None,
-        address=doc.get("address") or extraction.address,
-        borough=doc.get("borough") or extraction.borough,
-        lat=doc.get("lat"),
-        lng=doc.get("lng"),
+        address=address,
+        borough=borough,
+        lat=lat,
+        lng=lng,
         flags=raw_flags,
         result=analysis,
     )
